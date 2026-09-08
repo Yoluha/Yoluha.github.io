@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Yoshiki Amaral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #eef2f6;
+    --ink-soft:   #a9b6c5;
+    --paper:      #10151d;
+    --paper-alt:  #182029;
+    --line:       rgba(255,255,255,0.10);
+    --card:       #1a222c;
+    --accent:     #38bdf8;
+    --font-display: "Baloo 2", ui-rounded, "Segoe UI", sans-serif;
+    --font-body:    "Karla", "Segoe UI", Arial, sans-serif;
+    --font-mono:    "Space Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
+  body { overflow-x: hidden; }
+
+  .topbar { display: flex; justify-content: flex-end; padding: 20px 24px 0; }
+  .topbar select {
+    background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 7px;
+    padding: 8px 12px; font-family: var(--font-mono); font-size: 0.82rem; cursor: pointer;
+  }
+  .topbar select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .hero { text-align: center; padding: 28px 24px 52px; max-width: 720px; margin: 0 auto; }
+  .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 2.8rem); margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { color: var(--ink-soft); font-size: 1.08rem; margin: 0; line-height: 1.6; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px;
+    max-width: 1040px; margin: 0 auto; padding: 0 24px 64px;
+  }
+  .pcard {
+    position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit;
+    background-size: cover; background-position: center; min-height: 176px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .pcard:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.5); }
+  .pcard .picon { position: absolute; right: -10px; bottom: -16px; font-size: 6rem; opacity: 0.35; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); line-height: 1; }
+  .pcard h3 { position: relative; z-index: 1; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+  .pcard p { position: relative; z-index: 1; font-size: 0.88rem; margin: 0; color: rgba(255,255,255,0.9); line-height: 1.45; text-shadow: 0 1px 3px rgba(0,0,0,0.7); flex: 1; }
+  .pcard .cta {
+    position: relative; z-index: 1; align-self: flex-start; font-family: var(--font-mono); font-size: 0.74rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff;
+    border: 1px solid rgba(255,255,255,0.5); border-radius: 8px; padding: 7px 13px;
+    transition: background 0.15s ease;
+  }
+  .pcard:hover .cta { background: rgba(255,255,255,0.16); }
+
+  .pcard.grad-horas { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(6,33,10,0.55) 55%, rgba(76,175,80,0.75) 100%), linear-gradient(160deg, #06210a, #1b5e20 55%, #4caf50); }
+  .pcard.grad-jc { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(10,61,82,0.55) 55%, rgba(201,122,18,0.75) 100%), linear-gradient(160deg, #10151d, #0a3d52 55%, #c97a12); }
+  .pcard.grad-3d { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
+  .pcard.grad-yb { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(48,29,99,0.6) 55%, rgba(216,38,140,0.75) 100%), linear-gradient(135deg, #15102b, #4c1d95 55%, #d8268c); }
+  .pcard.grad-synth { background-image: linear-gradient(165deg, rgba(8,11,16,0.4), rgba(30,10,60,0.6) 55%, rgba(255,61,127,0.7) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; text-align: center; }
+  footer p { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0 6px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    .pcard { min-height: 156px; }
+    .pcard .picon { font-size: 4.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <select id="langSelect" onchange="setLang(this.value)"></select>
+</div>
+
+<div class="hero">
+  <h1>Lucas Yoshiki Amaral</h1>
+  <p id="heroTagline"></p>
+</div>
+
+<div class="grid">
+  <a class="pcard grad-horas" href="https://yoluha.github.io/horas/">
+    <span class="picon">⏱️</span>
+    <h3>Horas</h3>
+    <p id="descHoras"></p>
+    <span class="cta" id="ctaVisit1"></span>
+  </a>
+  <a class="pcard grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
+    <span class="picon">🏝️</span>
+    <h3>Johnny Castaway Reborn</h3>
+    <p id="descJc"></p>
+    <span class="cta" id="ctaVisit2"></span>
+  </a>
+  <a class="pcard grad-3d" href="https://yoluha.github.io/3d-manager/">
+    <span class="picon">📐</span>
+    <h3>3D Manager</h3>
+    <p id="desc3d"></p>
+    <span class="cta" id="ctaVisit3"></span>
+  </a>
+  <a class="pcard grad-yb" href="https://www.youtube.com/channel/UClEkyF0yv7Vyh2nRhKlvFlQ">
+    <span class="picon">🎧</span>
+    <h3>Yoshiki Beats</h3>
+    <p id="descYb"></p>
+    <span class="cta" id="ctaVisit4"></span>
+  </a>
+  <a class="pcard grad-synth" href="https://www.youtube.com/@SynthY%C3%98SHI">
+    <span class="picon">🌆</span>
+    <h3>Synth YØSHI</h3>
+    <p id="descSynth"></p>
+    <span class="cta" id="ctaVisit5"></span>
+  </a>
+</div>
+
+<footer>
+  <p id="footerContact"></p>
+  <p><a href="mailto:yoluha91@gmail.com">yoluha91@gmail.com</a></p>
+</footer>
+
+<script>
+const LANG_ORDER = ['pt','en','es','fr','de','it','pl','ja','nl','cs','zh','ru','ko','ne'];
+const LANG_NAMES = { pt:'Português', en:'English', es:'Español', fr:'Français', de:'Deutsch', it:'Italiano', pl:'Polski', ja:'日本語', nl:'Nederlands', cs:'Čeština', zh:'中文', ru:'Русский', ko:'한국어', ne:'नेपाली' };
+
+const T = {
+  heroTagline: { pt:'Apps, ferramentas de negócio, um clássico remasterizado, e música.', en:'Apps, business tools, a remastered classic, and music.', es:'Apps, herramientas de negocio, un clásico remasterizado, y música.', fr:'Applications, outils métier, un classique remasterisé, et musique.', de:'Apps, Business-Tools, ein neu aufgelegter Klassiker, und Musik.', it:'App, strumenti per il business, un classico rimasterizzato, e musica.', pl:'Aplikacje, narzędzia biznesowe, odświeżona klasyka i muzyka.', ja:'アプリ、ビジネスツール、リマスターされたクラシック、そして音楽。', nl:'Apps, zakelijke tools, een geremasterde klassieker, en muziek.', cs:'Aplikace, obchodní nástroje, remasterovaná klasika a hudba.', zh:'应用程序、商业工具、重制经典，以及音乐。', ru:'Приложения, бизнес-инструменты, ремастер классики и музыка.', ko:'앱, 비즈니스 도구, 리마스터된 클래식, 그리고 음악.', ne:'एपहरू, व्यापार उपकरणहरू, नयाँ रूपमा ल्याइएको क्लासिक, र संगीत।' },
+  descHoras: { pt:'Ponto e deteção por WiFi', en:'Time clock, WiFi auto-detect', es:'Fichaje y detección por WiFi', fr:'Pointage, détection WiFi', de:'Stempeluhr, WLAN-Erkennung', it:'Timbratura, rilevamento WiFi', pl:'Rejestracja czasu, wykrywanie WiFi', ja:'勤怠管理・WiFi自動検出', nl:'Prikklok, WiFi-detectie', cs:'Docházka, detekce WiFi', zh:'打卡与WiFi自动检测', ru:'Учёт времени, определение по WiFi', ko:'근태 관리, WiFi 자동 감지', ne:'समय दर्ता, WiFi स्वतः पहिचान' },
+  descJc: { pt:'Screensaver de 1992, remasterizado', en:'The 1992 screensaver, remastered', es:'El protector de pantalla de 1992, remasterizado', fr:'L\'économiseur d\'écran de 1992, remasterisé', de:'Der Bildschirmschoner von 1992, neu aufgelegt', it:'Il salvaschermo del 1992, rimasterizzato', pl:'Wygaszacz ekranu z 1992 roku, odświeżony', ja:'1992年のスクリーンセーバー、リマスター版', nl:'De screensaver uit 1992, geremasterd', cs:'Spořič obrazovky z roku 1992, remasterovaný', zh:'1992年的屏保，重制版', ru:'Скринсейвер 1992 года, ремастер', ko:'1992년 스크린세이버, 리마스터', ne:'१९९२ को स्क्रिनसेभर, नयाँ रूपमा' },
+  desc3d: { pt:'Orçamentos, produção e clientes', en:'Quotes, production and clients', es:'Presupuestos, producción y clientes', fr:'Devis, production et clients', de:'Angebote, Produktion und Kunden', it:'Preventivi, produzione e clienti', pl:'Wyceny, produkcja i klienci', ja:'見積もり・生産・顧客管理', nl:'Offertes, productie en klanten', cs:'Nabídky, výroba a klienti', zh:'报价、生产与客户', ru:'Сметы, производство и клиенты', ko:'견적, 생산, 고객 관리', ne:'मूल्य उद्धरण, उत्पादन र ग्राहक' },
+  descYb: { pt:'Instrumentais J-Trap e GΛRĀN', en:'Instrumental J-Trap and GΛRĀN', es:'Instrumental J-Trap y GΛRĀN', fr:'Instrumentaux J-Trap et GΛRĀN', de:'Instrumental J-Trap und GΛRĀN', it:'Strumentali J-Trap e GΛRĀN', pl:'Instrumentale J-Trap i GΛRĀN', ja:'インストゥルメンタルのJ-TrapとGΛRĀN', nl:'Instrumentale J-Trap en GΛRĀN', cs:'Instrumentální J-Trap a GΛRĀN', zh:'J-Trap 与 GΛRĀN 器乐', ru:'Инструментал J-Trap и GΛRĀN', ko:'인스트루멘탈 J-Trap과 GΛRĀN', ne:'इन्स्ट्रुमेन्टल J-Trap र GΛRĀN' },
+  descSynth: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' },
+  ctaVisit: { pt:'Visitar ↗', en:'Visit ↗', es:'Visitar ↗', fr:'Visiter ↗', de:'Besuchen ↗', it:'Visita ↗', pl:'Odwiedź ↗', ja:'訪問する ↗', nl:'Bezoek ↗', cs:'Navštívit ↗', zh:'访问 ↗', ru:'Посетить ↗', ko:'방문하기 ↗', ne:'भ्रमण गर्नुहोस् ↗' },
+  footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' }
+};
+
+function setLang(lang) {
+  if (!LANG_ORDER.includes(lang)) lang = 'pt';
+  document.documentElement.lang = lang;
+
+  document.getElementById('heroTagline').textContent = T.heroTagline[lang];
+  document.getElementById('descHoras').textContent = T.descHoras[lang];
+  document.getElementById('descJc').textContent = T.descJc[lang];
+  document.getElementById('desc3d').textContent = T.desc3d[lang];
+  document.getElementById('descYb').textContent = T.descYb[lang];
+  document.getElementById('descSynth').textContent = T.descSynth[lang];
+  document.getElementById('footerContact').textContent = T.footerContact[lang];
+  ['ctaVisit1','ctaVisit2','ctaVisit3','ctaVisit4','ctaVisit5'].forEach(id => {
+    document.getElementById(id).textContent = T.ctaVisit[lang];
+  });
+
+  const sel = document.getElementById('langSelect');
+  if (sel && sel.value !== lang) sel.value = lang;
+  try { localStorage.setItem('yoluha-lang', lang); } catch (e) {}
+}
+
+(function () {
+  const sel = document.getElementById('langSelect');
+  sel.innerHTML = LANG_ORDER.map(code => `<option value="${code}">${LANG_NAMES[code]}</option>`).join('');
+
+  var saved = null;
+  try { saved = localStorage.getItem('yoluha-lang'); } catch (e) {}
+  var browserLang = (navigator.language || 'pt').slice(0, 2);
+  var initial = saved || (LANG_ORDER.includes(browserLang) ? browserLang : 'pt');
+  setLang(initial);
+})();
+</script>
+
+</body>
+</html>
