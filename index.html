@@ -22,7 +22,23 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
-  body { overflow-x: hidden; }
+  body { overflow-x: hidden; position: relative; }
+
+  .aurora { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .aurora span {
+    position: absolute; width: 46vw; height: 46vw; max-width: 620px; max-height: 620px;
+    border-radius: 50%; filter: blur(90px); opacity: 0.35; animation: auroraDrift 22s ease-in-out infinite alternate;
+  }
+  .aurora span:nth-child(1) { background: #38bdf8; top: -12%; left: -10%; animation-delay: 0s; }
+  .aurora span:nth-child(2) { background: #d8268c; top: 30%; right: -14%; animation-delay: -7s; }
+  .aurora span:nth-child(3) { background: #5b1a8c; bottom: -16%; left: 22%; animation-delay: -14s; }
+  @keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(4%, 6%) scale(1.12); }
+    100% { transform: translate(-4%, -3%) scale(0.95); }
+  }
+
+  .topbar, .hero, .grid, footer { position: relative; z-index: 1; }
 
   .topbar { display: flex; justify-content: flex-end; padding: 20px 24px 0; }
   .topbar select {
@@ -32,7 +48,15 @@
   .topbar select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .hero { text-align: center; padding: 28px 24px 52px; max-width: 720px; margin: 0 auto; }
-  .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 2.8rem); margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 2.8rem); margin: 0 0 12px;
+    letter-spacing: -0.01em; animation: heroGlow 4s ease-in-out infinite;
+  }
+  @keyframes heroGlow {
+    0%, 100% { text-shadow: 0 0 18px rgba(56,189,248,0.55), 0 0 4px rgba(56,189,248,0.35); }
+    33%      { text-shadow: 0 0 18px rgba(216,38,140,0.55), 0 0 4px rgba(216,38,140,0.35); }
+    66%      { text-shadow: 0 0 18px rgba(91,26,140,0.6), 0 0 4px rgba(91,26,140,0.4); }
+  }
   .hero p { color: var(--ink-soft); font-size: 1.08rem; margin: 0; line-height: 1.6; }
 
   .grid {
@@ -43,10 +67,24 @@
     position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px;
     padding: 22px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit;
     background-size: cover; background-position: center; min-height: 176px;
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    opacity: 0; transform: translateY(24px); animation: cardIn 0.6s ease forwards;
   }
-  .pcard:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.5); }
-  .pcard .picon { position: absolute; right: -10px; bottom: -16px; font-size: 6rem; opacity: 0.35; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); line-height: 1; }
+  .grid .pcard:nth-child(1) { animation-delay: 0.05s; }
+  .grid .pcard:nth-child(2) { animation-delay: 0.15s; }
+  .grid .pcard:nth-child(3) { animation-delay: 0.25s; }
+  .grid .pcard:nth-child(4) { animation-delay: 0.35s; }
+  .grid .pcard:nth-child(5) { animation-delay: 0.45s; }
+  @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+  .pcard:hover {
+    transform: translateY(-6px) scale(1.015); border-color: rgba(255,255,255,0.55);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+  }
+  .pcard .picon {
+    position: absolute; right: -10px; bottom: -16px; font-size: 6rem; opacity: 0.35;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); line-height: 1; animation: iconFloat 5s ease-in-out infinite;
+  }
+  @keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-3deg); } }
   .pcard h3 { position: relative; z-index: 1; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
   .pcard p { position: relative; z-index: 1; font-size: 0.88rem; margin: 0; color: rgba(255,255,255,0.9); line-height: 1.45; text-shadow: 0 1px 3px rgba(0,0,0,0.7); flex: 1; }
   .pcard .cta {
@@ -72,9 +110,16 @@
     .pcard { min-height: 156px; }
     .pcard .picon { font-size: 4.6rem; }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora, .hero h1, .pcard, .pcard .picon { animation: none !important; }
+    .pcard { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body>
+
+<div class="aurora"><span></span><span></span><span></span></div>
 
 <div class="topbar">
   <select id="langSelect" onchange="setLang(this.value)"></select>
