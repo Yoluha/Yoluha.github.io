@@ -256,17 +256,6 @@ async function fetchSongs(slug, channelId) {
   return songs;
 }
 
-// YT Music's "Top songs" chart caps out around 100 tracks. Fill in anything
-// beyond that from the full video catalog (same source as the Videos tab),
-// using view count as a plays stand-in for tracks with no real YTM chart entry.
-function mergeSongsWithVideos(songs, videos) {
-  const known = new Set(songs.map(s => s.id));
-  const extra = videos
-    .filter(v => !known.has(v.id))
-    .map(v => ({ id: v.id, title: v.title, genre: v.genre, plays: v.views || 0 }));
-  return [...songs, ...extra];
-}
-
 let changed = false;
 for (const { slug, channelId } of CHANNELS) {
   const xml = await fetchFeed(channelId);
@@ -306,8 +295,7 @@ for (const { slug, channelId } of CHANNELS) {
   }
 
   try {
-    const chartSongs = await fetchSongs(slug, channelId);
-    const songs = mergeSongsWithVideos(chartSongs, videos);
+    const songs = await fetchSongs(slug, channelId);
     const songsPath = path.join(ROOT, slug, 'songs.json');
     const nextSongs = JSON.stringify(songs, null, 2) + '\n';
     const prevSongs = fs.existsSync(songsPath) ? fs.readFileSync(songsPath, 'utf8') : '';
