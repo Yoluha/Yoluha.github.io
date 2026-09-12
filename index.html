@@ -273,7 +273,7 @@ function setLang(lang) {
 
   function measureHomes() {
     homes = blobs.map(el => {
-      const r = el.getBoundingClientRect();
+      const r = (el.querySelector('span') || el).getBoundingClientRect();
       return { el, cx: r.left + r.width / 2, cy: r.top + r.height / 2 };
     });
   }

@@ -169,7 +169,7 @@
 
 <div class="player">
   <div class="player-frame">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=UU0ohsreRvQ0-QZ0dYdq9Rrg" title="Synth YØSHI — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <iframe src="https://www.youtube.com/embed/WIni7Vcm8VQ?list=UU0ohsreRvQ0-QZ0dYdq9Rrg" title="Synth YØSHI — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
 </div>
 
@@ -232,7 +232,7 @@ function setLang(lang) {
 
   function measureHomes() {
     homes = blobs.map(el => {
-      const r = el.getBoundingClientRect();
+      const r = (el.querySelector('span') || el).getBoundingClientRect();
       return { el, cx: r.left + r.width / 2, cy: r.top + r.height / 2 };
     });
   }
