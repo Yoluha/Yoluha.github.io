@@ -101,16 +101,41 @@ function genreFromTitleSuffix(title) {
   return genre;
 }
 
-function canonicalizeGenres(videos) {
-  const canonical = new Map();
-  for (const v of videos) {
-    if (!v.genre) continue;
-    const key = v.genre.toLowerCase();
-    if (!canonical.has(key)) canonical.set(key, v.genre);
-  }
-  for (const v of videos) {
-    if (v.genre) v.genre = canonical.get(v.genre.toLowerCase());
-  }
+// Genre aliases per-slug: unknown/untagged defaults to the slug's default genre.
+// Anything not in the alias map (parsing artifacts, one-off junk) also falls
+// back to the default rather than creating a noisy new chip.
+const GENRE_CONFIG = {
+  'yoshiki-beats': {
+    default: 'J-Trap',
+    aliases: {
+      'j-trap': 'J-Trap',
+      'jtrap': 'J-Trap',
+      'japanese trap': 'J-Trap',
+      'japananese trap': 'J-Trap',
+      'j-metal': 'J-Metal',
+      'japanese metal': 'J-Metal',
+      'djent': 'Djent',
+      'garan': 'GΛRĀN',
+      'gλrān': 'GΛRĀN',
+      'kami phonk': 'Kami Phonk',
+      'kλmi phonk': 'Kami Phonk',
+      'cinematic music': 'Cinematic Music',
+    },
+  },
+  'synth-yoshi': {
+    default: null,
+    aliases: {
+      'darksynth': 'Darksynth',
+      'chillsynth': 'ChillSynth',
+    },
+  },
+};
+
+function normalizeGenre(slug, raw) {
+  const cfg = GENRE_CONFIG[slug] || { default: null, aliases: {} };
+  if (!raw) return cfg.default;
+  const key = raw.trim().toLowerCase();
+  return cfg.aliases[key] || cfg.default;
 }
 
 function extractLockups(items) {
@@ -200,7 +225,7 @@ function parsePlays(text) {
   return digits ? Number(digits) : 0;
 }
 
-async function fetchSongs(channelId) {
+async function fetchSongs(slug, channelId) {
   const overview = await ytMusicBrowse(channelId);
   const sections = overview?.contents?.singleColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents || [];
   const shelf = sections.map(s => s.musicShelfRenderer).find(Boolean);
@@ -226,9 +251,20 @@ async function fetchSongs(channelId) {
       videoId = r.overlay.musicItemThumbnailOverlayRenderer.content.musicPlayButtonRenderer.playNavigationEndpoint.watchEndpoint.videoId;
     } catch (e) { /* no play button on this row */ }
     if (!title || !videoId) continue;
-    songs.push({ id: videoId, title, genre: parseGenreFromTitle(title), plays: parsePlays(playsText) });
+    songs.push({ id: videoId, title, genre: normalizeGenre(slug, parseGenreFromTitle(title)), plays: parsePlays(playsText) });
   }
   return songs;
+}
+
+// YT Music's "Top songs" chart caps out around 100 tracks. Fill in anything
+// beyond that from the full video catalog (same source as the Videos tab),
+// using view count as a plays stand-in for tracks with no real YTM chart entry.
+function mergeSongsWithVideos(songs, videos) {
+  const known = new Set(songs.map(s => s.id));
+  const extra = videos
+    .filter(v => !known.has(v.id))
+    .map(v => ({ id: v.id, title: v.title, genre: v.genre, plays: v.views || 0 }));
+  return [...songs, ...extra];
 }
 
 let changed = false;
@@ -242,20 +278,20 @@ for (const { slug, channelId } of CHANNELS) {
     const fullList = await fetchAllVideos(channelId);
     videos = fullList.map((v, i) => {
       const rss = rssById.get(v.id);
+      const rawGenre = rss?.genre ?? genreFromTitleSuffix(v.title);
       return {
         id: v.id,
         title: v.title,
-        genre: rss?.genre ?? genreFromTitleSuffix(v.title),
+        genre: normalizeGenre(slug, rawGenre),
         views: v.views || rss?.views || 0,
         likes: rss?.likes || 0,
         order: i,
       };
     });
-    canonicalizeGenres(videos);
     console.log(`${slug}: full catalog fetch got ${videos.length} videos`);
   } catch (err) {
     console.error(`${slug}: full video list fetch failed, falling back to RSS-only (15 latest):`, err.message);
-    videos = rssEntries.map((e, i) => ({ ...e, order: i }));
+    videos = rssEntries.map((e, i) => ({ ...e, genre: normalizeGenre(slug, e.genre), order: i }));
   }
 
   const outPath = path.join(ROOT, slug, 'videos.json');
@@ -270,7 +306,8 @@ for (const { slug, channelId } of CHANNELS) {
   }
 
   try {
-    const songs = await fetchSongs(channelId);
+    const chartSongs = await fetchSongs(slug, channelId);
+    const songs = mergeSongsWithVideos(chartSongs, videos);
     const songsPath = path.join(ROOT, slug, 'songs.json');
     const nextSongs = JSON.stringify(songs, null, 2) + '\n';
     const prevSongs = fs.existsSync(songsPath) ? fs.readFileSync(songsPath, 'utf8') : '';
