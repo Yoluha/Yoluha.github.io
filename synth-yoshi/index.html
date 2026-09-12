@@ -78,7 +78,7 @@
     50%      { transform: translate(9%, -12%) scale(1.22); }
   }
 
-  .topbar, .hero, .player, .actions, footer { position: relative; z-index: 1; }
+  .topbar, .hero, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
 
   .topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 0; max-width: 900px; margin: 0 auto; }
   .backlink {
@@ -105,34 +105,91 @@
   }
   .hero p { color: var(--ink-soft); font-size: 1.08rem; margin: 0; line-height: 1.6; }
 
-  .player {
-    max-width: 860px; margin: 0 auto; padding: 0 24px;
+  .player { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .now-playing-label {
+    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink-soft); margin: 0 0 8px;
   }
+  .now-playing-label b { color: var(--ink); font-weight: 700; }
   .player-frame {
     position: relative; width: 100%; padding-top: 56.25%; border-radius: 16px; overflow: hidden;
     border: 1px solid var(--line); background: var(--card); box-shadow: 0 14px 34px rgba(0,0,0,0.45);
   }
   .player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  .actions {
-    max-width: 860px; margin: 0 auto; padding: 26px 24px 64px;
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
-  }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
   .btn {
     font-family: var(--font-mono); font-size: 0.86rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
     text-decoration: none; padding: 13px 22px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;
     transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
   }
   .btn:hover { transform: translateY(-2px); }
-  .btn-music {
-    color: #fff; background: linear-gradient(135deg, #ff3d7f, #8b2fc9);
-    box-shadow: 0 8px 22px rgba(255,61,127,0.35);
-  }
+  .btn-music { color: #fff; background: linear-gradient(135deg, #ff3d7f, #8b2fc9); box-shadow: 0 8px 22px rgba(255,61,127,0.35); }
   .btn-music:hover { box-shadow: 0 12px 28px rgba(255,61,127,0.5); }
-  .btn-yt {
-    color: var(--ink); background: var(--card); border: 1px solid var(--line);
+
+  .tracklist-section { max-width: 860px; margin: 34px auto 0; padding: 0 24px; }
+  .tl-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+  .tl-search {
+    flex: 1; min-width: 160px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); font-family: var(--font-body); font-size: 0.88rem;
   }
-  .btn-yt:hover { border-color: rgba(255,255,255,0.5); }
+  .tl-search::placeholder { color: var(--ink-soft); }
+  .tl-search:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .tl-sort {
+    padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--card);
+    color: var(--ink); font-family: var(--font-mono); font-size: 0.78rem; cursor: pointer;
+  }
+  .tl-genres { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tl-chip {
+    padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: transparent;
+    color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.03em; cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .tl-chip:hover { border-color: rgba(255,255,255,0.4); color: var(--ink); }
+  .tl-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tl-count { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin: 0 0 10px; }
+
+  .track-list { display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; }
+  .track-row {
+    display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 10px; border: none;
+    background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; width: 100%;
+    transition: background 0.15s ease;
+  }
+  .track-row:hover { background: rgba(255,255,255,0.06); }
+  .track-row.active { background: rgba(255,61,127,0.14); }
+  .track-row.active .track-title { color: var(--accent); }
+  .track-thumb { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: var(--paper-alt); }
+  .track-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+  .track-title { font-weight: 700; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .track-genre-pill {
+    align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,0.08);
+    font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-soft); text-transform: uppercase;
+  }
+  .track-stats {
+    display: flex; gap: 12px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft);
+    flex-shrink: 0; white-space: nowrap;
+  }
+  .track-empty { padding: 28px 8px; text-align: center; color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.82rem; }
+  .tl-more {
+    display: inline-block; margin-top: 6px; font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed var(--line);
+  }
+  .tl-more:hover { color: var(--ink); }
+
+  .links-section { max-width: 860px; margin: 40px auto 0; padding: 0 24px 64px; }
+  .links-heading {
+    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 14px;
+  }
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .link-card {
+    display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--card); color: var(--ink); text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .link-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.5); }
+  .link-icon { font-size: 1.25rem; flex-shrink: 0; }
+  .link-label { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; }
 
   footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; text-align: center; }
   footer p { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0 6px; }
@@ -168,14 +225,38 @@
 </div>
 
 <div class="player">
+  <p class="now-playing-label"><span id="nowPlayingPrefix"></span> <b id="nowPlayingTitle">Cyber Geisha | Darksynth | ChillSynth</b></p>
   <div class="player-frame">
-    <iframe src="https://www.youtube.com/embed/WIni7Vcm8VQ" title="Synth YØSHI — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <iframe id="playerFrame" src="https://www.youtube.com/embed/WIni7Vcm8VQ" title="Synth YØSHI — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="actions">
+    <a class="btn btn-music" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   </div>
 </div>
 
-<div class="actions">
-  <a class="btn btn-music" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
-  <a class="btn btn-yt" href="https://www.youtube.com/@SynthY%C3%98SHI" target="_blank" rel="noopener">▲ <span id="ctaYoutube"></span></a>
+<div class="tracklist-section" id="tracklistSection" hidden>
+  <div class="tl-toolbar">
+    <input class="tl-search" id="tlSearch" type="search" autocomplete="off">
+    <select class="tl-sort" id="tlSort">
+      <option value="newest" id="sortNewest"></option>
+      <option value="views" id="sortViews"></option>
+      <option value="likes" id="sortLikes"></option>
+    </select>
+  </div>
+  <div class="tl-genres" id="tlGenres" hidden></div>
+  <p class="tl-count" id="tlCount"></p>
+  <div class="track-list" id="trackList"></div>
+  <a class="tl-more" href="https://www.youtube.com/@SynthY%C3%98SHI/videos" target="_blank" rel="noopener" id="tlMore"></a>
+</div>
+
+<div class="links-section">
+  <p class="links-heading" id="linksHeading"></p>
+  <div class="links-grid">
+    <a class="link-card" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener"><span class="link-icon">🎵</span><span class="link-label">YT Music</span></a>
+    <a class="link-card" href="https://www.youtube.com/@SynthY%C3%98SHI" target="_blank" rel="noopener"><span class="link-icon">▶️</span><span class="link-label">YouTube</span></a>
+    <a class="link-card" href="https://www.youtube.com/channel/UClEkyF0yv7Vyh2nRhKlvFlQ" target="_blank" rel="noopener"><span class="link-icon">🎧</span><span class="link-label">Yoshiki Beats</span></a>
+    <a class="link-card" href="https://yoluha.github.io/" id="linkPortfolio"><span class="link-icon">🧭</span><span class="link-label" id="linkPortfolioLabel"></span></a>
+  </div>
 </div>
 
 <footer>
@@ -189,25 +270,49 @@ const LANG_NAMES = { pt:'Português', en:'English', es:'Español', fr:'Français
 
 const T = {
   heroTagline: { pt:'Darksynth e ChillSynth — ouve e subscreve.', en:'Darksynth and ChillSynth — listen and subscribe.', es:'Darksynth y ChillSynth — escucha y suscríbete.', fr:'Darksynth et ChillSynth — écoute et abonne-toi.', de:'Darksynth und ChillSynth — hören und abonnieren.', it:'Darksynth e ChillSynth — ascolta e iscriviti.', pl:'Darksynth i ChillSynth — słuchaj i subskrybuj.', ja:'DarksynthとChillSynth — 聴いて登録しよう。', nl:'Darksynth en ChillSynth — luister en abonneer.', cs:'Darksynth a ChillSynth — poslouchej a odebírej.', zh:'Darksynth 与 ChillSynth — 收听并订阅。', ru:'Darksynth и ChillSynth — слушай и подписывайся.', ko:'Darksynth와 ChillSynth — 듣고 구독하세요.', ne:'Darksynth र ChillSynth — सुन्नुहोस् र सदस्यता लिनुहोस्।' },
-  ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
-  ctaYoutube: { pt:'Ver canal no YouTube', en:'View channel on YouTube', es:'Ver canal en YouTube', fr:'Voir la chaîne sur YouTube', de:'Kanal auf YouTube ansehen', it:'Vedi il canale su YouTube', pl:'Zobacz kanał na YouTube', ja:'YouTubeでチャンネルを見る', nl:'Bekijk kanaal op YouTube', cs:'Zobrazit kanál na YouTube', zh:'在YouTube上查看频道', ru:'Смотреть канал на YouTube', ko:'YouTube에서 채널 보기', ne:'YouTube मा च्यानल हेर्नुहोस्' },
   ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
+  ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
+  nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
+  searchPlaceholder: { pt:'Pesquisar faixas…', en:'Search tracks…', es:'Buscar pistas…', fr:'Rechercher des titres…', de:'Tracks suchen…', it:'Cerca brani…', pl:'Szukaj utworów…', ja:'トラックを検索…', nl:'Tracks zoeken…', cs:'Hledat skladby…', zh:'搜索曲目…', ru:'Поиск треков…', ko:'트랙 검색…', ne:'ट्र्याकहरू खोज्नुहोस्…' },
+  sortNewest: { pt:'Mais recentes', en:'Newest', es:'Más recientes', fr:'Les plus récents', de:'Neueste', it:'Più recenti', pl:'Najnowsze', ja:'新着順', nl:'Nieuwste', cs:'Nejnovější', zh:'最新', ru:'Сначала новые', ko:'최신순', ne:'नयाँ' },
+  sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
+  sortLikes: { pt:'Mais gostos', en:'Most liked', es:'Más gustadas', fr:'Les plus aimées', de:'Meiste Likes', it:'Più apprezzate', pl:'Najwięcej polubień', ja:'高評価順', nl:'Meest geliket', cs:'Nejoblíbenější', zh:'点赞最多', ru:'Больше всего лайков', ko:'좋아요순', ne:'धेरै मन परेको' },
+  allGenres: { pt:'Todos', en:'All', es:'Todos', fr:'Tous', de:'Alle', it:'Tutti', pl:'Wszystkie', ja:'すべて', nl:'Alle', cs:'Vše', zh:'全部', ru:'Все', ko:'전체', ne:'सबै' },
+  trackEmpty: { pt:'Nenhuma faixa encontrada.', en:'No tracks found.', es:'No se encontraron pistas.', fr:'Aucun titre trouvé.', de:'Keine Tracks gefunden.', it:'Nessun brano trovato.', pl:'Nie znaleziono utworów.', ja:'トラックが見つかりません。', nl:'Geen tracks gevonden.', cs:'Nebyly nalezeny žádné skladby.', zh:'未找到曲目。', ru:'Треки не найдены.', ko:'트랙을 찾을 수 없습니다.', ne:'कुनै ट्र्याक फेला परेन।' },
+  tlMore: { pt:'Ver catálogo completo no YouTube ↗', en:'See the full catalog on YouTube ↗', es:'Ver catálogo completo en YouTube ↗', fr:'Voir le catalogue complet sur YouTube ↗', de:'Vollständigen Katalog auf YouTube ansehen ↗', it:'Vedi il catalogo completo su YouTube ↗', pl:'Zobacz pełny katalog na YouTube ↗', ja:'YouTubeで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube ↗', cs:'Zobrazit celý katalog na YouTube ↗', zh:'在YouTube上查看完整目录 ↗', ru:'Смотреть полный каталог на YouTube ↗', ko:'YouTube에서 전체 카탈로그 보기 ↗', ne:'YouTube मा पूर्ण सूची हेर्नुहोस् ↗' },
+  linksHeading: { pt:'Links', en:'Links', es:'Enlaces', fr:'Liens', de:'Links', it:'Link', pl:'Linki', ja:'リンク', nl:'Links', cs:'Odkazy', zh:'链接', ru:'Ссылки', ko:'링크', ne:'लिङ्कहरू' },
+  linkPortfolio: { pt:'Outros Projetos', en:'Other Projects', es:'Otros Proyectos', fr:'Autres Projets', de:'Weitere Projekte', it:'Altri Progetti', pl:'Inne Projekty', ja:'その他のプロジェクト', nl:'Andere Projecten', cs:'Další Projekty', zh:'其他项目', ru:'Другие Проекты', ko:'다른 프로젝트', ne:'अन्य परियोजनाहरू' },
   footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' }
 };
 
+let currentLang = 'pt';
+let ALL_VIDEOS = [];
+let activeVideoId = 'WIni7Vcm8VQ';
+const tlState = { query: '', genre: 'all', sort: 'newest' };
+
 function setLang(lang) {
   if (!LANG_ORDER.includes(lang)) lang = 'pt';
+  currentLang = lang;
   document.documentElement.lang = lang;
 
   document.getElementById('heroTagline').textContent = T.heroTagline[lang];
-  document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
-  document.getElementById('ctaYoutube').textContent = T.ctaYoutube[lang];
   document.getElementById('ctaBack').textContent = T.ctaBack[lang];
+  document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
+  document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
+  document.getElementById('tlSearch').placeholder = T.searchPlaceholder[lang];
+  document.getElementById('sortNewest').textContent = T.sortNewest[lang];
+  document.getElementById('sortViews').textContent = T.sortViews[lang];
+  document.getElementById('sortLikes').textContent = T.sortLikes[lang];
+  document.getElementById('tlMore').textContent = T.tlMore[lang];
+  document.getElementById('linksHeading').textContent = T.linksHeading[lang];
+  document.getElementById('linkPortfolioLabel').textContent = T.linkPortfolio[lang];
   document.getElementById('footerContact').textContent = T.footerContact[lang];
 
   const sel = document.getElementById('langSelect');
   if (sel && sel.value !== lang) sel.value = lang;
   try { localStorage.setItem('yoluha-lang', lang); } catch (e) {}
+
+  renderTracks();
 }
 
 (function () {
@@ -264,6 +369,109 @@ function setLang(lang) {
   }, { passive: true });
   window.addEventListener('touchend', release);
 })();
+
+// ---------- Track list ----------
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+function formatCount(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  return String(n);
+}
+
+function playVideo(id, title) {
+  activeVideoId = id;
+  document.getElementById('playerFrame').src = `https://www.youtube.com/embed/${id}`;
+  document.getElementById('nowPlayingTitle').textContent = title;
+  document.querySelector('.player').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  renderTracks();
+}
+
+function renderTracks() {
+  const list = document.getElementById('trackList');
+  const countEl = document.getElementById('tlCount');
+  if (!list) return;
+
+  let items = ALL_VIDEOS.filter(v => {
+    if (tlState.genre !== 'all' && v.genre !== tlState.genre) return false;
+    if (tlState.query && !v.title.toLowerCase().includes(tlState.query)) return false;
+    return true;
+  });
+  items.sort((a, b) => {
+    if (tlState.sort === 'views') return (b.views || 0) - (a.views || 0);
+    if (tlState.sort === 'likes') return (b.likes || 0) - (a.likes || 0);
+    return new Date(b.published || 0) - new Date(a.published || 0);
+  });
+
+  countEl.textContent = `${items.length} / ${ALL_VIDEOS.length}`;
+  list.innerHTML = '';
+  if (!items.length) {
+    list.innerHTML = `<p class="track-empty">${T.trackEmpty[currentLang]}</p>`;
+    return;
+  }
+  items.forEach(v => {
+    const row = document.createElement('button');
+    row.type = 'button';
+    row.className = 'track-row' + (v.id === activeVideoId ? ' active' : '');
+    row.innerHTML = `
+      <img class="track-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">
+      <span class="track-main">
+        <span class="track-title">${escapeHtml(v.title)}</span>
+        ${v.genre ? `<span class="track-genre-pill">${escapeHtml(v.genre)}</span>` : ''}
+      </span>
+      <span class="track-stats">👁 ${formatCount(v.views || 0)} · ♥ ${formatCount(v.likes || 0)}</span>
+    `;
+    row.addEventListener('click', () => playVideo(v.id, v.title));
+    list.appendChild(row);
+  });
+}
+
+function renderGenreChips() {
+  const wrap = document.getElementById('tlGenres');
+  const genres = Array.from(new Set(ALL_VIDEOS.map(v => v.genre).filter(Boolean)));
+  if (genres.length < 2) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+  wrap.innerHTML = '';
+  const allChip = document.createElement('button');
+  allChip.type = 'button';
+  allChip.className = 'tl-chip active';
+  allChip.textContent = T.allGenres[currentLang];
+  allChip.dataset.genre = 'all';
+  wrap.appendChild(allChip);
+  genres.forEach(g => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'tl-chip';
+    chip.textContent = g;
+    chip.dataset.genre = g;
+    wrap.appendChild(chip);
+  });
+  wrap.addEventListener('click', (e) => {
+    const btn = e.target.closest('.tl-chip');
+    if (!btn) return;
+    tlState.genre = btn.dataset.genre;
+    wrap.querySelectorAll('.tl-chip').forEach(c => c.classList.toggle('active', c === btn));
+    renderTracks();
+  });
+}
+
+fetch('videos.json').then(r => r.ok ? r.json() : []).then(videos => {
+  if (!Array.isArray(videos) || !videos.length) return;
+  ALL_VIDEOS = videos;
+  document.getElementById('tracklistSection').hidden = false;
+  renderGenreChips();
+  renderTracks();
+}).catch(() => {});
+
+document.getElementById('tlSearch').addEventListener('input', (e) => {
+  tlState.query = e.target.value.trim().toLowerCase();
+  renderTracks();
+});
+document.getElementById('tlSort').addEventListener('change', (e) => {
+  tlState.sort = e.target.value;
+  renderTracks();
+});
 </script>
 
 </body>
