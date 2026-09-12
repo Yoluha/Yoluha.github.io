@@ -7,6 +7,7 @@
   "background_color": "#050308",
   "theme_color": "#050308",
   "icons": [
+    { "src": "https://yt3.googleusercontent.com/TCVsD3rSXkZfDr1gTAmV2N9bYnNes7RLfSkMidbMr_e8YcuuD2ZL0mMY_827FGOVdIio_PeKEA=s192-c-k-c0x00ffffff-no-rj", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }

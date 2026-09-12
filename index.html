@@ -121,8 +121,8 @@
     box-shadow: 0 14px 34px rgba(0,0,0,0.45);
   }
   .pcard .picon {
-    position: absolute; right: -10px; bottom: -16px; font-size: 6rem; opacity: 0.35;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); line-height: 1; animation: iconFloat 5s ease-in-out infinite;
+    position: absolute; right: -10px; bottom: -16px; width: 110px; height: 110px; opacity: 0.35;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); object-fit: contain; animation: iconFloat 5s ease-in-out infinite;
   }
   @keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-3deg); } }
   .pcard h3 { position: relative; z-index: 1; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
@@ -148,7 +148,7 @@
 
   @media (max-width: 480px) {
     .pcard { min-height: 156px; }
-    .pcard .picon { font-size: 4.6rem; }
+    .pcard .picon { width: 84px; height: 84px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -180,31 +180,31 @@
 
 <div class="grid">
   <a class="pcard grad-horas" href="https://yoluha.github.io/horas/">
-    <span class="picon">⏱️</span>
+    <img class="picon" src="https://yoluha.github.io/horas/icon.svg" alt="">
     <h3>Ponto</h3>
     <p id="descHoras"></p>
     <span class="cta" id="ctaVisit1"></span>
   </a>
   <a class="pcard grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
-    <span class="picon">🏝️</span>
+    <img class="picon" src="https://yoluha.github.io/johnny-castaway-reborn/icon.svg" alt="">
     <h3>Johnny Castaway Reborn</h3>
     <p id="descJc"></p>
     <span class="cta" id="ctaVisit2"></span>
   </a>
   <a class="pcard grad-3d" href="https://yoluha.github.io/3d-manager/">
-    <span class="picon">📐</span>
+    <img class="picon" src="https://yoluha.github.io/3d-manager/img/icon/favicon-256.png" alt="">
     <h3>3D Manager</h3>
     <p id="desc3d"></p>
     <span class="cta" id="ctaVisit3"></span>
   </a>
   <a class="pcard grad-yb" href="yoshiki-beats/">
-    <span class="picon">🎧</span>
+    <img class="picon" src="https://yt3.googleusercontent.com/tpUlhZiiNIF3l3ra8Z1UaBh7L6loJHgPF5dPxvTydivbBtKiGmhExnepSj1JyeLSesDUs72N0Q=s200-c-k-c0x00ffffff-no-rj" alt="">
     <h3>Yoshiki Beats</h3>
     <p id="descYb"></p>
     <span class="cta" id="ctaVisit4"></span>
   </a>
   <a class="pcard grad-synth" href="synth-yoshi/">
-    <span class="picon">🌆</span>
+    <img class="picon" src="https://yt3.googleusercontent.com/TCVsD3rSXkZfDr1gTAmV2N9bYnNes7RLfSkMidbMr_e8YcuuD2ZL0mMY_827FGOVdIio_PeKEA=s200-c-k-c0x00ffffff-no-rj" alt="">
     <h3>Synth YØSHI</h3>
     <p id="descSynth"></p>
     <span class="cta" id="ctaVisit5"></span>
