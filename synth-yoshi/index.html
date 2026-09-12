@@ -117,12 +117,6 @@
   }
   .player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  .bg-play-badge {
-    display: inline-flex; align-items: center; gap: 7px; margin: 12px 0 0; padding: 7px 14px;
-    border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid var(--accent);
-    color: var(--accent); font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700;
-  }
-
   .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
   .btn {
     font-family: var(--font-mono); font-size: 0.86rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
@@ -243,7 +237,6 @@
   <div class="player-frame">
     <div id="playerFrame"></div>
   </div>
-  <p class="bg-play-badge" id="bgPlayBadge">🔒 <span id="bgPlayText"></span></p>
   <div class="actions">
     <a class="btn btn-music" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   </div>
@@ -292,7 +285,6 @@ const T = {
   ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
   ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
   nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
-  bgPlayText: { pt:'Podes bloquear o ecrã — a música continua a tocar', en:'You can lock your screen — the music keeps playing', es:'Puedes bloquear la pantalla — la música sigue sonando', fr:'Tu peux verrouiller l\'écran — la musique continue', de:'Du kannst den Bildschirm sperren — die Musik läuft weiter', it:'Puoi bloccare lo schermo — la musica continua', pl:'Możesz zablokować ekran — muzyka gra dalej', ja:'画面をロックしても音楽は流れ続けます', nl:'Je kunt je scherm vergrendelen — de muziek speelt door', cs:'Můžeš zamknout obrazovku — hudba hraje dál', zh:'可以锁屏，音乐会继续播放', ru:'Можно заблокировать экран — музыка продолжит играть', ko:'화면을 잠가도 음악은 계속 재생됩니다', ne:'तपाईं स्क्रिन लक गर्न सक्नुहुन्छ — संगीत बज्दै रहन्छ' },
   searchPlaceholder: { pt:'Pesquisar faixas…', en:'Search tracks…', es:'Buscar pistas…', fr:'Rechercher des titres…', de:'Tracks suchen…', it:'Cerca brani…', pl:'Szukaj utworów…', ja:'トラックを検索…', nl:'Tracks zoeken…', cs:'Hledat skladby…', zh:'搜索曲目…', ru:'Поиск треков…', ko:'트랙 검색…', ne:'ट्र्याकहरू खोज्नुहोस्…' },
   sortNewest: { pt:'Mais recentes', en:'Newest', es:'Más recientes', fr:'Les plus récents', de:'Neueste', it:'Più recenti', pl:'Najnowsze', ja:'新着順', nl:'Nieuwste', cs:'Nejnovější', zh:'最新', ru:'Сначала новые', ko:'최신순', ne:'नयाँ' },
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
@@ -331,7 +323,6 @@ function setLang(lang) {
   document.getElementById('ctaBack').textContent = T.ctaBack[lang];
   document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
   document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
-  document.getElementById('bgPlayText').textContent = T.bgPlayText[lang];
   document.getElementById('tlSearch').placeholder = T.searchPlaceholder[lang];
   document.getElementById('sortNewest').textContent = T.sortNewest[lang];
   document.getElementById('sortViews').textContent = T.sortViews[lang];
