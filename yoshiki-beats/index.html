@@ -136,8 +136,13 @@
     0%, 100% { text-shadow: 0 0 18px rgba(109,31,58,0.6), 0 0 4px rgba(109,31,58,0.4); }
     50%      { text-shadow: 0 0 18px rgba(168,120,30,0.65), 0 0 4px rgba(168,120,30,0.4); }
   }
-  .hero p { color: var(--ink-soft); font-size: 1rem; margin: 0; line-height: 1.5; }
-  .hero .about { font-size: 0.82rem; margin-top: 6px; opacity: 0.85; }
+  .genre-pills { display: flex; justify-content: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .genre-pill {
+    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
+    padding: 5px 13px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); cursor: default;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .genre-pill:hover { border-color: var(--accent); color: var(--accent); }
 
   .player { max-width: 860px; margin: 0 auto; padding: 0 24px; }
   .now-playing-label {
@@ -265,8 +270,10 @@
 <div class="hero">
   <img class="picon" src="https://yt3.googleusercontent.com/tpUlhZiiNIF3l3ra8Z1UaBh7L6loJHgPF5dPxvTydivbBtKiGmhExnepSj1JyeLSesDUs72N0Q=s200-c-k-c0x00ffffff-no-rj" alt="Yoshiki Beats" loading="lazy">
   <h1>Yoshiki Beats</h1>
-  <p id="heroTagline"></p>
-  <p class="about" id="aboutSoundText"></p>
+  <div class="genre-pills">
+    <span class="genre-pill" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</span>
+    <span class="genre-pill" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</span>
+  </div>
 </div>
 
 <div class="player">
@@ -325,12 +332,10 @@ const LANG_ORDER = ['pt','en','es','fr','de','it','pl','ja','nl','cs','zh','ru',
 const LANG_NAMES = { pt:'Português', en:'English', es:'Español', fr:'Français', de:'Deutsch', it:'Italiano', pl:'Polski', ja:'日本語', nl:'Nederlands', cs:'Čeština', zh:'中文', ru:'Русский', ko:'한국어', ne:'नेपाली' };
 
 const T = {
-  heroTagline: { pt:'Instrumentais J-Trap e GΛRĀN — ouve e subscreve.', en:'Instrumental J-Trap and GΛRĀN — listen and subscribe.', es:'Instrumental J-Trap y GΛRĀN — escucha y suscríbete.', fr:'Instrumentaux J-Trap et GΛRĀN — écoute et abonne-toi.', de:'Instrumental J-Trap und GΛRĀN — hören und abonnieren.', it:'Strumentali J-Trap e GΛRĀN — ascolta e iscriviti.', pl:'Instrumentale J-Trap i GΛRĀN — słuchaj i subskrybuj.', ja:'インストゥルメンタルのJ-TrapとGΛRĀN — 聴いて登録しよう。', nl:'Instrumentale J-Trap en GΛRĀN — luister en abonneer.', cs:'Instrumentální J-Trap a GΛRĀN — poslouchej a odebírej.', zh:'J-Trap 与 GΛRĀN 器乐 — 收听并订阅。', ru:'Инструментал J-Trap и GΛRĀN — слушай и подписывайся.', ko:'인스트루멘탈 J-Trap과 GΛRĀN — 듣고 구독하세요.', ne:'इन्स्ट्रुमेन्टल J-Trap र GΛRĀN — सुन्नुहोस् र सदस्यता लिनुहोस्।' },
   ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
   ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
   nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
   radioLabel: { pt:'Rádio', en:'Radio', es:'Radio', fr:'Radio', de:'Radio', it:'Radio', pl:'Radio', ja:'ラジオ', nl:'Radio', cs:'Rádio', zh:'电台', ru:'Радио', ko:'라디오', ne:'रेडियो' },
-  aboutSoundText: { pt:'Dark Japanese Trap com 808s pesados, e GΛRĀN — fusão experimental de Djent metal com atmosfera cinematográfica.', en:'Dark Japanese Trap with heavy 808s, and GΛRĀN — an experimental blend of Djent metal and cinematic atmosphere.', es:'Dark Japanese Trap con 808s pesados, y GΛRĀN — fusión experimental de Djent metal con atmósfera cinematográfica.', fr:'Dark Japanese Trap avec des 808 lourds, et GΛRĀN — fusion expérimentale de Djent metal et d\'atmosphère cinématographique.', de:'Dark Japanese Trap mit schweren 808s, und GΛRĀN — experimentelle Mischung aus Djent-Metal und kinoreifer Atmosphäre.', it:'Dark Japanese Trap con 808 pesanti, e GΛRĀN — fusione sperimentale di Djent metal e atmosfera cinematica.', pl:'Dark Japanese Trap z ciężkimi 808s oraz GΛRĀN — eksperymentalna fuzja metalu djent z kinowym klimatem.', ja:'重厚な808を纏うDark Japanese Trapと、Djentメタルと映画的な空気感を融合させた実験的なGΛRĀN。', nl:'Dark Japanese Trap met zware 808s, en GΛRĀN — experimentele mix van Djent-metal en cinematische sfeer.', cs:'Dark Japanese Trap s těžkými 808s a GΛRĀN — experimentální fúze djent metalu a filmové atmosféry.', zh:'厚重808贝斯的Dark Japanese Trap，以及融合Djent金属与电影氛围的实验性GΛRĀN。', ru:'Dark Japanese Trap с тяжёлыми 808, и GΛRĀN — экспериментальное сочетание djent-метала и кинематографичной атмосферы.', ko:'묵직한 808 베이스의 Dark Japanese Trap과, Djent 메탈과 영화적 분위기를 실험적으로 결합한 GΛRĀN.', ne:'गह्रौं 808s सहितको Dark Japanese Trap, र GΛRĀN — Djent मेटल र सिनेमेटिक वातावरणको प्रयोगात्मक मिश्रण।' },
   searchPlaceholder: { pt:'Pesquisar faixas…', en:'Search tracks…', es:'Buscar pistas…', fr:'Rechercher des titres…', de:'Tracks suchen…', it:'Cerca brani…', pl:'Szukaj utworów…', ja:'トラックを検索…', nl:'Tracks zoeken…', cs:'Hledat skladby…', zh:'搜索曲目…', ru:'Поиск треков…', ko:'트랙 검색…', ne:'ट्र्याकहरू खोज्नुहोस्…' },
   sortNewest: { pt:'Mais recentes', en:'Newest', es:'Más recientes', fr:'Les plus récents', de:'Neueste', it:'Più recenti', pl:'Najnowsze', ja:'新着順', nl:'Nieuwste', cs:'Nejnovější', zh:'最新', ru:'Сначала новые', ko:'최신순', ne:'नयाँ' },
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
@@ -367,12 +372,10 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
 
-  document.getElementById('heroTagline').textContent = T.heroTagline[lang];
   document.getElementById('ctaBack').textContent = T.ctaBack[lang];
   document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
   document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
   document.getElementById('radioLabel').textContent = T.radioLabel[lang];
-  document.getElementById('aboutSoundText').textContent = T.aboutSoundText[lang];
   document.getElementById('tlSearch').placeholder = T.searchPlaceholder[lang];
   document.getElementById('sortNewest').textContent = T.sortNewest[lang];
   document.getElementById('sortViews').textContent = T.sortViews[lang];

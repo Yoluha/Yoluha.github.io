@@ -132,8 +132,13 @@
     0%, 100% { text-shadow: 0 0 20px rgba(0,229,255,0.65), 0 0 5px rgba(0,229,255,0.4); }
     50%      { text-shadow: 0 0 20px rgba(255,0,229,0.65), 0 0 5px rgba(255,0,229,0.4); }
   }
-  .hero p { color: var(--ink-soft); font-size: 1rem; margin: 0; line-height: 1.5; }
-  .hero .about { font-size: 0.82rem; margin-top: 6px; opacity: 0.85; }
+  .genre-pills { display: flex; justify-content: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .genre-pill {
+    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
+    padding: 5px 13px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); cursor: default;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .genre-pill:hover { border-color: var(--accent); color: var(--accent); }
 
   .player { max-width: 860px; margin: 0 auto; padding: 0 24px; }
   .now-playing-label {
@@ -261,8 +266,10 @@
 <div class="hero">
   <img class="picon" src="https://yt3.googleusercontent.com/TCVsD3rSXkZfDr1gTAmV2N9bYnNes7RLfSkMidbMr_e8YcuuD2ZL0mMY_827FGOVdIio_PeKEA=s200-c-k-c0x00ffffff-no-rj" alt="Synth YØSHI" loading="lazy">
   <h1>Synth YØSHI</h1>
-  <p id="heroTagline"></p>
-  <p class="about" id="aboutSoundText"></p>
+  <div class="genre-pills">
+    <span class="genre-pill" title="Aggressive, dark synthwave — heavy, cinematic, built for tension.">Darksynth</span>
+    <span class="genre-pill" title="Nostalgic, mellow synthwave — warm retro-futuristic 80s textures.">ChillSynth</span>
+  </div>
 </div>
 
 <div class="player">
@@ -315,12 +322,10 @@ const LANG_ORDER = ['pt','en','es','fr','de','it','pl','ja','nl','cs','zh','ru',
 const LANG_NAMES = { pt:'Português', en:'English', es:'Español', fr:'Français', de:'Deutsch', it:'Italiano', pl:'Polski', ja:'日本語', nl:'Nederlands', cs:'Čeština', zh:'中文', ru:'Русский', ko:'한국어', ne:'नेपाली' };
 
 const T = {
-  heroTagline: { pt:'Darksynth e ChillSynth — ouve e subscreve.', en:'Darksynth and ChillSynth — listen and subscribe.', es:'Darksynth y ChillSynth — escucha y suscríbete.', fr:'Darksynth et ChillSynth — écoute et abonne-toi.', de:'Darksynth und ChillSynth — hören und abonnieren.', it:'Darksynth e ChillSynth — ascolta e iscriviti.', pl:'Darksynth i ChillSynth — słuchaj i subskrybuj.', ja:'DarksynthとChillSynth — 聴いて登録しよう。', nl:'Darksynth en ChillSynth — luister en abonneer.', cs:'Darksynth a ChillSynth — poslouchej a odebírej.', zh:'Darksynth 与 ChillSynth — 收听并订阅。', ru:'Darksynth и ChillSynth — слушай и подписывайся.', ko:'Darksynth와 ChillSynth — 듣고 구독하세요.', ne:'Darksynth र ChillSynth — सुन्नुहोस् र सदस्यता लिनुहोस्।' },
   ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
   ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
   nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
   radioLabel: { pt:'Rádio', en:'Radio', es:'Radio', fr:'Radio', de:'Radio', it:'Radio', pl:'Radio', ja:'ラジオ', nl:'Radio', cs:'Rádio', zh:'电台', ru:'Радио', ko:'라디오', ne:'रेडियो' },
-  aboutSoundText: { pt:'O lado agressivo do Darksynth encontra o lado nostálgico do ChillSynth — sintetizadores retro dos anos 80, cinematográfico e emocional.', en:'Darksynth\'s aggressive side meets ChillSynth\'s nostalgic side — retro 80s synths, cinematic and emotional.', es:'El lado agresivo del Darksynth se encuentra con el lado nostálgico del ChillSynth — sintetizadores retro de los 80, cinematográfico y emocional.', fr:'Le côté agressif du Darksynth rencontre le côté nostalgique du ChillSynth — synthés rétro des années 80, cinématographique et émotionnel.', de:'Die aggressive Seite von Darksynth trifft auf die nostalgische Seite von ChillSynth — Retro-80er-Synths, kinoreif und emotional.', it:'Il lato aggressivo del Darksynth incontra quello nostalgico del ChillSynth — synth retro anni \'80, cinematico ed emotivo.', pl:'Agresywna strona Darksynth spotyka nostalgiczną stronę ChillSynth — retro syntezatory z lat 80., kinowe i emocjonalne.', ja:'Darksynthの攻撃的な面とChillSynthのノスタルジックな面が交差する——80年代レトロシンセによる、映画的で感情的なサウンド。', nl:'De agressieve kant van Darksynth ontmoet de nostalgische kant van ChillSynth — retro 80\'s synths, cinematisch en emotioneel.', cs:'Agresivní stránka Darksynth se setkává s nostalgickou stránkou ChillSynth — retro syntezátory 80. let, filmové a emotivní.', zh:'Darksynth的侵略性与ChillSynth的怀旧感交汇——复古80年代合成器，电影感十足、情感丰沛。', ru:'Агрессивная сторона Darksynth встречается с ностальгической стороной ChillSynth — ретро-синтезаторы 80-х, кинематографично и эмоционально.', ko:'Darksynth의 공격적인 면과 ChillSynth의 향수 어린 면이 만납니다 — 80년대 레트로 신스로 만든 영화적이고 감성적인 사운드.', ne:'Darksynth को आक्रामक पक्ष ChillSynth को नोस्टाल्जिक पक्षसँग भेट हुन्छ — ८० को दशकको रेट्रो सिन्थ, सिनेमेटिक र भावनात्मक।' },
   searchPlaceholder: { pt:'Pesquisar faixas…', en:'Search tracks…', es:'Buscar pistas…', fr:'Rechercher des titres…', de:'Tracks suchen…', it:'Cerca brani…', pl:'Szukaj utworów…', ja:'トラックを検索…', nl:'Tracks zoeken…', cs:'Hledat skladby…', zh:'搜索曲目…', ru:'Поиск треков…', ko:'트랙 검색…', ne:'ट्र्याकहरू खोज्नुहोस्…' },
   sortNewest: { pt:'Mais recentes', en:'Newest', es:'Más recientes', fr:'Les plus récents', de:'Neueste', it:'Più recenti', pl:'Najnowsze', ja:'新着順', nl:'Nieuwste', cs:'Nejnovější', zh:'最新', ru:'Сначала новые', ko:'최신순', ne:'नयाँ' },
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
@@ -356,12 +361,10 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
 
-  document.getElementById('heroTagline').textContent = T.heroTagline[lang];
   document.getElementById('ctaBack').textContent = T.ctaBack[lang];
   document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
   document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
   document.getElementById('radioLabel').textContent = T.radioLabel[lang];
-  document.getElementById('aboutSoundText').textContent = T.aboutSoundText[lang];
   document.getElementById('tlSearch').placeholder = T.searchPlaceholder[lang];
   document.getElementById('sortNewest').textContent = T.sortNewest[lang];
   document.getElementById('sortViews').textContent = T.sortViews[lang];
