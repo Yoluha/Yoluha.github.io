@@ -2,33 +2,33 @@
   {
     "id": "WIni7Vcm8VQ",
     "title": "Cyber Geisha | Darksynth | ChillSynth",
-    "published": "2026-09-08T00:07:30+00:00",
-    "genre": null,
-    "views": 10,
-    "likes": 3
+    "genre": "Darksynth",
+    "views": 15,
+    "likes": 3,
+    "order": 0
   },
   {
     "id": "BTi3bkH1x3w",
     "title": "Loop | Darksynth | ChillSynth",
-    "published": "2026-07-09T23:44:17+00:00",
-    "genre": null,
+    "genre": "Darksynth",
     "views": 101,
-    "likes": 4
+    "likes": 4,
+    "order": 1
   },
   {
     "id": "8F2mlKrObc8",
     "title": "Memory Reboot | Darksynth | ChillSynth",
-    "published": "2026-07-05T22:27:19+00:00",
-    "genre": null,
-    "views": 5962,
-    "likes": 11
+    "genre": "Darksynth",
+    "views": 6000,
+    "likes": 11,
+    "order": 2
   },
   {
     "id": "2oQmVmfgSfc",
     "title": "Interstellar | Darksynth | ChillSynth",
-    "published": "2026-07-03T23:02:55+00:00",
-    "genre": null,
-    "views": 4636,
-    "likes": 7
+    "genre": "Darksynth",
+    "views": 4700,
+    "likes": 7,
+    "order": 3
   }
 ]

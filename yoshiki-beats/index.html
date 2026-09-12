@@ -4,6 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yoshiki Beats</title>
+<meta name="description" content="Instrumental J-Trap and GΛRĀN by Yoshiki Beats — browse, search and stream the full catalog in one place.">
+<meta property="og:type" content="music.musician">
+<meta property="og:title" content="Yoshiki Beats">
+<meta property="og:description" content="Instrumental J-Trap and GΛRĀN — every track and video in one place.">
+<meta property="og:image" content="https://i.ytimg.com/vi/MZVUJwv0nyk/hqdefault.jpg">
+<meta property="og:url" content="https://yoluha.github.io/yoshiki-beats/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yoshiki Beats">
+<meta name="twitter:description" content="Instrumental J-Trap and GΛRĀN — every track and video in one place.">
+<meta name="twitter:image" content="https://i.ytimg.com/vi/MZVUJwv0nyk/hqdefault.jpg">
+<link rel="canonical" href="https://yoluha.github.io/yoshiki-beats/">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#120d0b">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Yoshiki Beats",
+  "genre": ["J-Trap", "GΛRĀN"],
+  "url": "https://yoluha.github.io/yoshiki-beats/",
+  "sameAs": [
+    "https://www.youtube.com/@YoshikiBeats",
+    "https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw",
+    "https://open.spotify.com/intl-pt/artist/0Uvj5w0xi7POC94lNlO7t5",
+    "https://music.apple.com/us/artist/yoshiki-beats/1760318265",
+    "https://instagram.com/officialyoshikibeats",
+    "https://discord.gg/QUuFAJWRv6"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -78,7 +109,7 @@
     50%      { transform: translate(9%, -12%) scale(1.22); }
   }
 
-  .topbar, .hero, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
+  .topbar, .hero, .player, .follow-banner, .about-sound, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
 
   .topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 0; max-width: 900px; margin: 0 auto; }
   .backlink {
@@ -116,6 +147,24 @@
     border: 1px solid var(--line); background: var(--card); box-shadow: 0 14px 34px rgba(0,0,0,0.45);
   }
   .player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .follow-banner {
+    display: flex; align-items: center; gap: 14px; max-width: 860px; margin: 24px auto 0; padding: 14px 20px;
+    border-radius: 14px; border: 1px solid var(--accent); background: rgba(255,255,255,0.04);
+    text-decoration: none; color: var(--ink); transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .follow-banner:hover { transform: translateY(-2px); background: rgba(255,255,255,0.07); }
+  .follow-banner-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .follow-banner-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .follow-banner-text b { font-family: var(--font-display); font-size: 1rem; }
+  .follow-banner-text span { font-size: 0.82rem; color: var(--ink-soft); }
+  .follow-banner-arrow { font-size: 1.3rem; color: var(--accent); flex-shrink: 0; }
+
+  .about-sound { max-width: 860px; margin: 28px auto 0; padding: 0 24px; }
+  .about-sound p {
+    color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; margin: 0;
+    border-left: 3px solid var(--accent); padding-left: 14px;
+  }
 
   .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
   .btn {
@@ -242,6 +291,19 @@
   </div>
 </div>
 
+<a class="follow-banner" href="https://discord.gg/QUuFAJWRv6" target="_blank" rel="noopener">
+  <span class="follow-banner-icon">🔔</span>
+  <span class="follow-banner-text">
+    <b id="followTitle"></b>
+    <span id="followSub"></span>
+  </span>
+  <span class="follow-banner-arrow">→</span>
+</a>
+
+<div class="about-sound">
+  <p id="aboutSoundText"></p>
+</div>
+
 <div class="tracklist-section" id="tracklistSection" hidden>
   <div class="tl-tabs">
     <button type="button" class="tl-tab active" id="tabMusic" data-tab="music"></button>
@@ -291,6 +353,9 @@ const T = {
   ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
   ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
   nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
+  followTitle: { pt:'🔔 Sê o primeiro a saber', en:'🔔 Be the first to know', es:'🔔 Sé el primero en saberlo', fr:'🔔 Sois le premier informé', de:'🔔 Sei der Erste, der es erfährt', it:'🔔 Sii il primo a saperlo', pl:'🔔 Dowiedz się pierwszy', ja:'🔔 誰よりも早く知ろう', nl:'🔔 Wees de eerste die het weet', cs:'🔔 Dozvíš se jako první', zh:'🔔 抢先知道新消息', ru:'🔔 Узнай первым', ko:'🔔 가장 먼저 알아보세요', ne:'🔔 सबैभन्दा पहिले थाहा पाउनुहोस्' },
+  followSub: { pt:'Entra no Discord para lançamentos novos, antes de todos.', en:'Join the Discord for new drops, before anyone else.', es:'Únete a Discord para nuevos lanzamientos, antes que nadie.', fr:'Rejoins le Discord pour les nouveautés, avant tout le monde.', de:'Tritt dem Discord bei für neue Releases, vor allen anderen.', it:'Entra nel Discord per le nuove uscite, prima di tutti.', pl:'Dołącz do Discorda i poznaj nowości jako pierwszy.', ja:'Discordに参加して新曲を誰よりも早くチェック。', nl:'Word lid van de Discord voor nieuwe releases, eerder dan wie dan ook.', cs:'Připoj se na Discord a dozvíš se o novinkách jako první.', zh:'加入Discord，第一时间获取新作发布。', ru:'Присоединяйся к Discord и узнавай о новинках первым.', ko:'디스코드에 가입하고 누구보다 먼저 신곡을 만나보세요.', ne:'नयाँ रिलिजका लागि Discord मा सामेल हुनुहोस्, सबैभन्दा पहिले।' },
+  aboutSoundText: { pt:'Yoshiki Beats mistura J-Trap pesado com 808s e motivos japoneses tradicionais, e GΛRĀN — uma fusão experimental de Djent metal com texturas cinematográficas. Som escuro e atmosférico, feito para ouvir tarde da noite.', en:'Yoshiki Beats blends heavy J-Trap with 808s and traditional Japanese motifs, and GΛRĀN — an experimental fusion of Djent metal with cinematic textures. Dark, atmospheric, made for late-night listening.', es:'Yoshiki Beats mezcla J-Trap pesado con 808s y motivos tradicionales japoneses, y GΛRĀN — una fusión experimental de Djent metal con texturas cinematográficas. Sonido oscuro y atmosférico, para escuchar de madrugada.', fr:'Yoshiki Beats mélange du J-Trap lourd avec des 808 et des motifs japonais traditionnels, et le GΛRĀN — une fusion expérimentale de Djent metal et de textures cinématographiques. Un son sombre et atmosphérique, fait pour la nuit.', de:'Yoshiki Beats verbindet schweren J-Trap mit 808s und traditionellen japanischen Motiven, sowie GΛRĀN — eine experimentelle Fusion aus Djent-Metal und kinoreifen Texturen. Dunkel, atmosphärisch, für späte Nächte gemacht.', it:'Yoshiki Beats unisce J-Trap pesante con 808 e motivi giapponesi tradizionali, e GΛRĀN — una fusione sperimentale di Djent metal e texture cinematiche. Suono scuro e atmosferico, fatto per la notte.', pl:'Yoshiki Beats łączy ciężki J-Trap z 808s i tradycyjnymi japońskimi motywami, oraz GΛRĀN — eksperymentalną fuzję metalu djent z kinowymi teksturami. Mroczne, klimatyczne brzmienie na późne noce.', ja:'Yoshiki Beatsは、808と伝統的な日本のモチーフを取り入れたヘヴィなJ-Trapと、Djentメタルと映画的な質感を融合させた実験的なGΛRĀNを奏でる。深夜にぴったりの、ダークで空気感のあるサウンド。', nl:'Yoshiki Beats combineert zware J-Trap met 808s en traditionele Japanse motieven, en GΛRĀN — een experimentele fusie van Djent-metal met cinematische texturen. Donker en sfeervol, gemaakt voor de late uren.', cs:'Yoshiki Beats spojuje těžký J-Trap s 808s a tradičními japonskými motivy, a GΛRĀN — experimentální fúzi djent metalu s filmovými texturami. Temný, atmosférický zvuk pro pozdní noci.', zh:'Yoshiki Beats 融合了重型 J-Trap、808 贝斯与传统日本元素，以及 GΛRĀN——将 Djent 金属与电影感音效实验性结合。黑暗而具氛围感，专为深夜聆听而生。', ru:'Yoshiki Beats сочетает тяжёлый J-Trap с 808 и традиционными японскими мотивами, а также GΛRĀN — экспериментальный сплав djent-метала с кинематографичными текстурами. Тёмное, атмосферное звучание для поздней ночи.', ko:'Yoshiki Beats는 808과 전통 일본 모티프를 담은 헤비한 J-Trap과, Djent 메탈과 영화적 텍스처를 실험적으로 융합한 GΛRĀN을 넘나듭니다. 어둡고 분위기 있는, 깊은 밤을 위한 사운드.', ne:'Yoshiki Beats ले 808s र परम्परागत जापानी तत्वहरूसँग गह्रौं J-Trap मिसाउँछ, र GΛRĀN — Djent मेटल र सिनेमेटिक बनावटको प्रयोगात्मक मिश्रण। अँध्यारो, वातावरणीय, राति सुन्नका लागि बनाइएको।' },
   searchPlaceholder: { pt:'Pesquisar faixas…', en:'Search tracks…', es:'Buscar pistas…', fr:'Rechercher des titres…', de:'Tracks suchen…', it:'Cerca brani…', pl:'Szukaj utworów…', ja:'トラックを検索…', nl:'Tracks zoeken…', cs:'Hledat skladby…', zh:'搜索曲目…', ru:'Поиск треков…', ko:'트랙 검색…', ne:'ट्र्याकहरू खोज्नुहोस्…' },
   sortNewest: { pt:'Mais recentes', en:'Newest', es:'Más recientes', fr:'Les plus récents', de:'Neueste', it:'Più recenti', pl:'Najnowsze', ja:'新着順', nl:'Nieuwste', cs:'Nejnovější', zh:'最新', ru:'Сначала новые', ko:'최신순', ne:'नयाँ' },
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
@@ -330,6 +395,9 @@ function setLang(lang) {
   document.getElementById('ctaBack').textContent = T.ctaBack[lang];
   document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
   document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
+  document.getElementById('followTitle').textContent = T.followTitle[lang];
+  document.getElementById('followSub').textContent = T.followSub[lang];
+  document.getElementById('aboutSoundText').textContent = T.aboutSoundText[lang];
   document.getElementById('tlSearch').placeholder = T.searchPlaceholder[lang];
   document.getElementById('sortNewest').textContent = T.sortNewest[lang];
   document.getElementById('sortViews').textContent = T.sortViews[lang];
@@ -495,7 +563,7 @@ function renderTracks() {
     items.sort((a, b) => {
       if (tlState.sort === 'views') return (b.views || 0) - (a.views || 0);
       if (tlState.sort === 'likes') return (b.likes || 0) - (a.likes || 0);
-      return new Date(b.published || 0) - new Date(a.published || 0);
+      return (a.order ?? 0) - (b.order ?? 0);
     });
   }
   renderedItems = items;

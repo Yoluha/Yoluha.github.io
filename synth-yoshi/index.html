@@ -4,6 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Synth YØSHI</title>
+<meta name="description" content="Darksynth and ChillSynth by Synth YØSHI — browse, search and stream the full catalog in one place.">
+<meta property="og:type" content="music.musician">
+<meta property="og:title" content="Synth YØSHI">
+<meta property="og:description" content="Darksynth and ChillSynth — every track and video in one place.">
+<meta property="og:image" content="https://i.ytimg.com/vi/xvv0PtubxBk/hqdefault.jpg">
+<meta property="og:url" content="https://yoluha.github.io/synth-yoshi/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Synth YØSHI">
+<meta name="twitter:description" content="Darksynth and ChillSynth — every track and video in one place.">
+<meta name="twitter:image" content="https://i.ytimg.com/vi/xvv0PtubxBk/hqdefault.jpg">
+<link rel="canonical" href="https://yoluha.github.io/synth-yoshi/">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#050308">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Synth YØSHI",
+  "genre": ["Darksynth", "ChillSynth"],
+  "url": "https://yoluha.github.io/synth-yoshi/",
+  "sameAs": [
+    "https://www.youtube.com/@SynthY%C3%98SHI",
+    "https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -78,7 +105,7 @@
     50%      { transform: translate(9%, -12%) scale(1.22); }
   }
 
-  .topbar, .hero, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
+  .topbar, .hero, .player, .follow-banner, .about-sound, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
 
   .topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 0; max-width: 900px; margin: 0 auto; }
   .backlink {
@@ -116,6 +143,24 @@
     border: 1px solid var(--line); background: var(--card); box-shadow: 0 14px 34px rgba(0,0,0,0.45);
   }
   .player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .follow-banner {
+    display: flex; align-items: center; gap: 14px; max-width: 860px; margin: 24px auto 0; padding: 14px 20px;
+    border-radius: 14px; border: 1px solid var(--accent); background: rgba(255,255,255,0.04);
+    text-decoration: none; color: var(--ink); transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .follow-banner:hover { transform: translateY(-2px); background: rgba(255,255,255,0.07); }
+  .follow-banner-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .follow-banner-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .follow-banner-text b { font-family: var(--font-display); font-size: 1rem; }
+  .follow-banner-text span { font-size: 0.82rem; color: var(--ink-soft); }
+  .follow-banner-arrow { font-size: 1.3rem; color: var(--accent); flex-shrink: 0; }
+
+  .about-sound { max-width: 860px; margin: 28px auto 0; padding: 0 24px; }
+  .about-sound p {
+    color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; margin: 0;
+    border-left: 3px solid var(--accent); padding-left: 14px;
+  }
 
   .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
   .btn {
@@ -242,6 +287,19 @@
   </div>
 </div>
 
+<a class="follow-banner" href="https://www.youtube.com/@SynthY%C3%98SHI?sub_confirmation=1" target="_blank" rel="noopener">
+  <span class="follow-banner-icon">🔔</span>
+  <span class="follow-banner-text">
+    <b id="followTitle"></b>
+    <span id="followSub"></span>
+  </span>
+  <span class="follow-banner-arrow">→</span>
+</a>
+
+<div class="about-sound">
+  <p id="aboutSoundText"></p>
+</div>
+
 <div class="tracklist-section" id="tracklistSection" hidden>
   <div class="tl-tabs">
     <button type="button" class="tl-tab active" id="tabMusic" data-tab="music"></button>
@@ -285,6 +343,9 @@ const T = {
   ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
   ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
   nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
+  followTitle: { pt:'🔔 Não percas os lançamentos', en:'🔔 Don\'t miss a drop', es:'🔔 No te pierdas los lanzamientos', fr:'🔔 Ne rate aucune sortie', de:'🔔 Verpasse keine Releases', it:'🔔 Non perderti le uscite', pl:'🔔 Nie przegap nowości', ja:'🔔 新曲を見逃さないで', nl:'🔔 Mis geen enkele release', cs:'🔔 Nenech si ujít novinky', zh:'🔔 不要错过新作', ru:'🔔 Не пропусти новинки', ko:'🔔 신곡을 놓치지 마세요', ne:'🔔 कुनै पनि रिलिज नछुटाउनुहोस्' },
+  followSub: { pt:'Subscreve no YouTube para saberes assim que sair música nova.', en:'Subscribe on YouTube to know the moment new music drops.', es:'Suscríbete en YouTube para saber en cuanto salga música nueva.', fr:'Abonne-toi sur YouTube pour savoir dès qu\'un nouveau titre sort.', de:'Abonniere auf YouTube, um sofort von neuer Musik zu erfahren.', it:'Iscriviti su YouTube per saperlo appena esce nuova musica.', pl:'Zasubskrybuj na YouTube, by wiedzieć od razu o nowej muzyce.', ja:'YouTubeを登録して新曲リリースをいち早くチェック。', nl:'Abonneer op YouTube en weet meteen wanneer nieuwe muziek uitkomt.', cs:'Přihlas se k odběru na YouTube a dozvíš se o nové hudbě jako první.', zh:'订阅YouTube频道，第一时间获知新曲发布。', ru:'Подпишись на YouTube, чтобы узнавать о новинках сразу.', ko:'YouTube를 구독하고 신곡 발매 소식을 바로 받아보세요.', ne:'नयाँ संगीत आउनासाथ थाहा पाउन YouTube मा सदस्यता लिनुहोस्।' },
+  aboutSoundText: { pt:'Synth YØSHI transita entre o lado agressivo e sombrio do Darksynth e o lado nostálgico e suave do ChillSynth — cinematográfico, emocional, construído à volta de sintetizadores retro-futuristas dos anos 80.', en:'Synth YØSHI moves between Darksynth\'s aggressive, dark side and ChillSynth\'s nostalgic, mellow side — cinematic, emotional, built around retro-futuristic 80s synths.', es:'Synth YØSHI se mueve entre el lado agresivo y oscuro del Darksynth y el lado nostálgico y suave del ChillSynth — cinematográfico, emocional, construido en torno a sintetizadores retro-futuristas de los 80.', fr:'Synth YØSHI navigue entre le côté agressif et sombre du Darksynth et le côté nostalgique et doux du ChillSynth — cinématographique, émotionnel, construit autour de synthés rétro-futuristes des années 80.', de:'Synth YØSHI bewegt sich zwischen der aggressiven, dunklen Seite des Darksynth und der nostalgischen, sanften Seite des ChillSynth — kinoreif, emotional, aufgebaut auf retro-futuristischen 80er-Synths.', it:'Synth YØSHI si muove tra il lato aggressivo e oscuro del Darksynth e quello nostalgico e delicato del ChillSynth — cinematico, emotivo, costruito su synth retro-futuristici anni \'80.', pl:'Synth YØSHI porusza się między agresywną, mroczną stroną Darksynth a nostalgiczną, łagodną stroną ChillSynth — kinowe, emocjonalne, zbudowane na retro-futurystycznych syntezatorach z lat 80.', ja:'Synth YØSHIは、Darksynthの攻撃的でダークな側面と、ChillSynthのノスタルジックで穏やかな側面を行き来する——80年代のレトロフューチャーなシンセを軸にした、映画的で感情的なサウンド。', nl:'Synth YØSHI beweegt tussen de agressieve, donkere kant van Darksynth en de nostalgische, zachte kant van ChillSynth — cinematisch, emotioneel, gebouwd rond retro-futuristische jaren 80-synths.', cs:'Synth YØSHI se pohybuje mezi agresivní, temnou stránkou Darksynth a nostalgickou, jemnou stránkou ChillSynth — filmové, emotivní, postavené na retro-futuristických syntezátorech 80. let.', zh:'Synth YØSHI 游走于 Darksynth 的黑暗侵略性与 ChillSynth 的怀旧柔美之间——电影感十足、情感丰沛，以复古未来风的80年代合成器为核心。', ru:'Synth YØSHI сочетает агрессивную тёмную сторону Darksynth и ностальгическую, мягкую сторону ChillSynth — кинематографично, эмоционально, на основе ретрофутуристичных синтезаторов 80-х.', ko:'Synth YØSHI는 Darksynth의 공격적이고 어두운 면과 ChillSynth의 향수 어린 부드러운 면을 오갑니다 — 80년대 레트로퓨처 신스를 중심으로 한 영화적이고 감성적인 사운드.', ne:'Synth YØSHI ले Darksynth को आक्रामक, अँध्यारो पक्ष र ChillSynth को नोस्टाल्जिक, नरम पक्ष बीच चल्छ — सिनेमेटिक, भावनात्मक, ८० को दशकका रेट्रो-फ्युचरिस्टिक सिन्थमा आधारित।' },
   searchPlaceholder: { pt:'Pesquisar faixas…', en:'Search tracks…', es:'Buscar pistas…', fr:'Rechercher des titres…', de:'Tracks suchen…', it:'Cerca brani…', pl:'Szukaj utworów…', ja:'トラックを検索…', nl:'Tracks zoeken…', cs:'Hledat skladby…', zh:'搜索曲目…', ru:'Поиск треков…', ko:'트랙 검색…', ne:'ट्र्याकहरू खोज्नुहोस्…' },
   sortNewest: { pt:'Mais recentes', en:'Newest', es:'Más recientes', fr:'Les plus récents', de:'Neueste', it:'Più recenti', pl:'Najnowsze', ja:'新着順', nl:'Nieuwste', cs:'Nejnovější', zh:'最新', ru:'Сначала новые', ko:'최신순', ne:'नयाँ' },
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
@@ -323,6 +384,9 @@ function setLang(lang) {
   document.getElementById('ctaBack').textContent = T.ctaBack[lang];
   document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
   document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
+  document.getElementById('followTitle').textContent = T.followTitle[lang];
+  document.getElementById('followSub').textContent = T.followSub[lang];
+  document.getElementById('aboutSoundText').textContent = T.aboutSoundText[lang];
   document.getElementById('tlSearch').placeholder = T.searchPlaceholder[lang];
   document.getElementById('sortNewest').textContent = T.sortNewest[lang];
   document.getElementById('sortViews').textContent = T.sortViews[lang];
@@ -488,7 +552,7 @@ function renderTracks() {
     items.sort((a, b) => {
       if (tlState.sort === 'views') return (b.views || 0) - (a.views || 0);
       if (tlState.sort === 'likes') return (b.likes || 0) - (a.likes || 0);
-      return new Date(b.published || 0) - new Date(a.published || 0);
+      return (a.order ?? 0) - (b.order ?? 0);
     });
   }
   renderedItems = items;

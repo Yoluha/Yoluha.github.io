@@ -1,0 +1,12 @@
+{
+  "name": "Synth YOSHI",
+  "short_name": "Synth YOSHI",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050308",
+  "theme_color": "#050308",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

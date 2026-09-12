@@ -56,6 +56,110 @@ function parseEntries(xml) {
   return entries;
 }
 
+// ---------- YouTube (full video catalog, unofficial internal API, no key needed) ----------
+const YT_WEB_API_KEY = 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8';
+const YT_WEB_CLIENT_VERSION = '2.20260908.00.00';
+const VIDEOS_TAB_PARAMS = 'EgZ2aWRlb3PyBgQKAjoA';
+
+async function ytBrowse(body) {
+  const res = await fetch(`https://www.youtube.com/youtubei/v1/browse?key=${YT_WEB_API_KEY}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Cookie': 'CONSENT=YES+1',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`YouTube browse failed: ${res.status}`);
+  return res.json();
+}
+
+function parseViewCount(text) {
+  if (!text) return 0;
+  const cleaned = text.replace(/,/g, '').trim().toLowerCase();
+  const m = cleaned.match(/^([\d.]+)\s*([km]?)\s*views?$/);
+  if (m) {
+    let n = parseFloat(m[1]);
+    if (m[2] === 'k') n *= 1000;
+    if (m[2] === 'm') n *= 1000000;
+    return Math.round(n);
+  }
+  return 0;
+}
+
+function genreFromTitleSuffix(title) {
+  const parts = title.split('|').map(s => s.trim());
+  if (parts.length < 2) return null;
+  let genre = parts[1];
+  if (!genre) return null;
+  genre = genre.replace(/\s*playlist\s*$/i, '').trim();
+  if (!genre || genre.length > 24) return null;
+  const opens = (genre.match(/[({\[]/g) || []).length;
+  const closes = (genre.match(/[)}\]]/g) || []).length;
+  if (opens !== closes) return null;
+  return genre;
+}
+
+function canonicalizeGenres(videos) {
+  const canonical = new Map();
+  for (const v of videos) {
+    if (!v.genre) continue;
+    const key = v.genre.toLowerCase();
+    if (!canonical.has(key)) canonical.set(key, v.genre);
+  }
+  for (const v of videos) {
+    if (v.genre) v.genre = canonical.get(v.genre.toLowerCase());
+  }
+}
+
+function extractLockups(items) {
+  const out = [];
+  for (const item of items) {
+    const lvm = item.richItemRenderer?.content?.lockupViewModel;
+    const meta = lvm?.metadata?.lockupMetadataViewModel;
+    const title = meta?.title?.content;
+    const id = lvm?.contentId;
+    if (!id || !title) continue;
+    const parts = meta?.metadata?.contentMetadataViewModel?.metadataRows?.[0]?.metadataParts || [];
+    const viewsText = parts[0]?.text?.content || '';
+    out.push({ id, title, views: parseViewCount(viewsText) });
+  }
+  return out;
+}
+
+function findContinuationToken(items) {
+  for (const item of items) {
+    const token = item.continuationItemRenderer?.continuationEndpoint?.continuationCommand?.token;
+    if (token) return token;
+  }
+  return null;
+}
+
+async function fetchAllVideos(channelId, maxPages = 40) {
+  const context = { client: { clientName: 'WEB', clientVersion: YT_WEB_CLIENT_VERSION } };
+  const data = await ytBrowse({ context, browseId: channelId, params: VIDEOS_TAB_PARAMS });
+  const tabs = data?.contents?.twoColumnBrowseResultsRenderer?.tabs || [];
+  const tab = tabs.find(t => t.tabRenderer?.selected) || tabs.find(t => t.tabRenderer?.title === 'Videos');
+  const items = tab?.tabRenderer?.content?.richGridRenderer?.contents || [];
+  if (!items.length) throw new Error('no video items found on Videos tab');
+
+  const all = extractLockups(items);
+  let token = findContinuationToken(items);
+  let pages = 1;
+
+  while (token && pages < maxPages) {
+    const cont = await ytBrowse({ context, continuation: token });
+    const actions = cont?.onResponseReceivedActions || [];
+    const appended = actions.flatMap(a => a.appendContinuationItemsAction?.continuationItems || []);
+    if (!appended.length) break;
+    all.push(...extractLockups(appended));
+    token = findContinuationToken(appended);
+    pages += 1;
+  }
+  return all;
+}
+
 // ---------- YouTube Music (unofficial internal API, no key needed) ----------
 const YTM_API_KEY = 'AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30';
 const YTM_CLIENT_VERSION = '1.20260908.14.00';
@@ -130,7 +234,30 @@ async function fetchSongs(channelId) {
 let changed = false;
 for (const { slug, channelId } of CHANNELS) {
   const xml = await fetchFeed(channelId);
-  const videos = parseEntries(xml);
+  const rssEntries = parseEntries(xml);
+  const rssById = new Map(rssEntries.map(e => [e.id, e]));
+
+  let videos;
+  try {
+    const fullList = await fetchAllVideos(channelId);
+    videos = fullList.map((v, i) => {
+      const rss = rssById.get(v.id);
+      return {
+        id: v.id,
+        title: v.title,
+        genre: rss?.genre ?? genreFromTitleSuffix(v.title),
+        views: v.views || rss?.views || 0,
+        likes: rss?.likes || 0,
+        order: i,
+      };
+    });
+    canonicalizeGenres(videos);
+    console.log(`${slug}: full catalog fetch got ${videos.length} videos`);
+  } catch (err) {
+    console.error(`${slug}: full video list fetch failed, falling back to RSS-only (15 latest):`, err.message);
+    videos = rssEntries.map((e, i) => ({ ...e, order: i }));
+  }
+
   const outPath = path.join(ROOT, slug, 'videos.json');
   const next = JSON.stringify(videos, null, 2) + '\n';
   const prev = fs.existsSync(outPath) ? fs.readFileSync(outPath, 'utf8') : '';

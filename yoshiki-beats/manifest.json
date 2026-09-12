@@ -1,0 +1,12 @@
+{
+  "name": "Yoshiki Beats",
+  "short_name": "Yoshiki Beats",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#120d0b",
+  "theme_color": "#120d0b",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
