@@ -20,6 +20,6 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add yoshiki-beats/videos.json synth-yoshi/videos.json
+          git add yoshiki-beats/videos.json synth-yoshi/videos.json yoshiki-beats/songs.json synth-yoshi/songs.json
           git diff --cached --quiet || git commit -m "Auto-update video lists"
           git diff --cached --quiet || git push

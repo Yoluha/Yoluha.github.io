@@ -128,6 +128,14 @@
   .btn-music:hover { box-shadow: 0 12px 28px rgba(216,38,140,0.5); }
 
   .tracklist-section { max-width: 860px; margin: 34px auto 0; padding: 0 24px; }
+  .tl-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tl-tab {
+    padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--card);
+    color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease;
+  }
+  .tl-tab:hover:not(.active) { border-color: rgba(255,255,255,0.4); color: var(--ink); }
+  .tl-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   .tl-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
   .tl-search {
     flex: 1; min-width: 160px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line);
@@ -225,9 +233,9 @@
 </div>
 
 <div class="player">
-  <p class="now-playing-label"><span id="nowPlayingPrefix"></span> <b id="nowPlayingTitle">Tachiagaru</b></p>
+  <p class="now-playing-label"><span id="nowPlayingPrefix"></span> <b id="nowPlayingTitle">Arigatō 有難う (J-Trap)</b></p>
   <div class="player-frame">
-    <iframe id="playerFrame" src="https://www.youtube.com/embed/3h8GwUbCsbE" title="Yoshiki Beats — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <iframe id="playerFrame" src="https://www.youtube.com/embed/MZVUJwv0nyk" title="Yoshiki Beats — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
   <div class="actions">
     <a class="btn btn-music" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
@@ -235,6 +243,10 @@
 </div>
 
 <div class="tracklist-section" id="tracklistSection" hidden>
+  <div class="tl-tabs">
+    <button type="button" class="tl-tab active" id="tabMusic" data-tab="music"></button>
+    <button type="button" class="tl-tab" id="tabVideo" data-tab="video"></button>
+  </div>
   <div class="tl-toolbar">
     <input class="tl-search" id="tlSearch" type="search" autocomplete="off">
     <select class="tl-sort" id="tlSort">
@@ -246,7 +258,7 @@
   <div class="tl-genres" id="tlGenres" hidden></div>
   <p class="tl-count" id="tlCount"></p>
   <div class="track-list" id="trackList"></div>
-  <a class="tl-more" href="https://www.youtube.com/@YoshikiBeats/videos" target="_blank" rel="noopener" id="tlMore"></a>
+  <a class="tl-more" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener" id="tlMore"></a>
 </div>
 
 <div class="links-section">
@@ -286,6 +298,10 @@ const T = {
   allGenres: { pt:'Todos', en:'All', es:'Todos', fr:'Tous', de:'Alle', it:'Tutti', pl:'Wszystkie', ja:'すべて', nl:'Alle', cs:'Vše', zh:'全部', ru:'Все', ko:'전체', ne:'सबै' },
   trackEmpty: { pt:'Nenhuma faixa encontrada.', en:'No tracks found.', es:'No se encontraron pistas.', fr:'Aucun titre trouvé.', de:'Keine Tracks gefunden.', it:'Nessun brano trovato.', pl:'Nie znaleziono utworów.', ja:'トラックが見つかりません。', nl:'Geen tracks gevonden.', cs:'Nebyly nalezeny žádné skladby.', zh:'未找到曲目。', ru:'Треки не найдены.', ko:'트랙을 찾을 수 없습니다.', ne:'कुनै ट्र्याक फेला परेन।' },
   tlMore: { pt:'Ver catálogo completo no YouTube ↗', en:'See the full catalog on YouTube ↗', es:'Ver catálogo completo en YouTube ↗', fr:'Voir le catalogue complet sur YouTube ↗', de:'Vollständigen Katalog auf YouTube ansehen ↗', it:'Vedi il catalogo completo su YouTube ↗', pl:'Zobacz pełny katalog na YouTube ↗', ja:'YouTubeで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube ↗', cs:'Zobrazit celý katalog na YouTube ↗', zh:'在YouTube上查看完整目录 ↗', ru:'Смотреть полный каталог на YouTube ↗', ko:'YouTube에서 전체 카탈로그 보기 ↗', ne:'YouTube मा पूर्ण सूची हेर्नुहोस् ↗' },
+  tlMoreMusic: { pt:'Ver catálogo completo no YouTube Music ↗', en:'See the full catalog on YouTube Music ↗', es:'Ver catálogo completo en YouTube Music ↗', fr:'Voir le catalogue complet sur YouTube Music ↗', de:'Vollständigen Katalog auf YouTube Music ansehen ↗', it:'Vedi il catalogo completo su YouTube Music ↗', pl:'Zobacz pełny katalog na YouTube Music ↗', ja:'YouTube Musicで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube Music ↗', cs:'Zobrazit celý katalog na YouTube Music ↗', zh:'在YouTube Music上查看完整目录 ↗', ru:'Смотреть полный каталог в YouTube Music ↗', ko:'YouTube Music에서 전체 카탈로그 보기 ↗', ne:'YouTube Music मा पूर्ण सूची हेर्नुहोस् ↗' },
+  tabMusic: { pt:'🎵 Músicas', en:'🎵 Music', es:'🎵 Música', fr:'🎵 Musique', de:'🎵 Musik', it:'🎵 Musica', pl:'🎵 Muzyka', ja:'🎵 ミュージック', nl:'🎵 Muziek', cs:'🎵 Hudba', zh:'🎵 音乐', ru:'🎵 Музыка', ko:'🎵 음악', ne:'🎵 संगीत' },
+  tabVideo: { pt:'▶ Vídeos', en:'▶ Videos', es:'▶ Vídeos', fr:'▶ Vidéos', de:'▶ Videos', it:'▶ Video', pl:'▶ Filmy', ja:'▶ 動画', nl:'▶ Video\'s', cs:'▶ Videa', zh:'▶ 视频', ru:'▶ Видео', ko:'▶ 동영상', ne:'▶ भिडियोहरू' },
+  sortPlays: { pt:'Mais tocadas', en:'Most played', es:'Más reproducidas', fr:'Les plus jouées', de:'Meistgespielt', it:'Più riprodotte', pl:'Najczęściej odtwarzane', ja:'再生数順', nl:'Meest gespeeld', cs:'Nejhranější', zh:'播放最多', ru:'Больше всего прослушиваний', ko:'재생 많은 순', ne:'धेरै बजेको' },
   linksHeading: { pt:'Links', en:'Links', es:'Enlaces', fr:'Liens', de:'Links', it:'Link', pl:'Linki', ja:'リンク', nl:'Links', cs:'Odkazy', zh:'链接', ru:'Ссылки', ko:'링크', ne:'लिङ्कहरू' },
   linkPortfolio: { pt:'Outros Projetos', en:'Other Projects', es:'Otros Proyectos', fr:'Autres Projets', de:'Weitere Projekte', it:'Altri Progetti', pl:'Inne Projekty', ja:'その他のプロジェクト', nl:'Andere Projecten', cs:'Další Projekty', zh:'其他项目', ru:'Другие Проекты', ko:'다른 프로젝트', ne:'अन्य परियोजनाहरू' },
   footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' }
@@ -293,8 +309,12 @@ const T = {
 
 let currentLang = 'pt';
 let ALL_VIDEOS = [];
-let activeVideoId = '3h8GwUbCsbE';
+let ALL_SONGS = [];
+let activeTab = 'music';
+let activeVideoId = 'MZVUJwv0nyk';
 const tlState = { query: '', genre: 'all', sort: 'newest' };
+const YT_VIDEOS_URL = 'https://www.youtube.com/@YoshikiBeats/videos';
+const YT_MUSIC_URL = 'https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw';
 
 function setLang(lang) {
   if (!LANG_ORDER.includes(lang)) lang = 'pt';
@@ -309,7 +329,9 @@ function setLang(lang) {
   document.getElementById('sortNewest').textContent = T.sortNewest[lang];
   document.getElementById('sortViews').textContent = T.sortViews[lang];
   document.getElementById('sortLikes').textContent = T.sortLikes[lang];
-  document.getElementById('tlMore').textContent = T.tlMore[lang];
+  document.getElementById('tabMusic').textContent = T.tabMusic[lang];
+  document.getElementById('tabVideo').textContent = T.tabVideo[lang];
+  document.getElementById('tlMore').textContent = activeTab === 'music' ? T.tlMoreMusic[lang] : T.tlMore[lang];
   document.getElementById('linksHeading').textContent = T.linksHeading[lang];
   document.getElementById('linkPortfolioLabel').textContent = T.linkPortfolio[lang];
   document.getElementById('footerContact').textContent = T.footerContact[lang];
@@ -394,23 +416,32 @@ function playVideo(id, title) {
   renderTracks();
 }
 
+function currentItems() {
+  return activeTab === 'music' ? ALL_SONGS : ALL_VIDEOS;
+}
+
 function renderTracks() {
   const list = document.getElementById('trackList');
   const countEl = document.getElementById('tlCount');
   if (!list) return;
 
-  let items = ALL_VIDEOS.filter(v => {
+  const all = currentItems();
+  let items = all.filter(v => {
     if (tlState.genre !== 'all' && v.genre !== tlState.genre) return false;
     if (tlState.query && !v.title.toLowerCase().includes(tlState.query)) return false;
     return true;
   });
-  items.sort((a, b) => {
-    if (tlState.sort === 'views') return (b.views || 0) - (a.views || 0);
-    if (tlState.sort === 'likes') return (b.likes || 0) - (a.likes || 0);
-    return new Date(b.published || 0) - new Date(a.published || 0);
-  });
+  if (activeTab === 'music') {
+    items.sort((a, b) => (b.plays || 0) - (a.plays || 0));
+  } else {
+    items.sort((a, b) => {
+      if (tlState.sort === 'views') return (b.views || 0) - (a.views || 0);
+      if (tlState.sort === 'likes') return (b.likes || 0) - (a.likes || 0);
+      return new Date(b.published || 0) - new Date(a.published || 0);
+    });
+  }
 
-  countEl.textContent = `${items.length} / ${ALL_VIDEOS.length}`;
+  countEl.textContent = `${items.length} / ${all.length}`;
   list.innerHTML = '';
   if (!items.length) {
     list.innerHTML = `<p class="track-empty">${T.trackEmpty[currentLang]}</p>`;
@@ -420,13 +451,16 @@ function renderTracks() {
     const row = document.createElement('button');
     row.type = 'button';
     row.className = 'track-row' + (v.id === activeVideoId ? ' active' : '');
+    const stats = activeTab === 'music'
+      ? `▶ ${formatCount(v.plays || 0)}`
+      : `👁 ${formatCount(v.views || 0)} · ♥ ${formatCount(v.likes || 0)}`;
     row.innerHTML = `
       <img class="track-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">
       <span class="track-main">
         <span class="track-title">${escapeHtml(v.title)}</span>
         ${v.genre ? `<span class="track-genre-pill">${escapeHtml(v.genre)}</span>` : ''}
       </span>
-      <span class="track-stats">👁 ${formatCount(v.views || 0)} · ♥ ${formatCount(v.likes || 0)}</span>
+      <span class="track-stats">${stats}</span>
     `;
     row.addEventListener('click', () => playVideo(v.id, v.title));
     list.appendChild(row);
@@ -435,7 +469,7 @@ function renderTracks() {
 
 function renderGenreChips() {
   const wrap = document.getElementById('tlGenres');
-  const genres = Array.from(new Set(ALL_VIDEOS.map(v => v.genre).filter(Boolean)));
+  const genres = Array.from(new Set(currentItems().map(v => v.genre).filter(Boolean)));
   if (genres.length < 2) { wrap.hidden = true; return; }
   wrap.hidden = false;
   wrap.innerHTML = '';
@@ -462,13 +496,38 @@ function renderGenreChips() {
   });
 }
 
-fetch('videos.json').then(r => r.ok ? r.json() : []).then(videos => {
-  if (!Array.isArray(videos) || !videos.length) return;
-  ALL_VIDEOS = videos;
-  document.getElementById('tracklistSection').hidden = false;
+function setTab(tab) {
+  if (tab === activeTab) return;
+  activeTab = tab;
+  tlState.genre = 'all';
+  tlState.query = '';
+  document.getElementById('tlSearch').value = '';
+  document.getElementById('tabMusic').classList.toggle('active', tab === 'music');
+  document.getElementById('tabVideo').classList.toggle('active', tab === 'video');
+  document.getElementById('tlSort').hidden = tab === 'music';
+  document.getElementById('tlMore').href = tab === 'music' ? YT_MUSIC_URL : YT_VIDEOS_URL;
+  document.getElementById('tlMore').textContent = tab === 'music' ? T.tlMoreMusic[currentLang] : T.tlMore[currentLang];
   renderGenreChips();
   renderTracks();
-}).catch(() => {});
+}
+
+document.getElementById('tabMusic').addEventListener('click', () => setTab('music'));
+document.getElementById('tabVideo').addEventListener('click', () => setTab('video'));
+
+Promise.all([
+  fetch('songs.json').then(r => r.ok ? r.json() : []).catch(() => []),
+  fetch('videos.json').then(r => r.ok ? r.json() : []).catch(() => []),
+]).then(([songs, videos]) => {
+  ALL_SONGS = Array.isArray(songs) ? songs : [];
+  ALL_VIDEOS = Array.isArray(videos) ? videos : [];
+  if (!ALL_SONGS.length && !ALL_VIDEOS.length) return;
+  if (!ALL_SONGS.length) setTab('video');
+  document.getElementById('tabVideo').hidden = !ALL_VIDEOS.length;
+  document.getElementById('tracklistSection').hidden = false;
+  document.getElementById('tlSort').hidden = activeTab === 'music';
+  renderGenreChips();
+  renderTracks();
+});
 
 document.getElementById('tlSearch').addEventListener('input', (e) => {
   tlState.query = e.target.value.trim().toLowerCase();
