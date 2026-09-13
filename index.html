@@ -115,6 +115,7 @@
   .grid .pcard:nth-child(3) { animation-delay: 0.25s; }
   .grid .pcard:nth-child(4) { animation-delay: 0.35s; }
   .grid .pcard:nth-child(5) { animation-delay: 0.45s; }
+  .grid .pcard:nth-child(6) { animation-delay: 0.55s; }
   @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
   .pcard:hover {
     transform: translateY(-6px) scale(1.015); border-color: rgba(255,255,255,0.55);
@@ -140,6 +141,7 @@
   .pcard.grad-3d { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
   .pcard.grad-yb { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(48,29,99,0.6) 55%, rgba(216,38,140,0.75) 100%), linear-gradient(135deg, #15102b, #4c1d95 55%, #d8268c); }
   .pcard.grad-synth { background-image: linear-gradient(165deg, rgba(8,11,16,0.4), rgba(30,10,60,0.6) 55%, rgba(255,61,127,0.7) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
+  .pcard.grad-lista { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(74,60,10,0.55) 55%, rgba(184,134,11,0.8) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
 
   footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; text-align: center; }
   footer p { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0 6px; }
@@ -209,6 +211,12 @@
     <p id="descSynth"></p>
     <span class="cta" id="ctaVisit5"></span>
   </a>
+  <a class="pcard grad-lista" href="https://yoluha.github.io/lista-pedidos/">
+    <img class="picon" src="https://yoluha.github.io/lista-pedidos/icon-192.png" alt="">
+    <h3>Lista</h3>
+    <p id="descLista"></p>
+    <span class="cta" id="ctaVisit6"></span>
+  </a>
 </div>
 
 <footer>
@@ -227,6 +235,7 @@ const T = {
   desc3d: { pt:'Orçamentos, produção e clientes', en:'Quotes, production and clients', es:'Presupuestos, producción y clientes', fr:'Devis, production et clients', de:'Angebote, Produktion und Kunden', it:'Preventivi, produzione e clienti', pl:'Wyceny, produkcja i klienci', ja:'見積もり・生産・顧客管理', nl:'Offertes, productie en klanten', cs:'Nabídky, výroba a klienti', zh:'报价、生产与客户', ru:'Сметы, производство и клиенты', ko:'견적, 생산, 고객 관리', ne:'मूल्य उद्धरण, उत्पादन र ग्राहक' },
   descYb: { pt:'Instrumentais J-Trap e GΛRĀN', en:'Instrumental J-Trap and GΛRĀN', es:'Instrumental J-Trap y GΛRĀN', fr:'Instrumentaux J-Trap et GΛRĀN', de:'Instrumental J-Trap und GΛRĀN', it:'Strumentali J-Trap e GΛRĀN', pl:'Instrumentale J-Trap i GΛRĀN', ja:'インストゥルメンタルのJ-TrapとGΛRĀN', nl:'Instrumentale J-Trap en GΛRĀN', cs:'Instrumentální J-Trap a GΛRĀN', zh:'J-Trap 与 GΛRĀN 器乐', ru:'Инструментал J-Trap и GΛRĀN', ko:'인스트루멘탈 J-Trap과 GΛRĀN', ne:'इन्स्ट्रुमेन्टल J-Trap र GΛRĀN' },
   descSynth: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' },
+  descLista: { pt:'Listas de encomendas para o trabalho', en:'Work order lists, offline', es:'Listas de pedidos para el trabajo', fr:'Listes de commandes pour le travail', de:'Bestelllisten für die Arbeit', it:'Liste ordini per il lavoro', pl:'Listy zamówień do pracy', ja:'仕事の注文リスト', nl:'Bestellijsten voor het werk', cs:'Objednávkové seznamy do práce', zh:'工作订单清单', ru:'Списки заказов для работы', ko:'업무용 주문 목록', ne:'कामको लागि अर्डर सूची' },
   ctaVisit: { pt:'Visitar ↗', en:'Visit ↗', es:'Visitar ↗', fr:'Visiter ↗', de:'Besuchen ↗', it:'Visita ↗', pl:'Odwiedź ↗', ja:'訪問する ↗', nl:'Bezoek ↗', cs:'Navštívit ↗', zh:'访问 ↗', ru:'Посетить ↗', ko:'방문하기 ↗', ne:'भ्रमण गर्नुहोस् ↗' },
   footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' }
 };
@@ -241,8 +250,9 @@ function setLang(lang) {
   document.getElementById('desc3d').textContent = T.desc3d[lang];
   document.getElementById('descYb').textContent = T.descYb[lang];
   document.getElementById('descSynth').textContent = T.descSynth[lang];
+  document.getElementById('descLista').textContent = T.descLista[lang];
   document.getElementById('footerContact').textContent = T.footerContact[lang];
-  ['ctaVisit1','ctaVisit2','ctaVisit3','ctaVisit4','ctaVisit5'].forEach(id => {
+  ['ctaVisit1','ctaVisit2','ctaVisit3','ctaVisit4','ctaVisit5','ctaVisit6'].forEach(id => {
     document.getElementById(id).textContent = T.ctaVisit[lang];
   });
 
