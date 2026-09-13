@@ -189,7 +189,9 @@ async function fetchAllVideos(channelId, maxPages = 40) {
 const YTM_API_KEY = 'AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30';
 const YTM_CLIENT_VERSION = '1.20260908.14.00';
 
-async function ytMusicBrowse(browseId) {
+const YTM_CONTEXT = { client: { clientName: 'WEB_REMIX', clientVersion: YTM_CLIENT_VERSION, hl: 'en' } };
+
+async function ytMusicBrowse(body) {
   const res = await fetch(`https://music.youtube.com/youtubei/v1/browse?key=${YTM_API_KEY}`, {
     method: 'POST',
     headers: {
@@ -197,13 +199,18 @@ async function ytMusicBrowse(browseId) {
       'Cookie': 'CONSENT=YES+1',
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
     },
-    body: JSON.stringify({
-      context: { client: { clientName: 'WEB_REMIX', clientVersion: YTM_CLIENT_VERSION, hl: 'en' } },
-      browseId,
-    }),
+    body: JSON.stringify({ context: YTM_CONTEXT, ...body }),
   });
-  if (!res.ok) throw new Error(`YT Music browse failed for ${browseId}: ${res.status}`);
+  if (!res.ok) throw new Error(`YT Music browse failed: ${res.status}`);
   return res.json();
+}
+
+function findYtmContinuationToken(items) {
+  for (const item of items) {
+    const token = item.continuationItemRenderer?.continuationEndpoint?.continuationCommand?.token;
+    if (token) return token;
+  }
+  return null;
 }
 
 function parseGenreFromTitle(title) {
@@ -225,8 +232,8 @@ function parsePlays(text) {
   return digits ? Number(digits) : 0;
 }
 
-async function fetchSongs(slug, channelId) {
-  const overview = await ytMusicBrowse(channelId);
+async function fetchSongs(slug, channelId, maxPages = 20) {
+  const overview = await ytMusicBrowse({ browseId: channelId });
   const sections = overview?.contents?.singleColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents || [];
   const shelf = sections.map(s => s.musicShelfRenderer).find(Boolean);
   if (!shelf) return [];
@@ -234,9 +241,22 @@ async function fetchSongs(slug, channelId) {
   let items = shelf.contents || [];
   const seeAllId = shelf.bottomEndpoint?.browseEndpoint?.browseId;
   if (seeAllId) {
-    const full = await ytMusicBrowse(seeAllId);
+    const full = await ytMusicBrowse({ browseId: seeAllId });
     const playlistShelf = full?.contents?.twoColumnBrowseResultsRenderer?.secondaryContents?.sectionListRenderer?.contents?.[0]?.musicPlaylistShelfRenderer;
-    if (playlistShelf?.contents) items = playlistShelf.contents;
+    if (playlistShelf?.contents) {
+      items = playlistShelf.contents;
+      let token = findYtmContinuationToken(items);
+      let pages = 1;
+      while (token && pages < maxPages) {
+        const cont = await ytMusicBrowse({ continuation: token });
+        const actions = cont?.onResponseReceivedActions || [];
+        const appended = actions.flatMap(a => a.appendContinuationItemsAction?.continuationItems || []);
+        if (!appended.length) break;
+        items = items.concat(appended);
+        token = findYtmContinuationToken(appended);
+        pages += 1;
+      }
+    }
   }
 
   const songs = [];
@@ -297,14 +317,19 @@ for (const { slug, channelId } of CHANNELS) {
   try {
     const songs = await fetchSongs(slug, channelId);
     const songsPath = path.join(ROOT, slug, 'songs.json');
-    const nextSongs = JSON.stringify(songs, null, 2) + '\n';
     const prevSongs = fs.existsSync(songsPath) ? fs.readFileSync(songsPath, 'utf8') : '';
-    if (nextSongs !== prevSongs) {
-      fs.writeFileSync(songsPath, nextSongs);
-      changed = true;
-      console.log(`Updated ${slug}/songs.json (${songs.length} songs)`);
+    const prevCount = prevSongs ? JSON.parse(prevSongs).length : 0;
+    if (songs.length === 0 && prevCount > 0) {
+      console.error(`Skipped ${slug}/songs.json: fetch returned 0 songs (keeping existing ${prevCount})`);
     } else {
-      console.log(`${slug}/songs.json unchanged (${songs.length} songs)`);
+      const nextSongs = JSON.stringify(songs, null, 2) + '\n';
+      if (nextSongs !== prevSongs) {
+        fs.writeFileSync(songsPath, nextSongs);
+        changed = true;
+        console.log(`Updated ${slug}/songs.json (${songs.length} songs)`);
+      } else {
+        console.log(`${slug}/songs.json unchanged (${songs.length} songs)`);
+      }
     }
   } catch (err) {
     console.error(`Skipped ${slug}/songs.json:`, err.message);
