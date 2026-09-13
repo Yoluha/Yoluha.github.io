@@ -205,6 +205,8 @@
   }
   .genre-pill:hover { border-color: var(--accent); color: var(--accent); }
   .genre-pill.active { background: var(--accent); border-color: var(--accent); color: #1a1210; }
+  @keyframes pillBlink { 0%, 100% { box-shadow: none; } 40% { box-shadow: 0 0 0 5px rgba(168,120,30,0.45); } }
+  .genre-pill.blink { animation: pillBlink 0.4s ease; }
   .playback-controls { display: flex; gap: 6px; flex-shrink: 0; }
   .btn-nav { padding: 7px 9px; }
 
@@ -228,8 +230,6 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-music { color: #f5ead0; background: linear-gradient(135deg, #a8781e, #6d1f3a); box-shadow: 0 8px 22px rgba(168,120,30,0.35); }
   .btn-music:hover { box-shadow: 0 12px 28px rgba(168,120,30,0.5); }
-  .btn-music-compact { padding: 6px 10px; font-size: 0.58rem; box-shadow: 0 4px 12px rgba(168,120,30,0.3); }
-  .btn-music-compact:hover { box-shadow: 0 6px 16px rgba(168,120,30,0.45); }
   .btn-radio { color: var(--ink); background: var(--card); border: 1px solid var(--accent); }
   .btn-radio:hover { background: rgba(255,255,255,0.06); }
 
@@ -385,15 +385,15 @@
     <h1>Yoshiki Beats</h1>
   </div>
   <div class="genre-pills">
-    <button type="button" class="genre-pill" data-genre="J-Trap" onclick="filterByGenre('J-Trap')" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</button>
-    <button type="button" class="genre-pill" data-genre="GΛRĀN" onclick="filterByGenre('GΛRĀN')" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</button>
+    <button type="button" class="genre-pill" data-genre="J-Trap" onclick="filterByGenre('J-Trap', this)" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</button>
+    <button type="button" class="genre-pill" data-genre="GΛRĀN" onclick="filterByGenre('GΛRĀN', this)" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</button>
   </div>
+  <a class="btn btn-music" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <div class="playback-controls">
     <button type="button" class="btn btn-radio btn-nav" id="prevBtn" onclick="playAdjacent(-1)" aria-label="Previous" title="">⏮</button>
+    <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
     <button type="button" class="btn btn-radio btn-nav" id="nextBtn" onclick="playAdjacent(1)" aria-label="Next" title="">⏭</button>
   </div>
-  <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
-  <a class="btn btn-music btn-music-compact" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
@@ -482,12 +482,14 @@ let ALL_VIDEOS = [];
 let ALL_SONGS = [];
 let activeTab = 'music';
 let activeVideoId = 'MZVUJwv0nyk';
-const tlState = { query: '', genre: 'all', sort: 'newest' };
+const tlState = { query: '', genres: new Set(), sort: 'newest' };
 const SITE_ARTIST_NAME = 'Yoshiki Beats';
 let ytPlayer = null;
 let ytApiReady = false;
 let pendingVideo = null;
 let renderedItems = [];
+let radioHistory = [];
+let radioHistoryIndex = -1;
 let radioMode = false;
 const YT_VIDEOS_URL = 'https://www.youtube.com/@YoshikiBeats/videos';
 const YT_MUSIC_URL = 'https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw';
@@ -658,7 +660,41 @@ function updateMediaSession(track) {
   } catch (e) { /* MediaMetadata not supported */ }
 }
 
+function randomPick(pool) {
+  if (pool.length === 1) return pool[0];
+  let pick;
+  do { pick = pool[Math.floor(Math.random() * pool.length)]; } while (pick.id === activeVideoId);
+  return pick;
+}
+
+function startRadio() {
+  const pool = filteredItems();
+  if (!pool.length) return;
+  radioMode = true;
+  renderedItems = pool;
+  const first = randomPick(pool);
+  radioHistory = [first];
+  radioHistoryIndex = 0;
+  playVideo(first.id, first.title);
+}
+
+function radioStep(dir) {
+  const pool = filteredItems();
+  if (!pool.length) return;
+  if (dir < 0 && radioHistoryIndex > 0) {
+    radioHistoryIndex -= 1;
+  } else {
+    const next = randomPick(pool);
+    radioHistory = radioHistory.slice(0, radioHistoryIndex + 1);
+    radioHistory.push(next);
+    radioHistoryIndex = radioHistory.length - 1;
+  }
+  const track = radioHistory[radioHistoryIndex];
+  playVideo(track.id, track.title);
+}
+
 function playAdjacent(dir) {
+  if (radioMode) { radioStep(dir); return; }
   if (!renderedItems.length) return;
   const idx = renderedItems.findIndex(v => v.id === activeVideoId);
   const next = renderedItems[(idx + dir + renderedItems.length) % renderedItems.length];
@@ -705,19 +741,10 @@ function currentItems() {
 
 function filteredItems() {
   return currentItems().filter(v => {
-    if (tlState.genre !== 'all' && v.genre !== tlState.genre) return false;
+    if (tlState.genres.size && !tlState.genres.has(v.genre)) return false;
     if (tlState.query && !v.title.toLowerCase().includes(tlState.query)) return false;
     return true;
   });
-}
-
-function shuffleArray(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
 }
 
 function renderTracks() {
@@ -793,31 +820,39 @@ function renderGenreChips() {
     const btn = e.target.closest('.tl-chip');
     if (!btn) return;
     radioMode = false;
-    tlState.genre = btn.dataset.genre;
-    syncGenreActiveUI(tlState.genre);
+    tlState.genres = btn.dataset.genre === 'all' ? new Set() : new Set([btn.dataset.genre]);
+    syncGenreActiveUI();
     renderTracks();
   });
 }
 
-function syncGenreActiveUI(genre) {
-  document.querySelectorAll('#tlGenres .tl-chip').forEach(c => c.classList.toggle('active', c.dataset.genre === genre));
-  document.querySelectorAll('.hero-bar .genre-pill').forEach(p => p.classList.toggle('active', p.dataset.genre === genre));
+function syncGenreActiveUI() {
+  document.querySelectorAll('#tlGenres .tl-chip').forEach(c => {
+    const isAll = c.dataset.genre === 'all';
+    c.classList.toggle('active', isAll ? tlState.genres.size === 0 : (tlState.genres.size === 1 && tlState.genres.has(c.dataset.genre)));
+  });
+  document.querySelectorAll('.hero-bar .genre-pill').forEach(p => p.classList.toggle('active', tlState.genres.has(p.dataset.genre)));
 }
 
-function filterByGenre(genre) {
+function filterByGenre(genre, btn) {
   radioMode = false;
   if (activeTab !== 'music') setTab('music');
-  tlState.genre = (tlState.genre === genre) ? 'all' : genre;
-  syncGenreActiveUI(tlState.genre);
+  if (tlState.genres.has(genre)) tlState.genres.delete(genre);
+  else tlState.genres.add(genre);
+  syncGenreActiveUI();
   renderTracks();
-  document.getElementById('tracklistSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (btn) {
+    btn.classList.remove('blink');
+    void btn.offsetWidth;
+    btn.classList.add('blink');
+  }
 }
 
 function setTab(tab) {
   if (tab === activeTab) return;
   radioMode = false;
   activeTab = tab;
-  tlState.genre = 'all';
+  tlState.genres = new Set();
   tlState.query = '';
   document.getElementById('tlSearch').value = '';
   document.getElementById('tabMusic').classList.toggle('active', tab === 'music');
@@ -826,7 +861,7 @@ function setTab(tab) {
   document.getElementById('tlMore').href = tab === 'music' ? YT_MUSIC_URL : YT_VIDEOS_URL;
   document.getElementById('tlMore').textContent = tab === 'music' ? T.tlMoreMusic[currentLang] : T.tlMore[currentLang];
   renderGenreChips();
-  syncGenreActiveUI('all');
+  syncGenreActiveUI();
   renderTracks();
 }
 
@@ -858,13 +893,7 @@ document.getElementById('tlSort').addEventListener('change', (e) => {
   tlState.sort = e.target.value;
   renderTracks();
 });
-document.getElementById('radioBtn').addEventListener('click', () => {
-  const pool = filteredItems();
-  if (!pool.length) return;
-  radioMode = true;
-  renderedItems = shuffleArray(pool);
-  playVideo(renderedItems[0].id, renderedItems[0].title);
-});
+document.getElementById('radioBtn').addEventListener('click', startRadio);
 </script>
 <script src="https://www.youtube.com/iframe_api"></script>
 

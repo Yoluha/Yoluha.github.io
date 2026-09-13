@@ -381,12 +381,12 @@
     <span class="genre-pill" title="Aggressive, dark synthwave — heavy, cinematic, built for tension.">Darksynth</span>
     <span class="genre-pill" title="Nostalgic, mellow synthwave — warm retro-futuristic 80s textures.">ChillSynth</span>
   </div>
+  <a class="btn btn-music" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <div class="playback-controls">
     <button type="button" class="btn btn-radio btn-nav" id="prevBtn" onclick="playAdjacent(-1)" aria-label="Previous" title="">⏮</button>
-    <a class="btn btn-music" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
+    <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
     <button type="button" class="btn btn-radio btn-nav" id="nextBtn" onclick="playAdjacent(1)" aria-label="Next" title="">⏭</button>
   </div>
-  <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
@@ -475,6 +475,8 @@ let ytPlayer = null;
 let ytApiReady = false;
 let pendingVideo = null;
 let renderedItems = [];
+let radioHistory = [];
+let radioHistoryIndex = -1;
 let radioMode = false;
 
 function setLang(lang) {
@@ -642,7 +644,41 @@ function updateMediaSession(track) {
   } catch (e) { /* MediaMetadata not supported */ }
 }
 
+function randomPick(pool) {
+  if (pool.length === 1) return pool[0];
+  let pick;
+  do { pick = pool[Math.floor(Math.random() * pool.length)]; } while (pick.id === activeVideoId);
+  return pick;
+}
+
+function startRadio() {
+  const pool = filteredItems();
+  if (!pool.length) return;
+  radioMode = true;
+  renderedItems = pool;
+  const first = randomPick(pool);
+  radioHistory = [first];
+  radioHistoryIndex = 0;
+  playVideo(first.id, first.title);
+}
+
+function radioStep(dir) {
+  const pool = filteredItems();
+  if (!pool.length) return;
+  if (dir < 0 && radioHistoryIndex > 0) {
+    radioHistoryIndex -= 1;
+  } else {
+    const next = randomPick(pool);
+    radioHistory = radioHistory.slice(0, radioHistoryIndex + 1);
+    radioHistory.push(next);
+    radioHistoryIndex = radioHistory.length - 1;
+  }
+  const track = radioHistory[radioHistoryIndex];
+  playVideo(track.id, track.title);
+}
+
 function playAdjacent(dir) {
+  if (radioMode) { radioStep(dir); return; }
   if (!renderedItems.length) return;
   const idx = renderedItems.findIndex(v => v.id === activeVideoId);
   const next = renderedItems[(idx + dir + renderedItems.length) % renderedItems.length];
@@ -693,15 +729,6 @@ function filteredItems() {
     if (tlState.query && !v.title.toLowerCase().includes(tlState.query)) return false;
     return true;
   });
-}
-
-function shuffleArray(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
 }
 
 function renderTracks() {
@@ -827,13 +854,7 @@ document.getElementById('tlSort').addEventListener('change', (e) => {
   tlState.sort = e.target.value;
   renderTracks();
 });
-document.getElementById('radioBtn').addEventListener('click', () => {
-  const pool = filteredItems();
-  if (!pool.length) return;
-  radioMode = true;
-  renderedItems = shuffleArray(pool);
-  playVideo(renderedItems[0].id, renderedItems[0].title);
-});
+document.getElementById('radioBtn').addEventListener('click', startRadio);
 </script>
 <script src="https://www.youtube.com/iframe_api"></script>
 
