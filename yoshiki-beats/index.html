@@ -228,6 +228,8 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-music { color: #f5ead0; background: linear-gradient(135deg, #a8781e, #6d1f3a); box-shadow: 0 8px 22px rgba(168,120,30,0.35); }
   .btn-music:hover { box-shadow: 0 12px 28px rgba(168,120,30,0.5); }
+  .btn-music-compact { padding: 6px 10px; font-size: 0.58rem; box-shadow: 0 4px 12px rgba(168,120,30,0.3); }
+  .btn-music-compact:hover { box-shadow: 0 6px 16px rgba(168,120,30,0.45); }
   .btn-radio { color: var(--ink); background: var(--card); border: 1px solid var(--accent); }
   .btn-radio:hover { background: rgba(255,255,255,0.06); }
 
@@ -388,10 +390,10 @@
   </div>
   <div class="playback-controls">
     <button type="button" class="btn btn-radio btn-nav" id="prevBtn" onclick="playAdjacent(-1)" aria-label="Previous" title="">⏮</button>
-    <a class="btn btn-music" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
     <button type="button" class="btn btn-radio btn-nav" id="nextBtn" onclick="playAdjacent(1)" aria-label="Next" title="">⏭</button>
   </div>
   <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
+  <a class="btn btn-music btn-music-compact" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
