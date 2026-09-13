@@ -110,22 +110,28 @@
     50%      { transform: translate(9%, -12%) scale(1.22); }
   }
 
-  .topbar, .hero, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
+  .hero-bar, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
 
-  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 0; max-width: 900px; margin: 0 auto; }
-  .backlink {
-    font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); text-decoration: none;
-    border: 1px solid var(--line); border-radius: 7px; padding: 8px 12px; transition: color 0.15s ease, border-color 0.15s ease;
+  .hero-bar {
+    display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+    padding: 16px 24px; max-width: 900px; margin: 0 auto;
   }
-  .backlink:hover { color: var(--ink); border-color: rgba(255,255,255,0.4); }
-  .topbar select {
+  .hero-identity { display: flex; align-items: center; gap: 10px; }
+  .hero-bar select {
     background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 7px;
     padding: 8px 12px; font-family: var(--font-mono); font-size: 0.82rem; cursor: pointer;
   }
-  .topbar select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .hero-bar select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* OTHER PROJECTS STRIP */
-  .proj-strip-wrap { background: var(--paper); border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .proj-strip-wrap { background: var(--paper); border-bottom: 1px solid var(--line); padding: 12px 0; max-height: 140px; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease, border-color 0.3s ease; }
+  .proj-strip-wrap.collapsed { max-height: 0; padding-top: 0; padding-bottom: 0; border-bottom-color: transparent; }
+  .proj-strip-toggle {
+    display: block; width: 100%; background: var(--paper); border: none; border-bottom: 1px solid var(--line);
+    color: var(--ink-soft); font-size: 0.65rem; line-height: 1.4; cursor: pointer; padding: 2px 0; text-align: center;
+    transition: color 0.15s ease;
+  }
+  .proj-strip-toggle:hover { color: var(--accent); }
   .proj-strip-row { display: flex; align-items: stretch; height: 104px; gap: 12px; max-width: 980px; margin: 0 auto; padding: 0 24px; }
   @keyframes projLabelGlow {
     0%, 100% { color: var(--ink-soft); text-shadow: 0 0 4px var(--accent); }
@@ -155,7 +161,7 @@
   @keyframes projCardIn { to { opacity: 1; transform: translateY(0); } }
   .proj-card-sm:hover { transform: translateY(-3px) scale(1.02); border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
   @media (prefers-reduced-motion: reduce) { .proj-card-sm { opacity: 1; transform: none; animation: none; } }
-  .proj-card-sm .proj-icon-sm { position: absolute; right: -6px; bottom: 4px; width: 60px; height: 60px; margin: 0; opacity: 0.45; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); border-radius: 14px; object-fit: cover; animation: projIconFloat 5s ease-in-out infinite; }
+  .proj-card-sm .proj-icon-sm { position: absolute; right: -6px; bottom: 4px; width: 60px; height: 60px; margin: 0; opacity: 0.45; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); border-radius: 50%; object-fit: cover; animation: projIconFloat 5s ease-in-out infinite; }
   @keyframes projIconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-6px) rotate(-3deg); } }
   @media (prefers-reduced-motion: reduce) { .proj-card-sm .proj-icon-sm { animation: none; } }
   .proj-card-sm h4 { position: relative; z-index: 1; font-family: var(--font-display); font-size: 0.76rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
@@ -177,21 +183,19 @@
   .proj-nav:hover { background: var(--accent); color: #08131c; border-color: var(--accent); }
   .proj-nav[hidden] { display: none; }
 
-  .hero { text-align: center; padding: 18px 24px 20px; max-width: 640px; margin: 0 auto; }
-  .hero-top { display: flex; align-items: center; justify-content: center; gap: 12px; }
-  .hero .picon {
-    width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; margin: 0; object-fit: cover;
+  .hero-identity .picon {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; margin: 0; object-fit: cover;
     border: 2px solid var(--accent); box-shadow: 0 0 16px rgba(168,120,30,0.4);
   }
-  .hero h1 {
-    font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 5vw, 2rem); margin: 0;
-    letter-spacing: -0.01em; animation: heroGlow 4s ease-in-out infinite;
+  .hero-identity h1 {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(1.15rem, 3vw, 1.5rem); margin: 0;
+    letter-spacing: -0.01em; animation: heroGlow 4s ease-in-out infinite; white-space: nowrap;
   }
   @keyframes heroGlow {
     0%, 100% { text-shadow: 0 0 18px rgba(109,31,58,0.6), 0 0 4px rgba(109,31,58,0.4); }
     50%      { text-shadow: 0 0 18px rgba(168,120,30,0.65), 0 0 4px rgba(168,120,30,0.4); }
   }
-  .genre-pills { display: flex; justify-content: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .genre-pills { display: flex; justify-content: center; gap: 8px; margin: 0; flex-wrap: wrap; }
   .genre-pill {
     font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
     padding: 5px 13px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); cursor: default;
@@ -301,7 +305,7 @@
   footer a:hover { text-decoration: underline; }
 
   @media (prefers-reduced-motion: reduce) {
-    .aurora .blob span, .hero h1, .hero .picon { animation: none !important; }
+    .aurora .blob span, .hero-identity h1, .hero-identity .picon { animation: none !important; }
   }
 </style>
 </head>
@@ -317,7 +321,7 @@
   <div class="blob"><span></span></div>
 </div>
 
-<div class="proj-strip-wrap">
+<div class="proj-strip-wrap" id="projStripWrap">
   <div class="proj-strip-row">
   <a class="proj-strip-label" id="stripLabel" href="https://yoluha.github.io/"></a>
   <div class="proj-strip-viewport">
@@ -348,14 +352,18 @@
   </div>
   </div>
 </div>
+<button type="button" class="proj-strip-toggle" id="projStripToggle" onclick="toggleProjStrip()" aria-label="Ocultar/mostrar projetos">▴</button>
+<script>
+  try {
+    if (localStorage.getItem('yoluha-strip-collapsed') === '1') {
+      document.getElementById('projStripWrap').classList.add('collapsed');
+      document.getElementById('projStripToggle').textContent = '▾';
+    }
+  } catch (e) {}
+</script>
 
-<div class="topbar">
-  <a class="backlink" href="../" id="ctaBack"></a>
-  <select id="langSelect" onchange="setLang(this.value)"></select>
-</div>
-
-<div class="hero">
-  <div class="hero-top">
+<div class="hero-bar">
+  <div class="hero-identity">
     <img class="picon" src="https://yt3.googleusercontent.com/tpUlhZiiNIF3l3ra8Z1UaBh7L6loJHgPF5dPxvTydivbBtKiGmhExnepSj1JyeLSesDUs72N0Q=s200-c-k-c0x00ffffff-no-rj" alt="Yoshiki Beats" loading="lazy">
     <h1>Yoshiki Beats</h1>
   </div>
@@ -363,6 +371,7 @@
     <span class="genre-pill" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</span>
     <span class="genre-pill" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</span>
   </div>
+  <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
 <div class="player">
@@ -421,7 +430,6 @@ const LANG_ORDER = ['pt','en','es','fr','de','it','pl','ja','nl','cs','zh','ru',
 const LANG_NAMES = { pt:'Português', en:'English', es:'Español', fr:'Français', de:'Deutsch', it:'Italiano', pl:'Polski', ja:'日本語', nl:'Nederlands', cs:'Čeština', zh:'中文', ru:'Русский', ko:'한국어', ne:'नेपाली' };
 
 const T = {
-  ctaBack: { pt:'← Portfólio', en:'← Portfolio', es:'← Portafolio', fr:'← Portfolio', de:'← Portfolio', it:'← Portfolio', pl:'← Portfolio', ja:'← ポートフォリオ', nl:'← Portfolio', cs:'← Portfolio', zh:'← 作品集', ru:'← Портфолио', ko:'← 포트폴리오', ne:'← पोर्टफोलियो' },
   ctaMusic: { pt:'Ouvir no YouTube Music', en:'Listen on YouTube Music', es:'Escuchar en YouTube Music', fr:'Écouter sur YouTube Music', de:'Auf YouTube Music hören', it:'Ascolta su YouTube Music', pl:'Słuchaj w YouTube Music', ja:'YouTube Musicで聴く', nl:'Luister op YouTube Music', cs:'Poslouchat na YouTube Music', zh:'在YouTube Music上收听', ru:'Слушать в YouTube Music', ko:'YouTube Music에서 듣기', ne:'YouTube Music मा सुन्नुहोस्' },
   nowPlayingPrefix: { pt:'A tocar:', en:'Now playing:', es:'Reproduciendo:', fr:'En lecture :', de:'Läuft gerade:', it:'In riproduzione:', pl:'Teraz gra:', ja:'再生中:', nl:'Nu speelt:', cs:'Přehrává se:', zh:'正在播放：', ru:'Сейчас играет:', ko:'재생 중:', ne:'अहिले बजिरहेको:' },
   radioLabel: { pt:'Rádio', en:'Radio', es:'Radio', fr:'Radio', de:'Radio', it:'Radio', pl:'Radio', ja:'ラジオ', nl:'Radio', cs:'Rádio', zh:'电台', ru:'Радио', ko:'라디오', ne:'रेडियो' },
@@ -466,7 +474,6 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
 
-  document.getElementById('ctaBack').textContent = T.ctaBack[lang];
   document.getElementById('ctaMusic').textContent = T.ctaMusic[lang];
   document.getElementById('nowPlayingPrefix').textContent = T.nowPlayingPrefix[lang];
   document.getElementById('radioLabel').textContent = T.radioLabel[lang];
@@ -527,6 +534,14 @@ function updateProjNav(strip) {
 }
 document.querySelectorAll('.proj-strip').forEach(updateProjNav);
 window.addEventListener('resize', () => document.querySelectorAll('.proj-strip').forEach(updateProjNav));
+
+function toggleProjStrip() {
+  const wrap = document.getElementById('projStripWrap');
+  const btn = document.getElementById('projStripToggle');
+  const collapsed = wrap.classList.toggle('collapsed');
+  btn.textContent = collapsed ? '▾' : '▴';
+  try { localStorage.setItem('yoluha-strip-collapsed', collapsed ? '1' : '0'); } catch (e) {}
+}
 
 (function () {
   const sel = document.getElementById('langSelect');
