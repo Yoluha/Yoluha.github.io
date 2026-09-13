@@ -124,13 +124,67 @@
   }
   .topbar select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+  /* OTHER PROJECTS STRIP */
+  .proj-strip-wrap { background: var(--paper); border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .proj-strip-row { display: flex; align-items: stretch; height: 104px; gap: 12px; max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  @keyframes projLabelGlow {
+    0%, 100% { color: var(--ink-soft); text-shadow: 0 0 4px var(--accent); }
+    50% { color: var(--accent); text-shadow: 0 0 16px var(--accent), 0 0 7px var(--accent); }
+  }
+  .proj-strip-label {
+    writing-mode: vertical-rl; text-orientation: upright; font-family: var(--font-mono); font-size: 0.5rem;
+    letter-spacing: 0.04em; line-height: 1; text-transform: uppercase; color: var(--ink-soft); margin: 0; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+    animation: projLabelGlow 1.5s ease-in-out infinite;
+    text-decoration: none; cursor: pointer;
+  }
+  .proj-strip-viewport { position: relative; flex: 1; min-width: 0; }
+  .proj-strip { display: flex; height: 100%; gap: 9px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .proj-strip::-webkit-scrollbar { display: none; }
+  .proj-card-sm {
+    scroll-snap-align: start; flex: 0 0 auto; width: 142px; border: 1px solid var(--line);
+    border-radius: 9px; padding: 8px 10px; text-decoration: none; display: flex; flex-direction: column; gap: 2px;
+    background-size: cover; background-position: center; position: relative; overflow: hidden;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    opacity: 0; transform: translateY(14px); animation: projCardIn 0.5s ease forwards;
+  }
+  .proj-strip .proj-card-sm:nth-child(1) { animation-delay: 0.05s; }
+  .proj-strip .proj-card-sm:nth-child(2) { animation-delay: 0.12s; }
+  .proj-strip .proj-card-sm:nth-child(3) { animation-delay: 0.19s; }
+  .proj-strip .proj-card-sm:nth-child(4) { animation-delay: 0.26s; }
+  @keyframes projCardIn { to { opacity: 1; transform: translateY(0); } }
+  .proj-card-sm:hover { transform: translateY(-3px) scale(1.02); border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
+  @media (prefers-reduced-motion: reduce) { .proj-card-sm { opacity: 1; transform: none; animation: none; } }
+  .proj-card-sm .proj-icon-sm { position: absolute; right: -6px; bottom: 4px; width: 60px; height: 60px; margin: 0; opacity: 0.45; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); border-radius: 14px; object-fit: cover; animation: projIconFloat 5s ease-in-out infinite; }
+  @keyframes projIconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-6px) rotate(-3deg); } }
+  @media (prefers-reduced-motion: reduce) { .proj-card-sm .proj-icon-sm { animation: none; } }
+  .proj-card-sm h4 { position: relative; z-index: 1; font-family: var(--font-display); font-size: 0.76rem; font-weight: 700; color: #fff; margin: 0; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+  .proj-card-sm span.desc { position: relative; z-index: 1; font-size: 0.62rem; line-height: 1.25; color: rgba(255,255,255,0.88); text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
+  .proj-card-sm.grad-horas { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(6,33,10,0.55) 55%, rgba(76,175,80,0.75) 100%), linear-gradient(160deg, #06210a, #1b5e20 55%, #4caf50); }
+  .proj-card-sm.grad-jc { background-image: linear-gradient(165deg, rgba(8,11,16,0.35) 0%, rgba(10,61,82,0.55) 55%, rgba(201,122,18,0.75) 100%), linear-gradient(160deg, #10151d, #0a3d52 55%, #c97a12); }
+  .proj-card-sm.grad-3d { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
+  .proj-card-sm.grad-synth { background-image: linear-gradient(165deg, rgba(8,11,16,0.4), rgba(30,10,60,0.6) 55%, rgba(255,61,127,0.7) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
+  .proj-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.16); box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    color: #fff; cursor: pointer; font-size: 1.05rem; line-height: 1; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .proj-nav-prev { left: 4px; }
+  .proj-nav-next { right: 4px; }
+  .proj-nav:hover { background: var(--accent); color: #08131c; border-color: var(--accent); }
+  .proj-nav[hidden] { display: none; }
+
   .hero { text-align: center; padding: 18px 24px 20px; max-width: 640px; margin: 0 auto; }
+  .hero-top { display: flex; align-items: center; justify-content: center; gap: 12px; }
   .hero .picon {
-    width: 56px; height: 56px; border-radius: 50%; display: block; margin: 0 auto 8px; object-fit: cover;
+    width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; margin: 0; object-fit: cover;
     border: 2px solid var(--accent); box-shadow: 0 0 16px rgba(168,120,30,0.4);
   }
   .hero h1 {
-    font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 5vw, 2rem); margin: 0 0 6px;
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 5vw, 2rem); margin: 0;
     letter-spacing: -0.01em; animation: heroGlow 4s ease-in-out infinite;
   }
   @keyframes heroGlow {
@@ -263,14 +317,48 @@
   <div class="blob"><span></span></div>
 </div>
 
+<div class="proj-strip-wrap">
+  <div class="proj-strip-row">
+  <a class="proj-strip-label" id="stripLabel" href="https://yoluha.github.io/"></a>
+  <div class="proj-strip-viewport">
+  <button type="button" class="proj-nav proj-nav-prev" onclick="scrollProjStrip(this,-1)" aria-label="Previous" hidden>&#8249;</button>
+  <div class="proj-strip" onscroll="updateProjNav(this)">
+    <a class="proj-card-sm grad-horas" href="https://yoluha.github.io/horas/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/horas/icon.svg" alt="">
+      <h4>Ponto</h4>
+      <span class="desc" id="cardHorasDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/johnny-castaway-reborn/icon.svg" alt="">
+      <h4>Johnny Castaway Reborn</h4>
+      <span class="desc" id="cardJcDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-3d" href="https://yoluha.github.io/3d-manager/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/3d-manager/img/icon/favicon-256.png" alt="">
+      <h4>3D Manager</h4>
+      <span class="desc" id="card3dDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-synth" href="https://yoluha.github.io/synth-yoshi/">
+      <img class="proj-icon-sm" src="https://yt3.googleusercontent.com/TCVsD3rSXkZfDr1gTAmV2N9bYnNes7RLfSkMidbMr_e8YcuuD2ZL0mMY_827FGOVdIio_PeKEA=s128-c-k-c0x00ffffff-no-rj" alt="">
+      <h4>Synth YØSHI</h4>
+      <span class="desc" id="cardSynthDesc"></span>
+    </a>
+  </div>
+  <button type="button" class="proj-nav proj-nav-next" onclick="scrollProjStrip(this,1)" aria-label="Next" hidden>&#8250;</button>
+  </div>
+  </div>
+</div>
+
 <div class="topbar">
   <a class="backlink" href="../" id="ctaBack"></a>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
 <div class="hero">
-  <img class="picon" src="https://yt3.googleusercontent.com/tpUlhZiiNIF3l3ra8Z1UaBh7L6loJHgPF5dPxvTydivbBtKiGmhExnepSj1JyeLSesDUs72N0Q=s200-c-k-c0x00ffffff-no-rj" alt="Yoshiki Beats" loading="lazy">
-  <h1>Yoshiki Beats</h1>
+  <div class="hero-top">
+    <img class="picon" src="https://yt3.googleusercontent.com/tpUlhZiiNIF3l3ra8Z1UaBh7L6loJHgPF5dPxvTydivbBtKiGmhExnepSj1JyeLSesDUs72N0Q=s200-c-k-c0x00ffffff-no-rj" alt="Yoshiki Beats" loading="lazy">
+    <h1>Yoshiki Beats</h1>
+  </div>
   <div class="genre-pills">
     <span class="genre-pill" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</span>
     <span class="genre-pill" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</span>
@@ -350,7 +438,12 @@ const T = {
   sortPlays: { pt:'Mais tocadas', en:'Most played', es:'Más reproducidas', fr:'Les plus jouées', de:'Meistgespielt', it:'Più riprodotte', pl:'Najczęściej odtwarzane', ja:'再生数順', nl:'Meest gespeeld', cs:'Nejhranější', zh:'播放最多', ru:'Больше всего прослушиваний', ko:'재생 많은 순', ne:'धेरै बजेको' },
   linksHeading: { pt:'Links', en:'Links', es:'Enlaces', fr:'Liens', de:'Links', it:'Link', pl:'Linki', ja:'リンク', nl:'Links', cs:'Odkazy', zh:'链接', ru:'Ссылки', ko:'링크', ne:'लिङ्कहरू' },
   linkPortfolio: { pt:'Outros Projetos', en:'Other Projects', es:'Otros Proyectos', fr:'Autres Projets', de:'Weitere Projekte', it:'Altri Progetti', pl:'Inne Projekty', ja:'その他のプロジェクト', nl:'Andere Projecten', cs:'Další Projekty', zh:'其他项目', ru:'Другие Проекты', ko:'다른 프로젝트', ne:'अन्य परियोजनाहरू' },
-  footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' }
+  footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' },
+  stripLabel: { pt:'Projetos', en:'Projects', es:'Proyectos', fr:'Projets', de:'Projekte', it:'Progetti', pl:'Projekty', ja:'プロジェクト', nl:'Projecten', cs:'Projekty', zh:'项目', ru:'Проекты', ko:'프로젝트', ne:'परियोजनाहरू' },
+  cardHorasDesc: { pt:'Ponto e deteção por WiFi', en:'Time clock, WiFi auto-detect', es:'Fichaje y detección por WiFi', fr:'Pointage, détection WiFi', de:'Stempeluhr, WLAN-Erkennung', it:'Timbratura, rilevamento WiFi', pl:'Rejestracja czasu, wykrywanie WiFi', ja:'勤怠管理・WiFi自動検出', nl:'Prikklok, WiFi-detectie', cs:'Docházka, detekce WiFi', zh:'打卡与WiFi自动检测', ru:'Учёт времени, определение по WiFi', ko:'근태 관리, WiFi 자동 감지', ne:'समय दर्ता, WiFi स्वतः पहिचान' },
+  cardJcDesc: { pt:'Screensaver de 1992, remasterizado', en:'The 1992 screensaver, remastered', es:'El protector de pantalla de 1992, remasterizado', fr:'L\'économiseur d\'écran de 1992, remasterisé', de:'Der Bildschirmschoner von 1992, neu aufgelegt', it:'Il salvaschermo del 1992, rimasterizzato', pl:'Wygaszacz ekranu z 1992 roku, odświeżony', ja:'1992年のスクリーンセーバー、リマスター版', nl:'De screensaver uit 1992, geremasterd', cs:'Spořič obrazovky z roku 1992, remasterovaný', zh:'1992年的屏保，重制版', ru:'Скринсейвер 1992 года, ремастер', ko:'1992년 스크린세이버, 리마스터', ne:'१९९२ को स्क्रिनसेभर, नयाँ रूपमा' },
+  card3dDesc: { pt:'Orçamentos, produção e clientes', en:'Quotes, production and clients', es:'Presupuestos, producción y clientes', fr:'Devis, production et clients', de:'Angebote, Produktion und Kunden', it:'Preventivi, produzione e clienti', pl:'Wyceny, produkcja i klienci', ja:'見積もり・生産・顧客管理', nl:'Offertes, productie en klanten', cs:'Nabídky, výroba a klienti', zh:'报价、生产与客户', ru:'Сметы, производство и клиенты', ko:'견적, 생산, 고객 관리', ne:'मूल्य उद्धरण, उत्पादन र ग्राहक' },
+  cardSynthDesc: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' }
 };
 
 let currentLang = 'pt';
@@ -387,13 +480,53 @@ function setLang(lang) {
   document.getElementById('linksHeading').textContent = T.linksHeading[lang];
   document.getElementById('linkPortfolioLabel').textContent = T.linkPortfolio[lang];
   document.getElementById('footerContact').textContent = T.footerContact[lang];
+  document.getElementById('stripLabel').textContent = T.stripLabel[lang];
+  document.getElementById('cardHorasDesc').textContent = T.cardHorasDesc[lang];
+  document.getElementById('cardJcDesc').textContent = T.cardJcDesc[lang];
+  document.getElementById('card3dDesc').textContent = T.card3dDesc[lang];
+  document.getElementById('cardSynthDesc').textContent = T.cardSynthDesc[lang];
 
   const sel = document.getElementById('langSelect');
   if (sel && sel.value !== lang) sel.value = lang;
   try { localStorage.setItem('yoluha-lang', lang); } catch (e) {}
 
   renderTracks();
+  fitProjLabel();
 }
+
+function fitProjLabel() {
+  const el = document.getElementById('stripLabel');
+  if (!el) return;
+  el.style.fontSize = '';
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  const natural = range.getBoundingClientRect().height;
+  if (!natural) return;
+  let scale = 90 / natural;
+  scale = Math.max(0.7, Math.min(scale, 2.2));
+  let rem = 0.5 * scale;
+  rem = Math.max(0.38, Math.min(rem, 0.95));
+  el.style.fontSize = rem.toFixed(3) + 'rem';
+}
+
+function scrollProjStrip(btn, dir) {
+  const strip = btn.parentElement.querySelector('.proj-strip');
+  const card = strip.querySelector('.proj-card-sm');
+  const step = card ? card.offsetWidth + 9 : 150;
+  strip.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
+}
+function updateProjNav(strip) {
+  const viewport = strip.parentElement;
+  const prev = viewport.querySelector('.proj-nav-prev');
+  const next = viewport.querySelector('.proj-nav-next');
+  if (!prev || !next) return;
+  const max = strip.scrollWidth - strip.clientWidth;
+  const scrollable = max > 2;
+  prev.hidden = !scrollable || strip.scrollLeft <= 2;
+  next.hidden = !scrollable || strip.scrollLeft >= max - 2;
+}
+document.querySelectorAll('.proj-strip').forEach(updateProjNav);
+window.addEventListener('resize', () => document.querySelectorAll('.proj-strip').forEach(updateProjNav));
 
 (function () {
   const sel = document.getElementById('langSelect');
@@ -404,6 +537,9 @@ function setLang(lang) {
   var browserLang = (navigator.language || 'pt').slice(0, 2);
   var initial = saved || (LANG_ORDER.includes(browserLang) ? browserLang : 'pt');
   setLang(initial);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fitProjLabel);
+  }
 })();
 
 (function () {
