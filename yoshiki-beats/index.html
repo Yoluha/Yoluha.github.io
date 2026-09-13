@@ -459,6 +459,7 @@ const T = {
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
   sortLikes: { pt:'Mais gostos', en:'Most liked', es:'Más gustadas', fr:'Les plus aimées', de:'Meiste Likes', it:'Più apprezzate', pl:'Najwięcej polubień', ja:'高評価順', nl:'Meest geliket', cs:'Nejoblíbenější', zh:'点赞最多', ru:'Больше всего лайков', ko:'좋아요순', ne:'धेरै मन परेको' },
   allGenres: { pt:'Todos', en:'All', es:'Todos', fr:'Tous', de:'Alle', it:'Tutti', pl:'Wszystkie', ja:'すべて', nl:'Alle', cs:'Vše', zh:'全部', ru:'Все', ko:'전체', ne:'सबै' },
+  otherGenres: { pt:'Outros', en:'Others', es:'Otros', fr:'Autres', de:'Andere', it:'Altri', pl:'Inne', ja:'その他', nl:'Overige', cs:'Ostatní', zh:'其他', ru:'Другие', ko:'기타', ne:'अन्य' },
   trackEmpty: { pt:'Nenhuma faixa encontrada.', en:'No tracks found.', es:'No se encontraron pistas.', fr:'Aucun titre trouvé.', de:'Keine Tracks gefunden.', it:'Nessun brano trovato.', pl:'Nie znaleziono utworów.', ja:'トラックが見つかりません。', nl:'Geen tracks gevonden.', cs:'Nebyly nalezeny žádné skladby.', zh:'未找到曲目。', ru:'Треки не найдены.', ko:'트랙을 찾을 수 없습니다.', ne:'कुनै ट्र्याक फेला परेन।' },
   tlMore: { pt:'Ver catálogo completo no YouTube ↗', en:'See the full catalog on YouTube ↗', es:'Ver catálogo completo en YouTube ↗', fr:'Voir le catalogue complet sur YouTube ↗', de:'Vollständigen Katalog auf YouTube ansehen ↗', it:'Vedi il catalogo completo su YouTube ↗', pl:'Zobacz pełny katalog na YouTube ↗', ja:'YouTubeで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube ↗', cs:'Zobrazit celý katalog na YouTube ↗', zh:'在YouTube上查看完整目录 ↗', ru:'Смотреть полный каталог на YouTube ↗', ko:'YouTube에서 전체 카탈로그 보기 ↗', ne:'YouTube मा पूर्ण सूची हेर्नुहोस् ↗' },
   tlMoreMusic: { pt:'Ver catálogo completo no YouTube Music ↗', en:'See the full catalog on YouTube Music ↗', es:'Ver catálogo completo en YouTube Music ↗', fr:'Voir le catalogue complet sur YouTube Music ↗', de:'Vollständigen Katalog auf YouTube Music ansehen ↗', it:'Vedi il catalogo completo su YouTube Music ↗', pl:'Zobacz pełny katalog na YouTube Music ↗', ja:'YouTube Musicで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube Music ↗', cs:'Zobrazit celý katalog na YouTube Music ↗', zh:'在YouTube Music上查看完整目录 ↗', ru:'Смотреть полный каталог в YouTube Music ↗', ko:'YouTube Music에서 전체 카탈로그 보기 ↗', ne:'YouTube Music मा पूर्ण सूची हेर्नुहोस् ↗' },
@@ -741,9 +742,17 @@ function currentItems() {
   return activeTab === 'music' ? ALL_SONGS : ALL_VIDEOS;
 }
 
+// Only J-Trap and GΛRĀN get their own filter chip; every other genre tag
+// (Djent, J-Metal, Kami Phonk, whatever a future data refresh adds...)
+// collapses into one shared "Outros" chip so the filter bar stays short.
+const GENRE_KEEP = new Set(['J-Trap', 'GΛRĀN']);
+const GENRE_OTHER_KEY = '__other__';
+function genreKey(g) { return GENRE_KEEP.has(g) ? g : GENRE_OTHER_KEY; }
+function genreLabel(key) { return key === GENRE_OTHER_KEY ? T.otherGenres[currentLang] : key; }
+
 function filteredItems() {
   return currentItems().filter(v => {
-    if (tlState.genres.size && !tlState.genres.has(v.genre)) return false;
+    if (tlState.genres.size && !tlState.genres.has(genreKey(v.genre))) return false;
     if (tlState.query && !v.title.toLowerCase().includes(tlState.query)) return false;
     return true;
   });
@@ -800,8 +809,9 @@ function renderTracks() {
 
 function renderGenreChips() {
   const wrap = document.getElementById('tlGenres');
-  const genres = Array.from(new Set(currentItems().map(v => v.genre).filter(Boolean)));
-  if (genres.length < 2) { wrap.hidden = true; return; }
+  const keys = new Set(currentItems().map(v => genreKey(v.genre)).filter(Boolean));
+  const orderedKeys = ['J-Trap', 'GΛRĀN', GENRE_OTHER_KEY].filter(k => keys.has(k));
+  if (orderedKeys.length < 2) { wrap.hidden = true; return; }
   wrap.hidden = false;
   wrap.innerHTML = '';
   const allChip = document.createElement('button');
@@ -810,12 +820,12 @@ function renderGenreChips() {
   allChip.textContent = T.allGenres[currentLang];
   allChip.dataset.genre = 'all';
   wrap.appendChild(allChip);
-  genres.forEach(g => {
+  orderedKeys.forEach(k => {
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'tl-chip';
-    chip.textContent = g;
-    chip.dataset.genre = g;
+    chip.textContent = genreLabel(k);
+    chip.dataset.genre = k;
     wrap.appendChild(chip);
   });
   wrap.addEventListener('click', (e) => {
