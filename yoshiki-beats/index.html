@@ -230,6 +230,8 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-music { color: #f5ead0; background: linear-gradient(135deg, #a8781e, #6d1f3a); box-shadow: 0 8px 22px rgba(168,120,30,0.35); }
   .btn-music:hover { box-shadow: 0 12px 28px rgba(168,120,30,0.5); }
+  .btn-music-compact { padding: 6px 10px; font-size: 0.58rem; box-shadow: 0 4px 12px rgba(168,120,30,0.3); }
+  .btn-music-compact:hover { box-shadow: 0 6px 16px rgba(168,120,30,0.45); }
   .btn-radio { color: var(--ink); background: var(--card); border: 1px solid var(--accent); }
   .btn-radio:hover { background: rgba(255,255,255,0.06); }
 
@@ -388,12 +390,12 @@
     <button type="button" class="genre-pill" data-genre="J-Trap" onclick="filterByGenre('J-Trap', this)" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</button>
     <button type="button" class="genre-pill" data-genre="GΛRĀN" onclick="filterByGenre('GΛRĀN', this)" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</button>
   </div>
-  <a class="btn btn-music" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <div class="playback-controls">
     <button type="button" class="btn btn-radio btn-nav" id="prevBtn" onclick="playAdjacent(-1)" aria-label="Previous" title="">⏮</button>
     <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
     <button type="button" class="btn btn-radio btn-nav" id="nextBtn" onclick="playAdjacent(1)" aria-label="Next" title="">⏭</button>
   </div>
+  <a class="btn btn-music btn-music-compact" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
