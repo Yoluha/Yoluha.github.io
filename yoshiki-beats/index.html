@@ -113,13 +113,13 @@
   .hero-bar, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
 
   .hero-bar {
-    display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
-    padding: 16px 24px; max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    padding: 14px 24px; max-width: 900px; margin: 0 auto;
   }
-  .hero-identity { display: flex; align-items: center; gap: 10px; }
+  .hero-identity { display: flex; align-items: center; gap: 8px; }
   .hero-bar select {
     background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 7px;
-    padding: 8px 12px; font-family: var(--font-mono); font-size: 0.82rem; cursor: pointer;
+    padding: 7px 10px; font-family: var(--font-mono); font-size: 0.72rem; cursor: pointer;
   }
   .hero-bar select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -158,6 +158,7 @@
   .proj-strip .proj-card-sm:nth-child(2) { animation-delay: 0.12s; }
   .proj-strip .proj-card-sm:nth-child(3) { animation-delay: 0.19s; }
   .proj-strip .proj-card-sm:nth-child(4) { animation-delay: 0.26s; }
+  .proj-strip .proj-card-sm:nth-child(5) { animation-delay: 0.33s; }
   @keyframes projCardIn { to { opacity: 1; transform: translateY(0); } }
   .proj-card-sm:hover { transform: translateY(-3px) scale(1.02); border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
   @media (prefers-reduced-motion: reduce) { .proj-card-sm { opacity: 1; transform: none; animation: none; } }
@@ -170,6 +171,7 @@
   .proj-card-sm.grad-jc { background-image: linear-gradient(165deg, rgba(8,11,16,0.35) 0%, rgba(10,61,82,0.55) 55%, rgba(201,122,18,0.75) 100%), linear-gradient(160deg, #10151d, #0a3d52 55%, #c97a12); }
   .proj-card-sm.grad-3d { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
   .proj-card-sm.grad-synth { background-image: linear-gradient(165deg, rgba(8,11,16,0.4), rgba(30,10,60,0.6) 55%, rgba(255,61,127,0.7) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
+  .proj-card-sm.grad-lista { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(74,60,10,0.55) 55%, rgba(184,134,11,0.8) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
   .proj-nav {
     position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
     width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35);
@@ -184,21 +186,21 @@
   .proj-nav[hidden] { display: none; }
 
   .hero-identity .picon {
-    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; margin: 0; object-fit: cover;
+    width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; margin: 0; object-fit: cover;
     border: 2px solid var(--accent); box-shadow: 0 0 16px rgba(168,120,30,0.4);
   }
   .hero-identity h1 {
-    font-family: var(--font-display); font-weight: 800; font-size: clamp(1.15rem, 3vw, 1.5rem); margin: 0;
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(1rem, 2.4vw, 1.25rem); margin: 0;
     letter-spacing: -0.01em; animation: heroGlow 4s ease-in-out infinite; white-space: nowrap;
   }
   @keyframes heroGlow {
     0%, 100% { text-shadow: 0 0 18px rgba(109,31,58,0.6), 0 0 4px rgba(109,31,58,0.4); }
     50%      { text-shadow: 0 0 18px rgba(168,120,30,0.65), 0 0 4px rgba(168,120,30,0.4); }
   }
-  .genre-pills { display: flex; justify-content: center; gap: 8px; margin: 0; flex-wrap: wrap; }
+  .genre-pills { display: flex; justify-content: center; gap: 6px; margin: 0; flex-wrap: wrap; }
   .genre-pill {
-    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
-    padding: 5px 13px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); cursor: default;
+    font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.02em;
+    padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); cursor: default;
     transition: border-color 0.15s ease, color 0.15s ease;
   }
   .genre-pill:hover { border-color: var(--accent); color: var(--accent); }
@@ -215,11 +217,10 @@
   }
   .player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
   .btn {
-    font-family: var(--font-mono); font-size: 0.86rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
-    text-decoration: none; padding: 13px 22px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;
+    text-decoration: none; padding: 7px 12px; border-radius: 7px; display: inline-flex; align-items: center; gap: 5px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; white-space: nowrap;
   }
   .btn:hover { transform: translateY(-2px); }
   .btn-music { color: #f5ead0; background: linear-gradient(135deg, #a8781e, #6d1f3a); box-shadow: 0 8px 22px rgba(168,120,30,0.35); }
@@ -347,6 +348,11 @@
       <h4>Synth YØSHI</h4>
       <span class="desc" id="cardSynthDesc"></span>
     </a>
+    <a class="proj-card-sm grad-lista" href="https://yoluha.github.io/lista-pedidos/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/lista-pedidos/icon-192.png" alt="">
+      <h4>Lista</h4>
+      <span class="desc" id="cardListaDesc"></span>
+    </a>
   </div>
   <button type="button" class="proj-nav proj-nav-next" onclick="scrollProjStrip(this,1)" aria-label="Next" hidden>&#8250;</button>
   </div>
@@ -371,6 +377,8 @@
     <span class="genre-pill" title="Dark Japanese Trap. An instrumental blend of heavy trap, shamisen, koto and taiko, mixed with futuristic textures.">J-Trap</span>
     <span class="genre-pill" title="(Garan) is an experimental blend of Djent metal, Cyberpunk elements, Trap, and traditional Japanese instruments like shamisen, koto, and taiko. The project draws inspiration from the word 伽藍, meaning &quot;temple precinct,&quot; while also sharing the onomatopoeic sense of &quot;hallowed emptiness&quot; (ガラン).">GΛRĀN</span>
   </div>
+  <a class="btn btn-music" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
+  <button type="button" class="btn btn-radio" id="radioBtn">📻 <span id="radioLabel"></span></button>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
@@ -378,10 +386,6 @@
   <p class="now-playing-label"><span id="nowPlayingPrefix"></span> <b id="nowPlayingTitle">Arigatō 有難う (J-Trap)</b></p>
   <div class="player-frame">
     <div id="playerFrame"></div>
-  </div>
-  <div class="actions">
-    <a class="btn btn-music" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
-    <button type="button" class="btn btn-radio" id="radioBtn">📻 <span id="radioLabel"></span></button>
   </div>
 </div>
 
@@ -451,7 +455,8 @@ const T = {
   cardHorasDesc: { pt:'Ponto e deteção por WiFi', en:'Time clock, WiFi auto-detect', es:'Fichaje y detección por WiFi', fr:'Pointage, détection WiFi', de:'Stempeluhr, WLAN-Erkennung', it:'Timbratura, rilevamento WiFi', pl:'Rejestracja czasu, wykrywanie WiFi', ja:'勤怠管理・WiFi自動検出', nl:'Prikklok, WiFi-detectie', cs:'Docházka, detekce WiFi', zh:'打卡与WiFi自动检测', ru:'Учёт времени, определение по WiFi', ko:'근태 관리, WiFi 자동 감지', ne:'समय दर्ता, WiFi स्वतः पहिचान' },
   cardJcDesc: { pt:'Screensaver de 1992, remasterizado', en:'The 1992 screensaver, remastered', es:'El protector de pantalla de 1992, remasterizado', fr:'L\'économiseur d\'écran de 1992, remasterisé', de:'Der Bildschirmschoner von 1992, neu aufgelegt', it:'Il salvaschermo del 1992, rimasterizzato', pl:'Wygaszacz ekranu z 1992 roku, odświeżony', ja:'1992年のスクリーンセーバー、リマスター版', nl:'De screensaver uit 1992, geremasterd', cs:'Spořič obrazovky z roku 1992, remasterovaný', zh:'1992年的屏保，重制版', ru:'Скринсейвер 1992 года, ремастер', ko:'1992년 스크린세이버, 리마스터', ne:'१९९२ को स्क्रिनसेभर, नयाँ रूपमा' },
   card3dDesc: { pt:'Orçamentos, produção e clientes', en:'Quotes, production and clients', es:'Presupuestos, producción y clientes', fr:'Devis, production et clients', de:'Angebote, Produktion und Kunden', it:'Preventivi, produzione e clienti', pl:'Wyceny, produkcja i klienci', ja:'見積もり・生産・顧客管理', nl:'Offertes, productie en klanten', cs:'Nabídky, výroba a klienti', zh:'报价、生产与客户', ru:'Сметы, производство и клиенты', ko:'견적, 생산, 고객 관리', ne:'मूल्य उद्धरण, उत्पादन र ग्राहक' },
-  cardSynthDesc: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' }
+  cardSynthDesc: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' },
+  cardListaDesc: { pt:'Listas de encomendas para o trabalho', en:'Work order lists, offline', es:'Listas de pedidos para el trabajo', fr:'Listes de commandes pour le travail', de:'Bestelllisten für die Arbeit', it:'Liste ordini per il lavoro', pl:'Listy zamówień do pracy', ja:'仕事の注文リスト', nl:'Bestellijsten voor het werk', cs:'Objednávkové seznamy do práce', zh:'工作订单清单', ru:'Списки заказов для работы', ko:'업무용 주문 목록', ne:'कामको लागि अर्डर सूची' }
 };
 
 let currentLang = 'pt';
@@ -492,6 +497,7 @@ function setLang(lang) {
   document.getElementById('cardJcDesc').textContent = T.cardJcDesc[lang];
   document.getElementById('card3dDesc').textContent = T.card3dDesc[lang];
   document.getElementById('cardSynthDesc').textContent = T.cardSynthDesc[lang];
+  document.getElementById('cardListaDesc').textContent = T.cardListaDesc[lang];
 
   const sel = document.getElementById('langSelect');
   if (sel && sel.value !== lang) sel.value = lang;
