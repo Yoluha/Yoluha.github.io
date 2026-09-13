@@ -229,30 +229,36 @@
   .btn-radio:hover { background: rgba(255,255,255,0.06); }
 
   .tracklist-section { max-width: 860px; margin: 34px auto 0; padding: 0 24px; }
-  .tl-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tl-bar {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; scrollbar-width: thin;
+  }
+  .tl-bar::-webkit-scrollbar { height: 4px; }
+  .tl-bar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  .tl-tabs { display: flex; gap: 6px; flex-shrink: 0; }
   .tl-tab {
-    padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--card);
-    color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease;
+    padding: 7px 12px; border-radius: 7px; border: 1px solid var(--line); background: var(--card);
+    color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.02em; cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
   }
   .tl-tab:hover:not(.active) { border-color: rgba(255,255,255,0.4); color: var(--ink); }
   .tl-tab.active { background: var(--accent); border-color: var(--accent); color: #1a1210; }
-  .tl-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
   .tl-search {
-    flex: 1; min-width: 160px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line);
-    background: var(--card); color: var(--ink); font-family: var(--font-body); font-size: 0.88rem;
+    flex-shrink: 0; width: 170px; padding: 7px 11px; border-radius: 7px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); font-family: var(--font-body); font-size: 0.78rem;
   }
   .tl-search::placeholder { color: var(--ink-soft); }
   .tl-search:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
   .tl-sort {
-    padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--card);
-    color: var(--ink); font-family: var(--font-mono); font-size: 0.78rem; cursor: pointer;
+    flex-shrink: 0; padding: 7px 10px; border-radius: 7px; border: 1px solid var(--line); background: var(--card);
+    color: var(--ink); font-family: var(--font-mono); font-size: 0.68rem; cursor: pointer;
   }
-  .tl-genres { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tl-genres { display: flex; gap: 6px; flex-shrink: 0; }
   .tl-chip {
-    padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: transparent;
-    color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase;
-    letter-spacing: 0.03em; cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    flex-shrink: 0; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent;
+    color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase;
+    letter-spacing: 0.02em; cursor: pointer; white-space: nowrap;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
   }
   .tl-chip:hover { border-color: rgba(255,255,255,0.4); color: var(--ink); }
   .tl-chip.active { background: var(--accent); border-color: var(--accent); color: #1a1210; }
@@ -390,19 +396,19 @@
 </div>
 
 <div class="tracklist-section" id="tracklistSection" hidden>
-  <div class="tl-tabs">
-    <button type="button" class="tl-tab active" id="tabMusic" data-tab="music"></button>
-    <button type="button" class="tl-tab" id="tabVideo" data-tab="video"></button>
-  </div>
-  <div class="tl-toolbar">
+  <div class="tl-bar">
+    <div class="tl-tabs">
+      <button type="button" class="tl-tab active" id="tabMusic" data-tab="music"></button>
+      <button type="button" class="tl-tab" id="tabVideo" data-tab="video"></button>
+    </div>
     <input class="tl-search" id="tlSearch" type="search" autocomplete="off">
     <select class="tl-sort" id="tlSort">
       <option value="newest" id="sortNewest"></option>
       <option value="views" id="sortViews"></option>
       <option value="likes" id="sortLikes"></option>
     </select>
+    <div class="tl-genres" id="tlGenres" hidden></div>
   </div>
-  <div class="tl-genres" id="tlGenres" hidden></div>
   <p class="tl-count" id="tlCount"></p>
   <div class="track-list" id="trackList"></div>
   <a class="tl-more" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener" id="tlMore"></a>
