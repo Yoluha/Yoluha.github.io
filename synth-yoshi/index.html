@@ -223,6 +223,8 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-music { color: #050308; background: linear-gradient(135deg, #00e5ff, #ff00e5); box-shadow: 0 8px 22px rgba(0,229,255,0.35); }
   .btn-music:hover { box-shadow: 0 12px 28px rgba(255,0,229,0.5); }
+  .btn-music-compact { padding: 6px 10px; font-size: 0.58rem; box-shadow: 0 4px 12px rgba(0,229,255,0.3); }
+  .btn-music-compact:hover { box-shadow: 0 6px 16px rgba(255,0,229,0.45); }
   .btn-radio { color: var(--ink); background: var(--card); border: 1px solid var(--accent); }
   .btn-radio:hover { background: rgba(255,255,255,0.06); }
 
@@ -381,12 +383,12 @@
     <span class="genre-pill" title="Aggressive, dark synthwave — heavy, cinematic, built for tension.">Darksynth</span>
     <span class="genre-pill" title="Nostalgic, mellow synthwave — warm retro-futuristic 80s textures.">ChillSynth</span>
   </div>
-  <a class="btn btn-music" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <div class="playback-controls">
     <button type="button" class="btn btn-radio btn-nav" id="prevBtn" onclick="playAdjacent(-1)" aria-label="Previous" title="">⏮</button>
     <button type="button" class="btn btn-radio" id="radioBtn" title="">📻 <span id="radioLabel"></span></button>
     <button type="button" class="btn btn-radio btn-nav" id="nextBtn" onclick="playAdjacent(1)" aria-label="Next" title="">⏭</button>
   </div>
+  <a class="btn btn-music btn-music-compact" href="https://music.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
@@ -444,6 +446,7 @@ const T = {
   sortViews: { pt:'Mais vistas', en:'Most viewed', es:'Más vistas', fr:'Les plus vues', de:'Meiste Aufrufe', it:'Più viste', pl:'Najczęściej oglądane', ja:'再生回数順', nl:'Meest bekeken', cs:'Nejsledovanější', zh:'观看最多', ru:'Больше всего просмотров', ko:'조회수순', ne:'धेरै हेरिएको' },
   sortLikes: { pt:'Mais gostos', en:'Most liked', es:'Más gustadas', fr:'Les plus aimées', de:'Meiste Likes', it:'Più apprezzate', pl:'Najwięcej polubień', ja:'高評価順', nl:'Meest geliket', cs:'Nejoblíbenější', zh:'点赞最多', ru:'Больше всего лайков', ko:'좋아요순', ne:'धेरै मन परेको' },
   allGenres: { pt:'Todos', en:'All', es:'Todos', fr:'Tous', de:'Alle', it:'Tutti', pl:'Wszystkie', ja:'すべて', nl:'Alle', cs:'Vše', zh:'全部', ru:'Все', ko:'전체', ne:'सबै' },
+  otherGenres: { pt:'Outros', en:'Others', es:'Otros', fr:'Autres', de:'Andere', it:'Altri', pl:'Inne', ja:'その他', nl:'Overige', cs:'Ostatní', zh:'其他', ru:'Другие', ko:'기타', ne:'अन्य' },
   trackEmpty: { pt:'Nenhuma faixa encontrada.', en:'No tracks found.', es:'No se encontraron pistas.', fr:'Aucun titre trouvé.', de:'Keine Tracks gefunden.', it:'Nessun brano trovato.', pl:'Nie znaleziono utworów.', ja:'トラックが見つかりません。', nl:'Geen tracks gevonden.', cs:'Nebyly nalezeny žádné skladby.', zh:'未找到曲目。', ru:'Треки не найдены.', ko:'트랙을 찾을 수 없습니다.', ne:'कुनै ट्र्याक फेला परेन।' },
   tlMore: { pt:'Ver catálogo completo no YouTube ↗', en:'See the full catalog on YouTube ↗', es:'Ver catálogo completo en YouTube ↗', fr:'Voir le catalogue complet sur YouTube ↗', de:'Vollständigen Katalog auf YouTube ansehen ↗', it:'Vedi il catalogo completo su YouTube ↗', pl:'Zobacz pełny katalog na YouTube ↗', ja:'YouTubeで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube ↗', cs:'Zobrazit celý katalog na YouTube ↗', zh:'在YouTube上查看完整目录 ↗', ru:'Смотреть полный каталог на YouTube ↗', ko:'YouTube에서 전체 카탈로그 보기 ↗', ne:'YouTube मा पूर्ण सूची हेर्नुहोस् ↗' },
   tlMoreMusic: { pt:'Ver catálogo completo no YouTube Music ↗', en:'See the full catalog on YouTube Music ↗', es:'Ver catálogo completo en YouTube Music ↗', fr:'Voir le catalogue complet sur YouTube Music ↗', de:'Vollständigen Katalog auf YouTube Music ansehen ↗', it:'Vedi il catalogo completo su YouTube Music ↗', pl:'Zobacz pełny katalog na YouTube Music ↗', ja:'YouTube Musicで全カタログを見る ↗', nl:'Bekijk de volledige catalogus op YouTube Music ↗', cs:'Zobrazit celý katalog na YouTube Music ↗', zh:'在YouTube Music上查看完整目录 ↗', ru:'Смотреть полный каталог в YouTube Music ↗', ko:'YouTube Music에서 전체 카탈로그 보기 ↗', ne:'YouTube Music मा पूर्ण सूची हेर्नुहोस् ↗' },
@@ -723,9 +726,16 @@ function currentItems() {
   return activeTab === 'music' ? ALL_SONGS : ALL_VIDEOS;
 }
 
+// Only Darksynth and ChillSynth get their own filter chip; any other genre
+// tag collapses into one shared "Outros" chip so the filter bar stays short.
+const GENRE_KEEP = new Set(['Darksynth', 'ChillSynth']);
+const GENRE_OTHER_KEY = '__other__';
+function genreKey(g) { return GENRE_KEEP.has(g) ? g : GENRE_OTHER_KEY; }
+function genreLabel(key) { return key === GENRE_OTHER_KEY ? T.otherGenres[currentLang] : key; }
+
 function filteredItems() {
   return currentItems().filter(v => {
-    if (tlState.genre !== 'all' && v.genre !== tlState.genre) return false;
+    if (tlState.genre !== 'all' && genreKey(v.genre) !== tlState.genre) return false;
     if (tlState.query && !v.title.toLowerCase().includes(tlState.query)) return false;
     return true;
   });
@@ -782,8 +792,9 @@ function renderTracks() {
 
 function renderGenreChips() {
   const wrap = document.getElementById('tlGenres');
-  const genres = Array.from(new Set(currentItems().map(v => v.genre).filter(Boolean)));
-  if (genres.length < 2) { wrap.hidden = true; return; }
+  const keys = new Set(currentItems().map(v => v.genre).filter(Boolean).map(genreKey));
+  const orderedKeys = ['Darksynth', 'ChillSynth', GENRE_OTHER_KEY].filter(k => keys.has(k));
+  if (orderedKeys.length < 2) { wrap.hidden = true; return; }
   wrap.hidden = false;
   wrap.innerHTML = '';
   const allChip = document.createElement('button');
@@ -792,12 +803,12 @@ function renderGenreChips() {
   allChip.textContent = T.allGenres[currentLang];
   allChip.dataset.genre = 'all';
   wrap.appendChild(allChip);
-  genres.forEach(g => {
+  orderedKeys.forEach(k => {
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'tl-chip';
-    chip.textContent = g;
-    chip.dataset.genre = g;
+    chip.textContent = genreLabel(k);
+    chip.dataset.genre = k;
     wrap.appendChild(chip);
   });
   wrap.addEventListener('click', (e) => {

@@ -809,7 +809,7 @@ function renderTracks() {
 
 function renderGenreChips() {
   const wrap = document.getElementById('tlGenres');
-  const keys = new Set(currentItems().map(v => genreKey(v.genre)).filter(Boolean));
+  const keys = new Set(currentItems().map(v => v.genre).filter(Boolean).map(genreKey));
   const orderedKeys = ['J-Trap', 'GΛRĀN', GENRE_OTHER_KEY].filter(k => keys.has(k));
   if (orderedKeys.length < 2) { wrap.hidden = true; return; }
   wrap.hidden = false;
