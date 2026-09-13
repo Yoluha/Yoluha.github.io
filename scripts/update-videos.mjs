@@ -138,6 +138,18 @@ function normalizeGenre(slug, raw) {
   return cfg.aliases[key] || cfg.default;
 }
 
+// YT Music's own "Top songs" chart for an artist caps out well short of a
+// prolific catalog — confirmed by testing that it simply stops sending a
+// continuation token, not something more pagination can fix. The channel's
+// full video catalog has no such cap, so it fills the gap, minus mixes,
+// compilations and multi-track playlist videos (those aren't a single song).
+function normTitle(t) {
+  return t.toLowerCase().replace(/[|()[\]【】]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+function isMixOrCompilation(title) {
+  return /playlist|compilation|\bmix\b|\bvol\.?\s*\d|trilogy|\btrio\b|\d{1,2}h\s*\d{1,2}m|non-?stop|megamix|full album|\bep\.\s*\d|best of|top\s*\d+/i.test(title);
+}
+
 function extractLockups(items) {
   const out = [];
   for (const item of items) {
@@ -315,18 +327,24 @@ for (const { slug, channelId } of CHANNELS) {
   }
 
   try {
-    const songs = await fetchSongs(slug, channelId);
+    const officialSongs = await fetchSongs(slug, channelId);
     const songsPath = path.join(ROOT, slug, 'songs.json');
     const prevSongs = fs.existsSync(songsPath) ? fs.readFileSync(songsPath, 'utf8') : '';
     const prevCount = prevSongs ? JSON.parse(prevSongs).length : 0;
-    if (songs.length === 0 && prevCount > 0) {
+    if (officialSongs.length === 0 && prevCount > 0) {
       console.error(`Skipped ${slug}/songs.json: fetch returned 0 songs (keeping existing ${prevCount})`);
     } else {
+      const officialTitles = new Set(officialSongs.map(s => normTitle(s.title)));
+      const extra = videos
+        .filter(v => !isMixOrCompilation(v.title))
+        .filter(v => !officialTitles.has(normTitle(v.title)))
+        .map(v => ({ id: v.id, title: v.title, genre: v.genre, plays: v.views || 0 }));
+      const songs = officialSongs.concat(extra);
       const nextSongs = JSON.stringify(songs, null, 2) + '\n';
       if (nextSongs !== prevSongs) {
         fs.writeFileSync(songsPath, nextSongs);
         changed = true;
-        console.log(`Updated ${slug}/songs.json (${songs.length} songs)`);
+        console.log(`Updated ${slug}/songs.json (${officialSongs.length} official + ${extra.length} from video catalog = ${songs.length} songs)`);
       } else {
         console.log(`${slug}/songs.json unchanged (${songs.length} songs)`);
       }
