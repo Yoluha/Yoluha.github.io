@@ -107,7 +107,8 @@
     position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 16px;
     padding: 22px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit;
     background-size: cover; background-position: center; min-height: 176px;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.5);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     opacity: 0; transform: translateY(24px); animation: cardIn 0.6s ease forwards;
   }
   .grid .pcard:nth-child(1) { animation-delay: 0.05s; }
@@ -117,31 +118,44 @@
   .grid .pcard:nth-child(5) { animation-delay: 0.45s; }
   .grid .pcard:nth-child(6) { animation-delay: 0.55s; }
   @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+  .pcard::before {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.22) 50%, transparent 58%);
+    transform: translateX(-130%); transition: transform 0.7s ease;
+  }
+  .pcard:hover::before { transform: translateX(130%); }
   .pcard:hover {
-    transform: translateY(-6px) scale(1.015); border-color: rgba(255,255,255,0.55);
-    box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+    transform: translateY(-8px) scale(1.02); border-color: rgba(255,255,255,0.6);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.6), 0 0 34px var(--glow, transparent);
   }
   .pcard .picon {
-    position: absolute; right: -10px; bottom: -16px; width: 110px; height: 110px; opacity: 0.35;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); object-fit: contain; animation: iconFloat 5s ease-in-out infinite;
+    position: absolute; right: 16px; bottom: 16px; z-index: 1; width: 66px; height: 66px;
+    border-radius: 50%; object-fit: cover; opacity: 1;
+    border: 2px solid rgba(255,255,255,0.55); box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    animation: iconFloat 5s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
-  @keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-3deg); } }
-  .pcard h3 { position: relative; z-index: 1; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
-  .pcard p { position: relative; z-index: 1; font-size: 0.88rem; margin: 0; color: rgba(255,255,255,0.9); line-height: 1.45; text-shadow: 0 1px 3px rgba(0,0,0,0.7); flex: 1; }
+  .pcard:hover .picon {
+    transform: scale(1.1) rotate(-4deg); border-color: rgba(255,255,255,0.85);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.6), 0 0 16px var(--glow, transparent);
+  }
+  @keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(-3deg); } }
+  .pcard h3 { position: relative; z-index: 2; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+  .pcard p { position: relative; z-index: 2; font-size: 0.88rem; margin: 0; color: rgba(255,255,255,0.9); line-height: 1.45; text-shadow: 0 1px 3px rgba(0,0,0,0.7); flex: 1; padding-right: 60px; }
   .pcard .cta {
-    position: relative; z-index: 1; align-self: flex-start; font-family: var(--font-mono); font-size: 0.74rem;
+    position: relative; z-index: 2; align-self: flex-start; font-family: var(--font-mono); font-size: 0.74rem;
     font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff;
     border: 1px solid rgba(255,255,255,0.5); border-radius: 8px; padding: 7px 13px;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .pcard:hover .cta { background: rgba(255,255,255,0.16); }
+  .pcard:hover .cta { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.8); }
 
-  .pcard.grad-horas { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(6,33,10,0.55) 55%, rgba(76,175,80,0.75) 100%), linear-gradient(160deg, #06210a, #1b5e20 55%, #4caf50); }
-  .pcard.grad-jc { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(10,61,82,0.55) 55%, rgba(201,122,18,0.75) 100%), linear-gradient(160deg, #10151d, #0a3d52 55%, #c97a12); }
-  .pcard.grad-3d { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
-  .pcard.grad-yb { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(48,29,99,0.6) 55%, rgba(216,38,140,0.75) 100%), linear-gradient(135deg, #15102b, #4c1d95 55%, #d8268c); }
-  .pcard.grad-synth { background-image: linear-gradient(165deg, rgba(8,11,16,0.4), rgba(30,10,60,0.6) 55%, rgba(255,61,127,0.7) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
-  .pcard.grad-lista { background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(74,60,10,0.55) 55%, rgba(184,134,11,0.8) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
+  .pcard.grad-horas { --glow: rgba(76,175,80,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(6,33,10,0.6) 55%, rgba(76,175,80,0.8) 100%), linear-gradient(160deg, #06210a, #1b5e20 55%, #4caf50); }
+  .pcard.grad-jc { --glow: rgba(201,122,18,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(10,61,82,0.6) 55%, rgba(201,122,18,0.8) 100%), linear-gradient(160deg, #10151d, #0a3d52 55%, #c97a12); }
+  .pcard.grad-3d { --glow: rgba(201,106,46,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(22,52,48,0.6) 55%, rgba(201,106,46,0.8) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
+  .pcard.grad-yb { --glow: rgba(216,38,140,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(48,29,99,0.65) 55%, rgba(216,38,140,0.8) 100%), linear-gradient(135deg, #15102b, #4c1d95 55%, #d8268c); }
+  .pcard.grad-synth { --glow: rgba(255,61,127,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.55), rgba(30,10,60,0.65) 55%, rgba(255,61,127,0.75) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
+  .pcard.grad-lista { --glow: rgba(184,134,11,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(74,60,10,0.6) 55%, rgba(184,134,11,0.85) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
 
   footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; text-align: center; }
   footer p { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0 6px; }
@@ -150,11 +164,12 @@
 
   @media (max-width: 480px) {
     .pcard { min-height: 156px; }
-    .pcard .picon { width: 84px; height: 84px; }
+    .pcard .picon { width: 52px; height: 52px; }
+    .pcard p { padding-right: 46px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .aurora .blob span, .hero h1, .pcard, .pcard .picon { animation: none !important; }
+    .aurora .blob span, .hero h1, .pcard, .pcard .picon, .pcard::before { animation: none !important; transition: none !important; }
     .pcard { opacity: 1; transform: none; }
   }
 </style>
