@@ -129,19 +129,18 @@
     box-shadow: 0 22px 48px rgba(0,0,0,0.6), 0 0 34px var(--glow, transparent);
   }
   .pcard .picon {
-    position: absolute; right: 16px; bottom: 16px; z-index: 1; width: 66px; height: 66px;
-    border-radius: 50%; object-fit: cover; opacity: 1;
-    border: 2px solid rgba(255,255,255,0.55); box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    position: absolute; right: -8px; bottom: -8px; z-index: 1; width: 92px; height: 92px;
+    border-radius: 50%; object-fit: cover; opacity: 0.5;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
     animation: iconFloat 5s ease-in-out infinite;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
   .pcard:hover .picon {
-    transform: scale(1.1) rotate(-4deg); border-color: rgba(255,255,255,0.85);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.6), 0 0 16px var(--glow, transparent);
+    opacity: 0.85; transform: scale(1.08) rotate(-4deg);
   }
   @keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(-3deg); } }
   .pcard h3 { position: relative; z-index: 2; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
-  .pcard p { position: relative; z-index: 2; font-size: 0.88rem; margin: 0; color: rgba(255,255,255,0.9); line-height: 1.45; text-shadow: 0 1px 3px rgba(0,0,0,0.7); flex: 1; padding-right: 60px; }
+  .pcard p { position: relative; z-index: 2; font-size: 0.88rem; margin: 0; color: rgba(255,255,255,0.9); line-height: 1.45; text-shadow: 0 1px 3px rgba(0,0,0,0.7); flex: 1; }
   .pcard .cta {
     position: relative; z-index: 2; align-self: flex-start; font-family: var(--font-mono); font-size: 0.74rem;
     font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff;
@@ -164,8 +163,7 @@
 
   @media (max-width: 480px) {
     .pcard { min-height: 156px; }
-    .pcard .picon { width: 52px; height: 52px; }
-    .pcard p { padding-right: 46px; }
+    .pcard .picon { width: 72px; height: 72px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
