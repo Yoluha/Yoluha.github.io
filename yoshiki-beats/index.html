@@ -110,7 +110,7 @@
     50%      { transform: translate(9%, -12%) scale(1.22); }
   }
 
-  .hero-bar, .player, .tracklist-section, .links-section, footer { position: relative; z-index: 1; }
+  .hero-bar, .player, .tracklist-section, footer { position: relative; z-index: 1; }
 
   .hero-bar {
     display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
@@ -309,11 +309,6 @@
   }
   .tl-more:hover { color: var(--ink); }
 
-  .links-section { max-width: 860px; margin: 40px auto 0; padding: 0 24px 64px; }
-  .links-heading {
-    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 14px;
-  }
   .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
   .link-card {
     display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line);
@@ -324,10 +319,36 @@
   .link-icon { font-size: 1.25rem; flex-shrink: 0; }
   .link-label { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; }
 
+  .links-modal-overlay {
+    position: fixed; inset: 0; z-index: 50; background: rgba(8,6,5,0.72); backdrop-filter: blur(3px);
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .links-modal {
+    width: 100%; max-width: 480px; max-height: 80vh; overflow-y: auto; background: var(--paper);
+    border: 1px solid var(--line); border-radius: 16px; padding: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6); animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .links-modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .links-modal-header span {
+    font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+  }
+  .links-modal-close {
+    background: var(--card); border: 1px solid var(--line); color: var(--ink); border-radius: 7px;
+    width: 30px; height: 30px; cursor: pointer; font-size: 0.9rem; line-height: 1;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .links-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
   footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; text-align: center; }
   footer p { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0 6px; }
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+
+  @keyframes radioPulse { 0%, 100% { box-shadow: none; } 40% { box-shadow: 0 0 0 6px rgba(168,120,30,0.5); } }
+  #radioBtn.pulse { animation: radioPulse 0.5s ease; }
 
   @media (prefers-reduced-motion: reduce) {
     .aurora .blob span, .hero-identity h1, .hero-identity .picon { animation: none !important; }
@@ -408,6 +429,7 @@
     <button type="button" class="btn btn-radio btn-nav" id="nextBtn" onclick="playAdjacent(1)" aria-label="Next" title="">⏭</button>
   </div>
   <a class="btn btn-music btn-music-compact" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener">▶ <span id="ctaMusic"></span></a>
+  <button type="button" class="btn btn-radio" id="linksBtn" title="">🔗 <span id="linksBtnLabel"></span></button>
   <select id="langSelect" onchange="setLang(this.value)"></select>
 </div>
 
@@ -437,22 +459,24 @@
   <a class="tl-more" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener" id="tlMore"></a>
 </div>
 
-<div class="links-section">
-  <p class="links-heading" id="linksHeading"></p>
-  <div class="links-grid">
-    <a class="link-card" href="https://music.youtube.com/channel/UC27s9poIWymEw9PO0r2LNJw" target="_blank" rel="noopener"><span class="link-icon">🎵</span><span class="link-label">YT Music</span></a>
-    <a class="link-card" href="https://www.youtube.com/@YoshikiBeats" target="_blank" rel="noopener"><span class="link-icon">▶️</span><span class="link-label">YouTube</span></a>
-    <a class="link-card" href="https://open.spotify.com/intl-pt/artist/0Uvj5w0xi7POC94lNlO7t5" target="_blank" rel="noopener"><span class="link-icon">🟢</span><span class="link-label">Spotify</span></a>
-    <a class="link-card" href="https://music.apple.com/us/artist/yoshiki-beats/1760318265" target="_blank" rel="noopener"><span class="link-icon">🍎</span><span class="link-label">Apple Music</span></a>
-    <a class="link-card" href="https://www.deezer.com/artist/275912781" target="_blank" rel="noopener"><span class="link-icon">🎧</span><span class="link-label">Deezer</span></a>
-    <a class="link-card" href="https://www.qobuz.com/us-en/interpreter/yoshiki-beats/23355704" target="_blank" rel="noopener"><span class="link-icon">🎼</span><span class="link-label">Qobuz</span></a>
-    <a class="link-card" href="https://www.iheart.com/artist/yoshiki-beats-43657705/" target="_blank" rel="noopener"><span class="link-icon">❤️</span><span class="link-label">iHeartRadio</span></a>
-    <a class="link-card" href="https://discord.gg/QUuFAJWRv6" target="_blank" rel="noopener"><span class="link-icon">💬</span><span class="link-label">Discord</span></a>
-    <a class="link-card" href="https://instagram.com/officialyoshikibeats" target="_blank" rel="noopener"><span class="link-icon">📷</span><span class="link-label">Instagram</span></a>
-    <a class="link-card" href="https://ko-fi.com/yoshikibeats" target="_blank" rel="noopener"><span class="link-icon">☕</span><span class="link-label">Ko-fi</span></a>
-    <a class="link-card" href="https://paypal.com/paypalme/YoshikiBeats" target="_blank" rel="noopener"><span class="link-icon">💳</span><span class="link-label">PayPal Me</span></a>
-    <a class="link-card" href="https://www.youtube.com/channel/UC0ohsreRvQ0-QZ0dYdq9Rrg" target="_blank" rel="noopener"><span class="link-icon">🌆</span><span class="link-label">Synth YØSHI</span></a>
-    <a class="link-card" href="https://yoluha.github.io/" id="linkPortfolio"><span class="link-icon">🧭</span><span class="link-label" id="linkPortfolioLabel"></span></a>
+<div class="links-modal-overlay" id="linksModalOverlay" hidden>
+  <div class="links-modal">
+    <div class="links-modal-header">
+      <span id="linksModalTitle"></span>
+      <button type="button" class="links-modal-close" id="linksModalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="links-grid">
+      <a class="link-card" href="https://www.youtube.com/@YoshikiBeats" target="_blank" rel="noopener" title="Vídeos no canal oficial do YouTube"><span class="link-icon">▶️</span><span class="link-label">YouTube</span></a>
+      <a class="link-card" href="https://open.spotify.com/intl-pt/artist/0Uvj5w0xi7POC94lNlO7t5" target="_blank" rel="noopener" title="Ouvir no Spotify"><span class="link-icon">🟢</span><span class="link-label">Spotify</span></a>
+      <a class="link-card" href="https://music.apple.com/us/artist/yoshiki-beats/1760318265" target="_blank" rel="noopener" title="Ouvir no Apple Music"><span class="link-icon">🍎</span><span class="link-label">Apple Music</span></a>
+      <a class="link-card" href="https://www.deezer.com/artist/275912781" target="_blank" rel="noopener" title="Ouvir no Deezer"><span class="link-icon">🎧</span><span class="link-label">Deezer</span></a>
+      <a class="link-card" href="https://www.qobuz.com/us-en/interpreter/yoshiki-beats/23355704" target="_blank" rel="noopener" title="Ouvir no Qobuz"><span class="link-icon">🎼</span><span class="link-label">Qobuz</span></a>
+      <a class="link-card" href="https://www.iheart.com/artist/yoshiki-beats-43657705/" target="_blank" rel="noopener" title="Ouvir no iHeartRadio"><span class="link-icon">❤️</span><span class="link-label">iHeartRadio</span></a>
+      <a class="link-card" href="https://discord.gg/QUuFAJWRv6" target="_blank" rel="noopener" title="Entrar no servidor de Discord"><span class="link-icon">💬</span><span class="link-label">Discord</span></a>
+      <a class="link-card" href="https://instagram.com/officialyoshikibeats" target="_blank" rel="noopener" title="Seguir no Instagram"><span class="link-icon">📷</span><span class="link-label">Instagram</span></a>
+      <a class="link-card" href="https://ko-fi.com/yoshikibeats" target="_blank" rel="noopener" title="Apoiar no Ko-fi"><span class="link-icon">☕</span><span class="link-label">Ko-fi</span></a>
+      <a class="link-card" href="https://paypal.com/paypalme/YoshikiBeats" target="_blank" rel="noopener" title="Doar via PayPal"><span class="link-icon">💳</span><span class="link-label">PayPal Me</span></a>
+    </div>
   </div>
 </div>
 
@@ -482,7 +506,6 @@ const T = {
   tabVideo: { pt:'▶ Vídeos', en:'▶ Videos', es:'▶ Vídeos', fr:'▶ Vidéos', de:'▶ Videos', it:'▶ Video', pl:'▶ Filmy', ja:'▶ 動画', nl:'▶ Video\'s', cs:'▶ Videa', zh:'▶ 视频', ru:'▶ Видео', ko:'▶ 동영상', ne:'▶ भिडियोहरू' },
   sortPlays: { pt:'Mais tocadas', en:'Most played', es:'Más reproducidas', fr:'Les plus jouées', de:'Meistgespielt', it:'Più riprodotte', pl:'Najczęściej odtwarzane', ja:'再生数順', nl:'Meest gespeeld', cs:'Nejhranější', zh:'播放最多', ru:'Больше всего прослушиваний', ko:'재생 많은 순', ne:'धेरै बजेको' },
   linksHeading: { pt:'Links', en:'Links', es:'Enlaces', fr:'Liens', de:'Links', it:'Link', pl:'Linki', ja:'リンク', nl:'Links', cs:'Odkazy', zh:'链接', ru:'Ссылки', ko:'링크', ne:'लिङ्कहरू' },
-  linkPortfolio: { pt:'Outros Projetos', en:'Other Projects', es:'Otros Proyectos', fr:'Autres Projets', de:'Weitere Projekte', it:'Altri Progetti', pl:'Inne Projekty', ja:'その他のプロジェクト', nl:'Andere Projecten', cs:'Další Projekty', zh:'其他项目', ru:'Другие Проекты', ko:'다른 프로젝트', ne:'अन्य परियोजनाहरू' },
   footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' },
   stripLabel: { pt:'Projetos', en:'Projects', es:'Proyectos', fr:'Projets', de:'Projekte', it:'Progetti', pl:'Projekty', ja:'プロジェクト', nl:'Projecten', cs:'Projekty', zh:'项目', ru:'Проекты', ko:'프로젝트', ne:'परियोजनाहरू' },
   cardHorasDesc: { pt:'Ponto e deteção por WiFi', en:'Time clock, WiFi auto-detect', es:'Fichaje y detección por WiFi', fr:'Pointage, détection WiFi', de:'Stempeluhr, WLAN-Erkennung', it:'Timbratura, rilevamento WiFi', pl:'Rejestracja czasu, wykrywanie WiFi', ja:'勤怠管理・WiFi自動検出', nl:'Prikklok, WiFi-detectie', cs:'Docházka, detekce WiFi', zh:'打卡与WiFi自动检测', ru:'Учёт времени, определение по WiFi', ko:'근태 관리, WiFi 자동 감지', ne:'समय दर्ता, WiFi स्वतः पहिचान' },
@@ -504,7 +527,6 @@ const tlState = { query: '', genres: new Set(), sort: 'newest' };
 const SITE_ARTIST_NAME = 'Yoshiki Beats';
 let ytPlayer = null;
 let ytApiReady = false;
-let pendingVideo = null;
 let renderedItems = [];
 let radioHistory = [];
 let radioHistoryIndex = -1;
@@ -527,8 +549,9 @@ function setLang(lang) {
   document.getElementById('tabMusic').textContent = T.tabMusic[lang];
   document.getElementById('tabVideo').textContent = T.tabVideo[lang];
   document.getElementById('tlMore').textContent = activeTab === 'music' ? T.tlMoreMusic[lang] : T.tlMore[lang];
-  document.getElementById('linksHeading').textContent = T.linksHeading[lang];
-  document.getElementById('linkPortfolioLabel').textContent = T.linkPortfolio[lang];
+  document.getElementById('linksBtnLabel').textContent = T.linksHeading[lang];
+  document.getElementById('linksBtn').title = T.linksHeading[lang];
+  document.getElementById('linksModalTitle').textContent = T.linksHeading[lang];
   document.getElementById('footerContact').textContent = T.footerContact[lang];
   document.getElementById('stripLabel').textContent = T.stripLabel[lang];
   document.getElementById('cardHorasDesc').textContent = T.cardHorasDesc[lang];
@@ -685,6 +708,13 @@ function randomPick(pool) {
   return pick;
 }
 
+function pulseRadio() {
+  const btn = document.getElementById('radioBtn');
+  btn.classList.remove('pulse');
+  void btn.offsetWidth;
+  btn.classList.add('pulse');
+}
+
 function startRadio() {
   const pool = filteredItems();
   if (!pool.length) return;
@@ -694,6 +724,7 @@ function startRadio() {
   radioHistory = [first];
   radioHistoryIndex = 0;
   playVideo(first.id, first.title);
+  pulseRadio();
 }
 
 function radioStep(dir) {
@@ -709,6 +740,7 @@ function radioStep(dir) {
   }
   const track = radioHistory[radioHistoryIndex];
   playVideo(track.id, track.title);
+  pulseRadio();
 }
 
 function playAdjacent(dir) {
@@ -734,10 +766,6 @@ function onYouTubeIframeAPIReady() {
       },
     },
   });
-  if (pendingVideo) {
-    ytPlayer.loadVideoById(pendingVideo.id);
-    pendingVideo = null;
-  }
 }
 
 function playVideo(id, title) {
@@ -745,8 +773,6 @@ function playVideo(id, title) {
   document.getElementById('nowPlayingTitle').textContent = title;
   if (ytApiReady && ytPlayer && ytPlayer.loadVideoById) {
     ytPlayer.loadVideoById(id);
-  } else {
-    pendingVideo = { id, title };
   }
   updateMediaSession({ id, title });
   document.querySelector('.player').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -873,6 +899,7 @@ function filterByGenre(genre, btn) {
     void btn.offsetWidth;
     btn.classList.add('blink');
   }
+  pulseRadio();
 }
 
 function setTab(tab) {
@@ -895,6 +922,19 @@ function setTab(tab) {
 document.getElementById('tabMusic').addEventListener('click', () => setTab('music'));
 document.getElementById('tabVideo').addEventListener('click', () => setTab('video'));
 
+function setDefaultTrack() {
+  const pool = activeTab === 'music' ? ALL_SONGS : ALL_VIDEOS;
+  if (!pool.length) return;
+  const key = activeTab === 'music' ? 'plays' : 'views';
+  const top = [...pool].sort((a, b) => (b[key] || 0) - (a[key] || 0))[0];
+  if (!top) return;
+  activeVideoId = top.id;
+  document.getElementById('nowPlayingTitle').textContent = top.title;
+  if (ytApiReady && ytPlayer && ytPlayer.loadVideoById) {
+    ytPlayer.loadVideoById(top.id);
+  }
+}
+
 Promise.all([
   fetch('songs.json').then(r => r.ok ? r.json() : []).catch(() => []),
   fetch('videos.json').then(r => r.ok ? r.json() : []).catch(() => []),
@@ -906,6 +946,7 @@ Promise.all([
   document.getElementById('tabVideo').hidden = !ALL_VIDEOS.length;
   document.getElementById('tracklistSection').hidden = false;
   document.getElementById('tlSort').hidden = activeTab === 'music';
+  setDefaultTrack();
   renderGenreChips();
   renderTracks();
 });
@@ -921,6 +962,18 @@ document.getElementById('tlSort').addEventListener('change', (e) => {
   renderTracks();
 });
 document.getElementById('radioBtn').addEventListener('click', startRadio);
+
+function closeLinksModal() { document.getElementById('linksModalOverlay').hidden = true; }
+document.getElementById('linksBtn').addEventListener('click', () => {
+  document.getElementById('linksModalOverlay').hidden = false;
+});
+document.getElementById('linksModalClose').addEventListener('click', closeLinksModal);
+document.getElementById('linksModalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'linksModalOverlay') closeLinksModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLinksModal();
+});
 </script>
 <script src="https://www.youtube.com/iframe_api"></script>
 
