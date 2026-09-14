@@ -352,16 +352,6 @@
   <div class="proj-strip-viewport">
   <button type="button" class="proj-nav proj-nav-prev" onclick="scrollProjStrip(this,-1)" aria-label="Previous" hidden>&#8249;</button>
   <div class="proj-strip" onscroll="updateProjNav(this)">
-    <a class="proj-card-sm grad-horas" href="https://yoluha.github.io/horas/">
-      <img class="proj-icon-sm" src="https://yoluha.github.io/horas/icon.svg" alt="">
-      <h4>Ponto</h4>
-      <span class="desc" id="cardHorasDesc"></span>
-    </a>
-    <a class="proj-card-sm grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
-      <img class="proj-icon-sm" src="https://yoluha.github.io/johnny-castaway-reborn/icon.svg" alt="">
-      <h4>Johnny Castaway Reborn</h4>
-      <span class="desc" id="cardJcDesc"></span>
-    </a>
     <a class="proj-card-sm grad-3d" href="https://yoluha.github.io/3d-manager/">
       <img class="proj-icon-sm" src="https://yoluha.github.io/3d-manager/img/icon/favicon-256.png" alt="">
       <h4>3D Manager</h4>
@@ -371,6 +361,16 @@
       <img class="proj-icon-sm" src="https://yt3.googleusercontent.com/TCVsD3rSXkZfDr1gTAmV2N9bYnNes7RLfSkMidbMr_e8YcuuD2ZL0mMY_827FGOVdIio_PeKEA=s128-c-k-c0x00ffffff-no-rj" alt="">
       <h4>Synth YØSHI</h4>
       <span class="desc" id="cardSynthDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-horas" href="https://yoluha.github.io/horas/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/horas/icon.svg" alt="">
+      <h4>Ponto</h4>
+      <span class="desc" id="cardHorasDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/johnny-castaway-reborn/icon.svg" alt="">
+      <h4>Johnny Castaway Reborn</h4>
+      <span class="desc" id="cardJcDesc"></span>
     </a>
     <a class="proj-card-sm grad-lista" href="https://yoluha.github.io/lista-pedidos/">
       <img class="proj-icon-sm" src="https://yoluha.github.io/lista-pedidos/icon-192.png" alt="">
@@ -487,7 +487,7 @@ const T = {
   stripLabel: { pt:'Projetos', en:'Projects', es:'Proyectos', fr:'Projets', de:'Projekte', it:'Progetti', pl:'Projekty', ja:'プロジェクト', nl:'Projecten', cs:'Projekty', zh:'项目', ru:'Проекты', ko:'프로젝트', ne:'परियोजनाहरू' },
   cardHorasDesc: { pt:'Ponto e deteção por WiFi', en:'Time clock, WiFi auto-detect', es:'Fichaje y detección por WiFi', fr:'Pointage, détection WiFi', de:'Stempeluhr, WLAN-Erkennung', it:'Timbratura, rilevamento WiFi', pl:'Rejestracja czasu, wykrywanie WiFi', ja:'勤怠管理・WiFi自動検出', nl:'Prikklok, WiFi-detectie', cs:'Docházka, detekce WiFi', zh:'打卡与WiFi自动检测', ru:'Учёт времени, определение по WiFi', ko:'근태 관리, WiFi 자동 감지', ne:'समय दर्ता, WiFi स्वतः पहिचान' },
   cardJcDesc: { pt:'Screensaver de 1992, remasterizado', en:'The 1992 screensaver, remastered', es:'El protector de pantalla de 1992, remasterizado', fr:'L\'économiseur d\'écran de 1992, remasterisé', de:'Der Bildschirmschoner von 1992, neu aufgelegt', it:'Il salvaschermo del 1992, rimasterizzato', pl:'Wygaszacz ekranu z 1992 roku, odświeżony', ja:'1992年のスクリーンセーバー、リマスター版', nl:'De screensaver uit 1992, geremasterd', cs:'Spořič obrazovky z roku 1992, remasterovaný', zh:'1992年的屏保，重制版', ru:'Скринсейвер 1992 года, ремастер', ko:'1992년 스크린세이버, 리마스터', ne:'१९९२ को स्क्रिनसेभर, नयाँ रूपमा' },
-  card3dDesc: { pt:'Orçamentos, produção e clientes', en:'Quotes, production and clients', es:'Presupuestos, producción y clientes', fr:'Devis, production et clients', de:'Angebote, Produktion und Kunden', it:'Preventivi, produzione e clienti', pl:'Wyceny, produkcja i klienci', ja:'見積もり・生産・顧客管理', nl:'Offertes, productie en klanten', cs:'Nabídky, výroba a klienti', zh:'报价、生产与客户', ru:'Сметы, производство и клиенты', ko:'견적, 생산, 고객 관리', ne:'मूल्य उद्धरण, उत्पादन र ग्राहक' },
+  card3dDesc: { pt:'Gestão de impressão 3D', en:'3D printing management', es:'Gestión de impresión 3D', fr:"Gestion de l'impression 3D", de:'3D-Druck-Management', it:'Gestione della stampa 3D', pl:'Zarządzanie drukiem 3D', ja:'3Dプリント管理', nl:'3D-printbeheer', cs:'Správa 3D tisku', zh:'3D打印管理', ru:'Управление 3D-печатью', ko:'3D 프린팅 관리', ne:'3D प्रिन्टिङ व्यवस्थापन' },
   cardSynthDesc: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' },
   cardListaDesc: { pt:'Listas de encomendas para o trabalho', en:'Work order lists, offline', es:'Listas de pedidos para el trabajo', fr:'Listes de commandes pour le travail', de:'Bestelllisten für die Arbeit', it:'Liste ordini per il lavoro', pl:'Listy zamówień do pracy', ja:'仕事の注文リスト', nl:'Bestellijsten voor het werk', cs:'Objednávkové seznamy do práce', zh:'工作订单清单', ru:'Списки заказов для работы', ko:'업무용 주문 목록', ne:'कामको लागि अर्डर सूची' },
   prevTrackTitle: { pt:'Faixa anterior', en:'Previous track', es:'Pista anterior', fr:'Piste précédente', de:'Vorheriger Titel', it:'Traccia precedente', pl:'Poprzedni utwór', ja:'前のトラック', nl:'Vorige track', cs:'Předchozí skladba', zh:'上一首', ru:'Предыдущий трек', ko:'이전 트랙', ne:'अघिल्लो ट्र्याक' },

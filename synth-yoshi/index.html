@@ -177,7 +177,7 @@
   .proj-card-sm.grad-horas { --glow: rgba(76,175,80,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(6,33,10,0.55) 55%, rgba(76,175,80,0.75) 100%), linear-gradient(160deg, #06210a, #1b5e20 55%, #4caf50); }
   .proj-card-sm.grad-jc { --glow: rgba(201,122,18,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35) 0%, rgba(10,61,82,0.55) 55%, rgba(201,122,18,0.75) 100%), linear-gradient(160deg, #10151d, #0a3d52 55%, #c97a12); }
   .proj-card-sm.grad-3d { --glow: rgba(201,106,46,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
-  .proj-card-sm.grad-yb { --glow: rgba(216,38,140,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(48,29,99,0.6) 55%, rgba(216,38,140,0.75) 100%), linear-gradient(135deg, #15102b, #4c1d95 55%, #d8268c); }
+  .proj-card-sm.grad-yb { --glow: rgba(168,120,30,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(109,31,58,0.6) 55%, rgba(168,120,30,0.75) 100%), linear-gradient(135deg, #1a0d12, #6d1f3a 55%, #a8781e); }
   .proj-card-sm.grad-lista { --glow: rgba(184,134,11,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(74,60,10,0.55) 55%, rgba(184,134,11,0.8) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
   .proj-nav {
     position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
@@ -345,16 +345,6 @@
   <div class="proj-strip-viewport">
   <button type="button" class="proj-nav proj-nav-prev" onclick="scrollProjStrip(this,-1)" aria-label="Previous" hidden>&#8249;</button>
   <div class="proj-strip" onscroll="updateProjNav(this)">
-    <a class="proj-card-sm grad-horas" href="https://yoluha.github.io/horas/">
-      <img class="proj-icon-sm" src="https://yoluha.github.io/horas/icon.svg" alt="">
-      <h4>Ponto</h4>
-      <span class="desc" id="cardHorasDesc"></span>
-    </a>
-    <a class="proj-card-sm grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
-      <img class="proj-icon-sm" src="https://yoluha.github.io/johnny-castaway-reborn/icon.svg" alt="">
-      <h4>Johnny Castaway Reborn</h4>
-      <span class="desc" id="cardJcDesc"></span>
-    </a>
     <a class="proj-card-sm grad-3d" href="https://yoluha.github.io/3d-manager/">
       <img class="proj-icon-sm" src="https://yoluha.github.io/3d-manager/img/icon/favicon-256.png" alt="">
       <h4>3D Manager</h4>
@@ -364,6 +354,16 @@
       <img class="proj-icon-sm" src="https://yt3.googleusercontent.com/tpUlhZiiNIF3l3ra8Z1UaBh7L6loJHgPF5dPxvTydivbBtKiGmhExnepSj1JyeLSesDUs72N0Q=s128-c-k-c0x00ffffff-no-rj" alt="">
       <h4>Yoshiki Beats</h4>
       <span class="desc" id="cardYbDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-horas" href="https://yoluha.github.io/horas/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/horas/icon.svg" alt="">
+      <h4>Ponto</h4>
+      <span class="desc" id="cardHorasDesc"></span>
+    </a>
+    <a class="proj-card-sm grad-jc" href="https://yoluha.github.io/johnny-castaway-reborn/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/johnny-castaway-reborn/icon.svg" alt="">
+      <h4>Johnny Castaway Reborn</h4>
+      <span class="desc" id="cardJcDesc"></span>
     </a>
     <a class="proj-card-sm grad-lista" href="https://yoluha.github.io/lista-pedidos/">
       <img class="proj-icon-sm" src="https://yoluha.github.io/lista-pedidos/icon-192.png" alt="">
@@ -469,7 +469,7 @@ const T = {
   stripLabel: { pt:'Projetos', en:'Projects', es:'Proyectos', fr:'Projets', de:'Projekte', it:'Progetti', pl:'Projekty', ja:'プロジェクト', nl:'Projecten', cs:'Projekty', zh:'项目', ru:'Проекты', ko:'프로젝트', ne:'परियोजनाहरू' },
   cardHorasDesc: { pt:'Ponto e deteção por WiFi', en:'Time clock, WiFi auto-detect', es:'Fichaje y detección por WiFi', fr:'Pointage, détection WiFi', de:'Stempeluhr, WLAN-Erkennung', it:'Timbratura, rilevamento WiFi', pl:'Rejestracja czasu, wykrywanie WiFi', ja:'勤怠管理・WiFi自動検出', nl:'Prikklok, WiFi-detectie', cs:'Docházka, detekce WiFi', zh:'打卡与WiFi自动检测', ru:'Учёт времени, определение по WiFi', ko:'근태 관리, WiFi 자동 감지', ne:'समय दर्ता, WiFi स्वतः पहिचान' },
   cardJcDesc: { pt:'Screensaver de 1992, remasterizado', en:'The 1992 screensaver, remastered', es:'El protector de pantalla de 1992, remasterizado', fr:'L\'économiseur d\'écran de 1992, remasterisé', de:'Der Bildschirmschoner von 1992, neu aufgelegt', it:'Il salvaschermo del 1992, rimasterizzato', pl:'Wygaszacz ekranu z 1992 roku, odświeżony', ja:'1992年のスクリーンセーバー、リマスター版', nl:'De screensaver uit 1992, geremasterd', cs:'Spořič obrazovky z roku 1992, remasterovaný', zh:'1992年的屏保，重制版', ru:'Скринсейвер 1992 года, ремастер', ko:'1992년 스크린세이버, 리마스터', ne:'१९९२ को स्क्रिनसेभर, नयाँ रूपमा' },
-  card3dDesc: { pt:'Orçamentos, produção e clientes', en:'Quotes, production and clients', es:'Presupuestos, producción y clientes', fr:'Devis, production et clients', de:'Angebote, Produktion und Kunden', it:'Preventivi, produzione e clienti', pl:'Wyceny, produkcja i klienci', ja:'見積もり・生産・顧客管理', nl:'Offertes, productie en klanten', cs:'Nabídky, výroba a klienti', zh:'报价、生产与客户', ru:'Сметы, производство и клиенты', ko:'견적, 생산, 고객 관리', ne:'मूल्य उद्धरण, उत्पादन र ग्राहक' },
+  card3dDesc: { pt:'Gestão de impressão 3D', en:'3D printing management', es:'Gestión de impresión 3D', fr:"Gestion de l'impression 3D", de:'3D-Druck-Management', it:'Gestione della stampa 3D', pl:'Zarządzanie drukiem 3D', ja:'3Dプリント管理', nl:'3D-printbeheer', cs:'Správa 3D tisku', zh:'3D打印管理', ru:'Управление 3D-печатью', ko:'3D 프린팅 관리', ne:'3D प्रिन्टिङ व्यवस्थापन' },
   cardYbDesc: { pt:'Instrumentais J-Trap e GΛRĀN', en:'Instrumental J-Trap and GΛRĀN', es:'Instrumental J-Trap y GΛRĀN', fr:'Instrumentaux J-Trap et GΛRĀN', de:'Instrumental J-Trap und GΛRĀN', it:'Strumentali J-Trap e GΛRĀN', pl:'Instrumentale J-Trap i GΛRĀN', ja:'インストゥルメンタルのJ-TrapとGΛRĀN', nl:'Instrumentale J-Trap en GΛRĀN', cs:'Instrumentální J-Trap a GΛRĀN', zh:'J-Trap 与 GΛRĀN 器乐', ru:'Инструментал J-Trap и GΛRĀN', ko:'인스트루멘탈 J-Trap과 GΛRĀN', ne:'इन्स्ट्रुमेन्टल J-Trap र GΛRĀN' },
   prevTrackTitle: { pt:'Faixa anterior', en:'Previous track', es:'Pista anterior', fr:'Piste précédente', de:'Vorheriger Titel', it:'Traccia precedente', pl:'Poprzedni utwór', ja:'前のトラック', nl:'Vorige track', cs:'Předchozí skladba', zh:'上一首', ru:'Предыдущий трек', ko:'이전 트랙', ne:'अघिल्लो ट्र्याक' },
   nextTrackTitle: { pt:'Próxima faixa', en:'Next track', es:'Pista siguiente', fr:'Piste suivante', de:'Nächster Titel', it:'Traccia successiva', pl:'Następny utwór', ja:'次のトラック', nl:'Volgende track', cs:'Další skladba', zh:'下一首', ru:'Следующий трек', ko:'다음 트랙', ne:'अर्को ट्र्याक' },
