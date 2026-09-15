@@ -819,7 +819,7 @@ function renderTracks() {
       <img class="track-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">
       <span class="track-main">
         <span class="track-title">${escapeHtml(v.title)}</span>
-        ${v.genre ? `<span class="track-genre-pill">${escapeHtml(v.genre)}</span>` : ''}
+        ${v.genre ? `<span class="track-genre-pill">${escapeHtml(genreLabel(genreKey(v.genre)))}</span>` : ''}
       </span>
       <span class="track-stats">${stats}</span>
     `;
