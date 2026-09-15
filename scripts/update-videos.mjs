@@ -120,6 +120,7 @@ const GENRE_CONFIG = {
       'kami phonk': 'Kami Phonk',
       'kλmi phonk': 'Kami Phonk',
       'cinematic music': 'Cinematic Music',
+      'synthwave': 'Synthwave',
     },
   },
   'synth-yoshi': {
@@ -131,11 +132,38 @@ const GENRE_CONFIG = {
   },
 };
 
-function normalizeGenre(slug, raw) {
+// strict=true returns null instead of the channel's default when nothing
+// matches, so callers can fall through to another extraction method before
+// giving up and defaulting.
+function normalizeGenre(slug, raw, strict = false) {
   const cfg = GENRE_CONFIG[slug] || { default: null, aliases: {} };
-  if (!raw) return cfg.default;
+  if (!raw) return strict ? null : cfg.default;
   const key = raw.trim().toLowerCase();
-  return cfg.aliases[key] || cfg.default;
+  if (cfg.aliases[key]) return cfg.aliases[key];
+  // word-boundary fallback: catches "Djent Cover" or "Djent | Metalcore" where
+  // the tag isn't a clean, exact alias match on its own.
+  for (const [aliasKey, canonical] of Object.entries(cfg.aliases)) {
+    const re = new RegExp(`\\b${aliasKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    if (re.test(key)) return canonical;
+  }
+  return strict ? null : cfg.default;
+}
+
+// Many older catalog titles tag genre with a trailing "(Genre)" / "[Genre]"
+// group instead of the "Title | Genre | subtitle" pipe convention (e.g.
+// "Foward (Djent)", "I Drowned Myself (Djent | Metalcore)") — genreFromTitleSuffix
+// only handles the pipe form, so these fell through to the channel default
+// (J-Trap) even though the title clearly says Djent/Synthwave/etc. Scan every
+// bracket group and try each comma/pipe-separated token against the alias map.
+function genreFromTitleBrackets(slug, title) {
+  const groups = [...title.matchAll(/[(\[]([^)\]]+)[)\]]/g)].map(m => m[1]);
+  for (const group of groups) {
+    for (const token of group.split(/[|,]/).map(s => s.trim()).filter(Boolean)) {
+      const genre = normalizeGenre(slug, token, true);
+      if (genre) return genre;
+    }
+  }
+  return null;
 }
 
 // YT Music's own "Top songs" chart for an artist caps out well short of a
@@ -292,7 +320,10 @@ async function fetchSongs(slug, channelId, maxPages = 20) {
       videoId = r.overlay.musicItemThumbnailOverlayRenderer.content.musicPlayButtonRenderer.playNavigationEndpoint.watchEndpoint.videoId;
     } catch (e) { /* no play button on this row */ }
     if (!title || !videoId) continue;
-    songs.push({ id: videoId, title, genre: normalizeGenre(slug, parseGenreFromTitle(title)), plays: parsePlays(playsText) });
+    const genre = normalizeGenre(slug, parseGenreFromTitle(title), true)
+      ?? genreFromTitleBrackets(slug, title)
+      ?? (GENRE_CONFIG[slug]?.default ?? null);
+    songs.push({ id: videoId, title, genre, plays: parsePlays(playsText) });
   }
   return songs;
 }
@@ -310,10 +341,13 @@ for (const { slug, channelId } of CHANNELS) {
     videos = fullList.map((v, i) => {
       const rss = rssById.get(v.id);
       const rawGenre = rss?.genre ?? genreFromTitleSuffix(v.title);
+      const genre = normalizeGenre(slug, rawGenre, true)
+        ?? genreFromTitleBrackets(slug, v.title)
+        ?? (GENRE_CONFIG[slug]?.default ?? null);
       return {
         id: v.id,
         title: v.title,
-        genre: normalizeGenre(slug, rawGenre),
+        genre,
         views: v.views || rss?.views || 0,
         likes: rss?.likes || 0,
         order: i,
@@ -322,7 +356,11 @@ for (const { slug, channelId } of CHANNELS) {
     console.log(`${slug}: full catalog fetch got ${videos.length} videos`);
   } catch (err) {
     console.error(`${slug}: full video list fetch failed, falling back to RSS-only (15 latest):`, err.message);
-    videos = rssEntries.map((e, i) => ({ ...e, genre: normalizeGenre(slug, e.genre), order: i }));
+    videos = rssEntries.map((e, i) => ({
+      ...e,
+      genre: normalizeGenre(slug, e.genre, true) ?? genreFromTitleBrackets(slug, e.title) ?? (GENRE_CONFIG[slug]?.default ?? null),
+      order: i,
+    }));
   }
 
   const outPath = path.join(ROOT, slug, 'videos.json');
