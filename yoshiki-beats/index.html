@@ -160,6 +160,7 @@
   .proj-strip .proj-card-sm:nth-child(3) { animation-delay: 0.19s; }
   .proj-strip .proj-card-sm:nth-child(4) { animation-delay: 0.26s; }
   .proj-strip .proj-card-sm:nth-child(5) { animation-delay: 0.33s; }
+  .proj-strip .proj-card-sm:nth-child(6) { animation-delay: 0.40s; }
   @keyframes projCardIn { to { opacity: 1; transform: translateY(0); } }
   .proj-card-sm::before {
     content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -183,6 +184,7 @@
   .proj-card-sm.grad-3d { --glow: rgba(201,106,46,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(22,52,48,0.55) 55%, rgba(201,106,46,0.75) 100%), linear-gradient(135deg, #163430, #2e8f87 60%, #c96a2e); }
   .proj-card-sm.grad-synth { --glow: rgba(255,61,127,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.4), rgba(30,10,60,0.6) 55%, rgba(255,61,127,0.7) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
   .proj-card-sm.grad-lista { --glow: rgba(184,134,11,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(74,60,10,0.55) 55%, rgba(184,134,11,0.8) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
+  .proj-card-sm.grad-sushi { --glow: rgba(210,162,76,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.35), rgba(30,24,10,0.55) 55%, rgba(210,162,76,0.75) 100%), linear-gradient(150deg, #12171a, #4a3a1a 55%, #d2a24c); }
   .proj-nav {
     position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
     width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35);
@@ -399,6 +401,11 @@
       <h4>Lista</h4>
       <span class="desc" id="cardListaDesc"></span>
     </a>
+    <a class="proj-card-sm grad-sushi" href="https://yoluha.github.io/portfolio-sushi/">
+      <img class="proj-icon-sm" src="https://yoluha.github.io/portfolio-sushi/icon.svg" alt="">
+      <h4>Lucas Amaral</h4>
+      <span class="desc" id="cardSushiDesc"></span>
+    </a>
   </div>
   <button type="button" class="proj-nav proj-nav-next" onclick="scrollProjStrip(this,1)" aria-label="Next" hidden>&#8250;</button>
   </div>
@@ -514,6 +521,7 @@ const T = {
   card3dDesc: { pt:'Gestão de impressão 3D', en:'3D printing management', es:'Gestión de impresión 3D', fr:"Gestion de l'impression 3D", de:'3D-Druck-Management', it:'Gestione della stampa 3D', pl:'Zarządzanie drukiem 3D', ja:'3Dプリント管理', nl:'3D-printbeheer', cs:'Správa 3D tisku', zh:'3D打印管理', ru:'Управление 3D-печатью', ko:'3D 프린팅 관리', ne:'3D प्रिन्टिङ व्यवस्थापन' },
   cardSynthDesc: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' },
   cardListaDesc: { pt:'Listas de encomendas para o trabalho', en:'Work order lists, offline', es:'Listas de pedidos para el trabajo', fr:'Listes de commandes pour le travail', de:'Bestelllisten für die Arbeit', it:'Liste ordini per il lavoro', pl:'Listy zamówień do pracy', ja:'仕事の注文リスト', nl:'Bestellijsten voor het werk', cs:'Objednávkové seznamy do práce', zh:'工作订单清单', ru:'Списки заказов для работы', ko:'업무용 주문 목록', ne:'कामको लागि अर्डर सूची' },
+  cardSushiDesc: { pt:'Chef de cozinha e sushi chef', en:'Head chef and sushi chef', es:'Chef de cocina y sushi chef', fr:'Chef cuisinier et chef sushi', de:'Küchenchef und Sushi-Meister', it:'Chef di cucina e sushi chef', pl:'Szef kuchni i mistrz sushi', ja:'料理長・寿司職人', nl:'Chef-kok en sushichef', cs:'Šéfkuchař a sushi mistr', zh:'主厨兼寿司师傅', ru:'Шеф-повар и суши-шеф', ko:'총주방장 겸 스시 셰프', ne:'प्रधान सेफ र सुशी सेफ' },
   prevTrackTitle: { pt:'Faixa anterior', en:'Previous track', es:'Pista anterior', fr:'Piste précédente', de:'Vorheriger Titel', it:'Traccia precedente', pl:'Poprzedni utwór', ja:'前のトラック', nl:'Vorige track', cs:'Předchozí skladba', zh:'上一首', ru:'Предыдущий трек', ko:'이전 트랙', ne:'अघिल्लो ट्र्याक' },
   nextTrackTitle: { pt:'Próxima faixa', en:'Next track', es:'Pista siguiente', fr:'Piste suivante', de:'Nächster Titel', it:'Traccia successiva', pl:'Następny utwór', ja:'次のトラック', nl:'Volgende track', cs:'Další skladba', zh:'下一首', ru:'Следующий трек', ko:'다음 트랙', ne:'अर्को ट्र्याक' },
   radioTitle: { pt:'Toca aleatoriamente a lista atual', en:'Shuffle-play the current list', es:'Reproduce aleatoriamente la lista actual', fr:'Lecture aléatoire de la liste actuelle', de:'Aktuelle Liste zufällig abspielen', it:"Riproduci in modo casuale l'elenco attuale", pl:'Odtwarzaj losowo bieżącą listę', ja:'現在のリストをシャッフル再生', nl:'Speel de huidige lijst willekeurig af', cs:'Náhodně přehrát aktuální seznam', zh:'随机播放当前列表', ru:'Перемешать и воспроизвести текущий список', ko:'현재 목록 셔플 재생', ne:'हालको सूची अनियमित बजाउनुहोस्' }
@@ -560,6 +568,7 @@ function setLang(lang) {
   document.getElementById('card3dDesc').textContent = T.card3dDesc[lang];
   document.getElementById('cardSynthDesc').textContent = T.cardSynthDesc[lang];
   document.getElementById('cardListaDesc').textContent = T.cardListaDesc[lang];
+  document.getElementById('cardSushiDesc').textContent = T.cardSushiDesc[lang];
   document.getElementById('prevBtn').title = T.prevTrackTitle[lang];
   document.getElementById('nextBtn').title = T.nextTrackTitle[lang];
   document.getElementById('radioBtn').title = T.radioTitle[lang];
