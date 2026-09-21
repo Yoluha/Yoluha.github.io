@@ -117,6 +117,7 @@
   .grid .pcard:nth-child(4) { animation-delay: 0.35s; }
   .grid .pcard:nth-child(5) { animation-delay: 0.45s; }
   .grid .pcard:nth-child(6) { animation-delay: 0.55s; }
+  .grid .pcard:nth-child(7) { animation-delay: 0.65s; }
   @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
   .pcard::before {
     content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -155,6 +156,7 @@
   .pcard.grad-yb { --glow: rgba(168,120,30,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(109,31,58,0.65) 55%, rgba(168,120,30,0.8) 100%), linear-gradient(135deg, #1a0d12, #6d1f3a 55%, #a8781e); }
   .pcard.grad-synth { --glow: rgba(255,61,127,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.55), rgba(30,10,60,0.65) 55%, rgba(255,61,127,0.75) 100%), linear-gradient(150deg, #0d0221, #5b1a8c 55%, #ff3d7f); }
   .pcard.grad-lista { --glow: rgba(184,134,11,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(74,60,10,0.6) 55%, rgba(184,134,11,0.85) 100%), linear-gradient(150deg, #10151d, #4a3c0a 55%, #b8860b); }
+  .pcard.grad-sushi { --glow: rgba(210,162,76,0.55); background-image: linear-gradient(165deg, rgba(8,11,16,0.5), rgba(30,24,10,0.6) 55%, rgba(210,162,76,0.8) 100%), linear-gradient(150deg, #12171a, #4a3a1a 55%, #d2a24c); }
 
   footer { border-top: 1px solid var(--line); padding: 32px 24px 48px; text-align: center; }
   footer p { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0 6px; }
@@ -230,6 +232,12 @@
     <p id="descLista"></p>
     <span class="cta" id="ctaVisit6"></span>
   </a>
+  <a class="pcard grad-sushi" href="https://yoluha.github.io/portfolio-sushi/">
+    <img class="picon" src="https://yoluha.github.io/portfolio-sushi/icon.svg" alt="">
+    <h3>Lucas Amaral</h3>
+    <p id="descSushi"></p>
+    <span class="cta" id="ctaVisit7"></span>
+  </a>
 </div>
 
 <footer>
@@ -249,6 +257,7 @@ const T = {
   descYb: { pt:'Instrumentais J-Trap e GΛRĀN', en:'Instrumental J-Trap and GΛRĀN', es:'Instrumental J-Trap y GΛRĀN', fr:'Instrumentaux J-Trap et GΛRĀN', de:'Instrumental J-Trap und GΛRĀN', it:'Strumentali J-Trap e GΛRĀN', pl:'Instrumentale J-Trap i GΛRĀN', ja:'インストゥルメンタルのJ-TrapとGΛRĀN', nl:'Instrumentale J-Trap en GΛRĀN', cs:'Instrumentální J-Trap a GΛRĀN', zh:'J-Trap 与 GΛRĀN 器乐', ru:'Инструментал J-Trap и GΛRĀN', ko:'인스트루멘탈 J-Trap과 GΛRĀN', ne:'इन्स्ट्रुमेन्टल J-Trap र GΛRĀN' },
   descSynth: { pt:'Darksynth e ChillSynth', en:'Darksynth and ChillSynth', es:'Darksynth y ChillSynth', fr:'Darksynth et ChillSynth', de:'Darksynth und ChillSynth', it:'Darksynth e ChillSynth', pl:'Darksynth i ChillSynth', ja:'Darksynth と ChillSynth', nl:'Darksynth en ChillSynth', cs:'Darksynth a ChillSynth', zh:'Darksynth 与 ChillSynth', ru:'Darksynth и ChillSynth', ko:'Darksynth와 ChillSynth', ne:'Darksynth र ChillSynth' },
   descLista: { pt:'Listas de encomendas para o trabalho', en:'Work order lists, offline', es:'Listas de pedidos para el trabajo', fr:'Listes de commandes pour le travail', de:'Bestelllisten für die Arbeit', it:'Liste ordini per il lavoro', pl:'Listy zamówień do pracy', ja:'仕事の注文リスト', nl:'Bestellijsten voor het werk', cs:'Objednávkové seznamy do práce', zh:'工作订单清单', ru:'Списки заказов для работы', ko:'업무용 주문 목록', ne:'कामको लागि अर्डर सूची' },
+  descSushi: { pt:'Chef de cozinha e sushi chef', en:'Head chef and sushi chef', es:'Chef de cocina y sushi chef', fr:'Chef cuisinier et chef sushi', de:'Küchenchef und Sushi-Meister', it:'Chef di cucina e sushi chef', pl:'Szef kuchni i mistrz sushi', ja:'料理長・寿司職人', nl:'Chef-kok en sushichef', cs:'Šéfkuchař a sushi mistr', zh:'主厨兼寿司师傅', ru:'Шеф-повар и суши-шеф', ko:'총주방장 겸 스시 셰프', ne:'प्रधान सेफ र सुशी सेफ' },
   ctaVisit: { pt:'Visitar ↗', en:'Visit ↗', es:'Visitar ↗', fr:'Visiter ↗', de:'Besuchen ↗', it:'Visita ↗', pl:'Odwiedź ↗', ja:'訪問する ↗', nl:'Bezoek ↗', cs:'Navštívit ↗', zh:'访问 ↗', ru:'Посетить ↗', ko:'방문하기 ↗', ne:'भ्रमण गर्नुहोस् ↗' },
   footerContact: { pt:'Contacto', en:'Contact', es:'Contacto', fr:'Contact', de:'Kontakt', it:'Contatto', pl:'Kontakt', ja:'連絡先', nl:'Contact', cs:'Kontakt', zh:'联系方式', ru:'Контакт', ko:'연락처', ne:'सम्पर्क' }
 };
@@ -264,8 +273,9 @@ function setLang(lang) {
   document.getElementById('descYb').textContent = T.descYb[lang];
   document.getElementById('descSynth').textContent = T.descSynth[lang];
   document.getElementById('descLista').textContent = T.descLista[lang];
+  document.getElementById('descSushi').textContent = T.descSushi[lang];
   document.getElementById('footerContact').textContent = T.footerContact[lang];
-  ['ctaVisit1','ctaVisit2','ctaVisit3','ctaVisit4','ctaVisit5','ctaVisit6'].forEach(id => {
+  ['ctaVisit1','ctaVisit2','ctaVisit3','ctaVisit4','ctaVisit5','ctaVisit6','ctaVisit7'].forEach(id => {
     document.getElementById(id).textContent = T.ctaVisit[lang];
   });
 
