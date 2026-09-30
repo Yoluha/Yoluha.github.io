@@ -405,6 +405,13 @@ for (const { slug, channelId } of CHANNELS) {
     const songsPath = path.join(ROOT, slug, 'songs.json');
     const prevSongs = fs.existsSync(songsPath) ? fs.readFileSync(songsPath, 'utf8') : '';
     const prevCount = prevSongs ? JSON.parse(prevSongs).length : 0;
+    if (officialSongs.length === 0 && prevSongs) {
+      // Sem músicas do YT Music (falhou ou o canal não tem prateleira): mantém as oficiais que já
+      // estavam guardadas (as que não são vídeos do catálogo) em vez de as apagar.
+      const videoIds = new Set(videos.map(v => v.id));
+      officialSongs = JSON.parse(prevSongs).filter(sg => !videoIds.has(sg.id));
+      if (officialSongs.length) console.error(`${slug}: no official songs fetched, keeping ${officialSongs.length} from the existing list`);
+    }
     const officialTitles = new Set(officialSongs.map(s => normTitle(s.title)));
     const extra = videos
       .filter(v => !isMixOrCompilation(v.title))
