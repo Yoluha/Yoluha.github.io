@@ -1,41 +1,41 @@
 [
   {
     "id": "sKMUgxtu1nU",
-    "title": "Divorce | Darksynth | ChillSynth",
-    "genre": "Darksynth",
-    "views": 8,
+    "title": "Divorce | Synthwave",
+    "genre": null,
+    "views": 24,
     "likes": 2,
     "order": 0
   },
   {
     "id": "WIni7Vcm8VQ",
-    "title": "Cyber Geisha | Darksynth | ChillSynth",
-    "genre": "Darksynth",
-    "views": 17,
+    "title": "Cyber Geisha | Synthwave",
+    "genre": null,
+    "views": 25,
     "likes": 3,
     "order": 1
   },
   {
     "id": "BTi3bkH1x3w",
-    "title": "Loop | Darksynth | ChillSynth",
-    "genre": "Darksynth",
-    "views": 101,
+    "title": "Loop | Synthwave",
+    "genre": null,
+    "views": 102,
     "likes": 4,
     "order": 2
   },
   {
     "id": "8F2mlKrObc8",
-    "title": "Memory Reboot | Darksynth | ChillSynth",
-    "genre": "Darksynth",
-    "views": 6400,
-    "likes": 12,
+    "title": "Memory Reboot | Synthwave",
+    "genre": null,
+    "views": 7000,
+    "likes": 14,
     "order": 3
   },
   {
     "id": "2oQmVmfgSfc",
-    "title": "Interstellar | Darksynth | ChillSynth",
-    "genre": "Darksynth",
-    "views": 4900,
+    "title": "Interstellar | Synthwave",
+    "genre": null,
+    "views": 5400,
     "likes": 7,
     "order": 4
   }
