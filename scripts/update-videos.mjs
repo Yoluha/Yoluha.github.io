@@ -19,10 +19,21 @@ function decodeXml(s) {
     .replace(/&#39;/g, "'");
 }
 
-async function fetchFeed(channelId) {
-  const res = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
-  if (!res.ok) throw new Error(`feed fetch failed for ${channelId}: ${res.status}`);
-  return res.text();
+// O feed RSS do YouTube devolve 404/5xx de forma intermitente (~1 em cada 4 corridas da
+// madrugada) — tenta de novo com espera crescente antes de desistir.
+async function fetchFeed(channelId, attempts = 5) {
+  let lastErr;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+      if (res.ok) return res.text();
+      lastErr = new Error(`feed fetch failed for ${channelId}: ${res.status}`);
+    } catch (err) {
+      lastErr = err;
+    }
+    if (i < attempts) await new Promise(r => setTimeout(r, i * 10000));
+  }
+  throw lastErr;
 }
 
 function parseEntries(xml) {
@@ -331,7 +342,13 @@ async function fetchSongs(slug, channelId, maxPages = 20) {
 let changed = false;
 
 for (const { slug, channelId } of CHANNELS) {
-  const xml = await fetchFeed(channelId);
+  // O RSS só enriquece (géneros/likes) e serve de reserva; se falhar de vez não deitamos o job abaixo.
+  let xml = '';
+  try {
+    xml = await fetchFeed(channelId);
+  } catch (err) {
+    console.error(`${slug}: RSS feed unavailable, continuing without it:`, err.message);
+  }
   const rssEntries = parseEntries(xml);
   const rssById = new Map(rssEntries.map(e => [e.id, e]));
 
@@ -364,6 +381,10 @@ for (const { slug, channelId } of CHANNELS) {
   }
 
   const outPath = path.join(ROOT, slug, 'videos.json');
+  if (videos.length === 0 && fs.existsSync(outPath)) {
+    console.error(`Skipped ${slug}: no videos fetched (keeping existing lists)`);
+    continue;
+  }
   const next = JSON.stringify(videos, null, 2) + '\n';
   const prev = fs.existsSync(outPath) ? fs.readFileSync(outPath, 'utf8') : '';
   if (next !== prev) {
