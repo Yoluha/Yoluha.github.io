@@ -12,22 +12,16 @@
     "plays": 3
   },
   {
-    "id": "N6sX90ewTEM",
-    "title": "Interstellar",
-    "genre": null,
-    "plays": 58
-  },
-  {
-    "id": "RFvo4s8XgDA",
-    "title": "Remorseful",
-    "genre": null,
-    "plays": 22
-  },
-  {
     "id": "EZBoNq6MYOA",
     "title": "Animosity",
     "genre": null,
     "plays": 21
+  },
+  {
+    "id": "N6sX90ewTEM",
+    "title": "Interstellar",
+    "genre": null,
+    "plays": 58
   },
   {
     "id": "64va_hAwL08",
@@ -40,6 +34,12 @@
     "title": "Redacted Files",
     "genre": null,
     "plays": 23
+  },
+  {
+    "id": "RFvo4s8XgDA",
+    "title": "Remorseful",
+    "genre": null,
+    "plays": 22
   },
   {
     "id": "8mVoyC_3XEs",
