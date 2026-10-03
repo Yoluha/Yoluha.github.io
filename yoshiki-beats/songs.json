@@ -3,7 +3,7 @@
     "id": "MZVUJwv0nyk",
     "title": "Arigatō 有難う (J-Trap)",
     "genre": "J-Trap",
-    "plays": 283000
+    "plays": 284000
   },
   {
     "id": "5pmzsQGWpHw",
@@ -39,7 +39,7 @@
     "id": "FRAEFoRDUhA",
     "title": "Distressed Hōfuku (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 279
+    "plays": 283
   },
   {
     "id": "KhZp1hoOSlg",
@@ -51,7 +51,7 @@
     "id": "g2wkt9TDojc",
     "title": "Kedamono",
     "genre": "J-Trap",
-    "plays": 623
+    "plays": 625
   },
   {
     "id": "aowafKQzCMc",
@@ -105,7 +105,7 @@
     "id": "QxvXtclFGME",
     "title": "Jingi",
     "genre": "J-Trap",
-    "plays": 715
+    "plays": 717
   },
   {
     "id": "jtV3Nus4Ras",
@@ -255,7 +255,7 @@
     "id": "PHpcYtJ2V5g",
     "title": "Umarekawaru",
     "genre": "J-Trap",
-    "plays": 287
+    "plays": 289
   },
   {
     "id": "vDilCbYo84Y",
@@ -375,7 +375,7 @@
     "id": "ovCrFbLTFk4",
     "title": "Medaka 目高",
     "genre": "J-Trap",
-    "plays": 901
+    "plays": 902
   },
   {
     "id": "gvR0gJuCCDc",
@@ -417,7 +417,7 @@
     "id": "LBMaWV-UGUg",
     "title": "Onimusha 鬼武者 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 436
+    "plays": 437
   },
   {
     "id": "KVLycGg4skA",
@@ -531,7 +531,7 @@
     "id": "FQew5LUFv5Q",
     "title": "Iyatsukan",
     "genre": "J-Trap",
-    "plays": 881
+    "plays": 882
   },
   {
     "id": "2ipn513Zemw",
@@ -549,7 +549,7 @@
     "id": "JX2Xdh6oJK0",
     "title": "Fuon-na",
     "genre": "J-Trap",
-    "plays": 550
+    "plays": 551
   },
   {
     "id": "j4QWwT5pQNw",
@@ -573,13 +573,13 @@
     "id": "8pYvG_73ROs",
     "title": "Fukufu",
     "genre": "J-Trap",
-    "plays": 196
+    "plays": 201
   },
   {
     "id": "pOIQ6-mckY0",
     "title": "Uchiha 内環 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 518
+    "plays": 519
   },
   {
     "id": "rsNIcHiJYsE",
@@ -603,7 +603,7 @@
     "id": "6tq1yhFEnTg",
     "title": "Sōchō",
     "genre": "J-Trap",
-    "plays": 221
+    "plays": 222
   },
   {
     "id": "-aefblcZu2Y",
@@ -675,7 +675,7 @@
     "id": "boJVNszIPDY",
     "title": "Yami Legion (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 814
+    "plays": 816
   },
   {
     "id": "FbKXhzBHwr4",
@@ -699,7 +699,7 @@
     "id": "bzJGuo3Fc6o",
     "title": "Kurogane 黒鉄 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 159
+    "plays": 160
   },
   {
     "id": "EUjQLdyA_z4",
@@ -717,7 +717,7 @@
     "id": "uw69nEP89Vg",
     "title": "Fushi no Ōkami 不死の狼 (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 802
+    "plays": 803
   },
   {
     "id": "dQbJbXc5l5w",
@@ -783,7 +783,7 @@
     "id": "mrFAuSTQt4k",
     "title": "Guren no Tamashii 紅蓮の魂 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 372
+    "plays": 373
   },
   {
     "id": "cIHAAwkQfNY",
@@ -867,7 +867,7 @@
     "id": "mPlC8rMf6vY",
     "title": "Hagakure no Kokoro 葉隠れの心 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 956
+    "plays": 957
   },
   {
     "id": "XoFkztNFoJk",
@@ -891,13 +891,19 @@
     "id": "fZr05POJjHk",
     "title": "Gorogoro ゴロゴロ (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 333
+    "plays": 334
   },
   {
     "id": "FHIGUrfD3mU",
     "title": "Akai Kyomu 紅い虚無 (GΛRĀN)",
     "genre": "GΛRĀN",
     "plays": 296
+  },
+  {
+    "id": "piXDn7mNsmA",
+    "title": "Daijoubu Disgrace | GΛRĀN",
+    "genre": "GΛRĀN",
+    "plays": 3
   },
   {
     "id": "31VmhNnqQBQ",
@@ -921,7 +927,7 @@
     "id": "U2soPcfyTdY",
     "title": "Horo-sha | J-Trap",
     "genre": "J-Trap",
-    "plays": 312
+    "plays": 313
   },
   {
     "id": "T7TlHR-8L10",
