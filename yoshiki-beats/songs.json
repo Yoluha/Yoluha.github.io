@@ -141,7 +141,7 @@
     "id": "HDyhMsiWqdU",
     "title": "Muan 無安 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 974
+    "plays": 976
   },
   {
     "id": "KFYwcLgt5C8",
@@ -177,7 +177,7 @@
     "id": "GCRDOmznmDM",
     "title": "Moetsuki",
     "genre": "J-Trap",
-    "plays": 267
+    "plays": 268
   },
   {
     "id": "QcBmhYZAutg",
@@ -321,7 +321,7 @@
     "id": "32DpTTFg9kE",
     "title": "Shikkoku no Samurai 漆黒の侍 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 929
+    "plays": 930
   },
   {
     "id": "JcSSPn5SY4Q",
@@ -417,7 +417,7 @@
     "id": "ovCrFbLTFk4",
     "title": "Medaka 目高",
     "genre": "J-Trap",
-    "plays": 908
+    "plays": 910
   },
   {
     "id": "6tq1yhFEnTg",
@@ -483,7 +483,7 @@
     "id": "VWaPrlLcJeY",
     "title": "Gaikotsu Shōgun 骸骨将軍 (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 754
+    "plays": 755
   },
   {
     "id": "3P5TAquY9u0",
@@ -681,7 +681,7 @@
     "id": "j4QWwT5pQNw",
     "title": "Oni Michi - 鬼道",
     "genre": "J-Trap",
-    "plays": 701
+    "plays": 702
   },
   {
     "id": "CewlC-xscLg",
@@ -699,13 +699,13 @@
     "id": "YPvgkQgGGYQ",
     "title": "Zansatsu no Bōrei 斬殺の亡霊 (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 360
+    "plays": 362
   },
   {
     "id": "mrFAuSTQt4k",
     "title": "Guren no Tamashii 紅蓮の魂 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 704
+    "plays": 708
   },
   {
     "id": "wgx0Q8Gsh5Q",
@@ -747,7 +747,7 @@
     "id": "Vo68cRmsjE8",
     "title": "Seishinbyō 精神病 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 458
+    "plays": 462
   },
   {
     "id": "wELOw543F9g",
@@ -777,7 +777,7 @@
     "id": "6EcBm-T9Dos",
     "title": "Shizuka 静か (J-Trap)",
     "genre": "J-Trap",
-    "plays": 761
+    "plays": 764
   },
   {
     "id": "FHIGUrfD3mU",
@@ -837,7 +837,7 @@
     "id": "2oWY7dOEF7w",
     "title": "Maboroshi Illusion (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 699
+    "plays": 702
   },
   {
     "id": "_7dqqLLr7Nc",
@@ -900,10 +900,16 @@
     "plays": 478
   },
   {
+    "id": "Ku-jsjMkDIo",
+    "title": "Disencourage Oni | GΛRĀN",
+    "genre": "GΛRĀN",
+    "plays": 14
+  },
+  {
     "id": "31VmhNnqQBQ",
     "title": "Fuhai-dō | J-Trap",
     "genre": "J-Trap",
-    "plays": 57
+    "plays": 59
   },
   {
     "id": "6y3L8b7wkSc",
@@ -921,7 +927,7 @@
     "id": "U2soPcfyTdY",
     "title": "Horo-sha | J-Trap",
     "genre": "J-Trap",
-    "plays": 314
+    "plays": 315
   },
   {
     "id": "T7TlHR-8L10",
@@ -945,7 +951,7 @@
     "id": "b9DCLJacPvU",
     "title": "Tataku | J-Trap",
     "genre": "J-Trap",
-    "plays": 217
+    "plays": 218
   },
   {
     "id": "TE7LiEQR94E",
@@ -963,7 +969,7 @@
     "id": "TlnzySrUbAw",
     "title": "Izanami | KΛMI PHONK",
     "genre": "Kami Phonk",
-    "plays": 659
+    "plays": 660
   },
   {
     "id": "yN42ycTcbxM",
@@ -975,7 +981,7 @@
     "id": "sv0mk1-Rz3Y",
     "title": "Zankyō | J-Trap",
     "genre": "J-Trap",
-    "plays": 243
+    "plays": 244
   },
   {
     "id": "HILCiL5f_y8",
@@ -1035,7 +1041,7 @@
     "id": "8rFo497oBQc",
     "title": "Jigoku no Hone | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 284
+    "plays": 286
   },
   {
     "id": "7-NFGS6BlzE",
@@ -1197,13 +1203,13 @@
     "id": "Qma0XuPZa-E",
     "title": "Songen | J-Trap",
     "genre": "J-Trap",
-    "plays": 3900
+    "plays": 4000
   },
   {
     "id": "7g10wdQQKl8",
     "title": "Gaikai | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 280
+    "plays": 281
   },
   {
     "id": "d-G_1pfTHxM",
@@ -1281,7 +1287,7 @@
     "id": "0R5p8ShIgO8",
     "title": "Chikoku | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 557
+    "plays": 558
   },
   {
     "id": "UHenoM5xYRc",
@@ -1305,7 +1311,7 @@
     "id": "Z68U4LOLFmg",
     "title": "Kotsuzan Mai | J-Trap",
     "genre": "J-Trap",
-    "plays": 327
+    "plays": 328
   },
   {
     "id": "DkvH0b0eav0",
@@ -1317,7 +1323,7 @@
     "id": "ADJypUK9N8w",
     "title": "Ryūgai | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 406
+    "plays": 407
   },
   {
     "id": "XYHgVtH6YFg",
@@ -2259,7 +2265,7 @@
     "id": "BT8TOWutgJE",
     "title": "Kaizen | J-Trap",
     "genre": "J-Trap",
-    "plays": 822
+    "plays": 823
   },
   {
     "id": "5dGJ1xJkB8Q",
@@ -2391,7 +2397,7 @@
     "id": "68DOu8_knd4",
     "title": "Mada Mada | J-Trap",
     "genre": "J-Trap",
-    "plays": 955
+    "plays": 956
   },
   {
     "id": "78_74Bo0FqI",
@@ -2529,7 +2535,7 @@
     "id": "i5fUhFEXmIw",
     "title": "Perdida | Synthwave",
     "genre": "Synthwave",
-    "plays": 93
+    "plays": 94
   },
   {
     "id": "SbU6hLatmzE",
