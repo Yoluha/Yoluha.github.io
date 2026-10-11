@@ -3,48 +3,48 @@
     "id": "Ku-jsjMkDIo",
     "title": "Disencourage Oni | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 26,
-    "likes": 0,
+    "views": 49,
+    "likes": 3,
     "order": 0
   },
   {
     "id": "Xya1nEfbQXY",
     "title": "Fukufu | J-Trap",
     "genre": "J-Trap",
-    "views": 38,
-    "likes": 0,
+    "views": 42,
+    "likes": 3,
     "order": 1
   },
   {
     "id": "piXDn7mNsmA",
     "title": "Daijoubu Disgrace | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 175,
-    "likes": 0,
+    "views": 176,
+    "likes": 5,
     "order": 2
   },
   {
     "id": "31VmhNnqQBQ",
     "title": "Fuhai-dō | J-Trap",
     "genre": "J-Trap",
-    "views": 59,
-    "likes": 0,
+    "views": 60,
+    "likes": 3,
     "order": 3
   },
   {
     "id": "PDzxfmZr0D0",
     "title": "Distressed Hōfuku | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 143,
-    "likes": 0,
+    "views": 144,
+    "likes": 5,
     "order": 4
   },
   {
     "id": "6y3L8b7wkSc",
     "title": "Bakemono | J-Trap",
     "genre": "J-Trap",
-    "views": 80,
-    "likes": 0,
+    "views": 81,
+    "likes": 4,
     "order": 5
   },
   {
@@ -52,7 +52,7 @@
     "title": "Ganko | J-Trap",
     "genre": "J-Trap",
     "views": 138,
-    "likes": 0,
+    "likes": 5,
     "order": 6
   },
   {
@@ -60,7 +60,7 @@
     "title": "Tachiagaru | J-Trap",
     "genre": "J-Trap",
     "views": 170,
-    "likes": 0,
+    "likes": 6,
     "order": 7
   },
   {
@@ -68,7 +68,7 @@
     "title": "Shinryaku | J-Trap",
     "genre": "J-Trap",
     "views": 329,
-    "likes": 0,
+    "likes": 7,
     "order": 8
   },
   {
@@ -76,7 +76,7 @@
     "title": "Chiru | J-Trap",
     "genre": "J-Trap",
     "views": 196,
-    "likes": 0,
+    "likes": 8,
     "order": 9
   },
   {
@@ -84,15 +84,15 @@
     "title": "Kedamono | J-Trap",
     "genre": "J-Trap",
     "views": 97,
-    "likes": 0,
+    "likes": 6,
     "order": 10
   },
   {
     "id": "dMAOiHmH0rs",
     "title": "Samurai Gaijin | J-Trap Mix",
     "genre": "J-Trap",
-    "views": 983,
-    "likes": 0,
+    "views": 984,
+    "likes": 11,
     "order": 11
   },
   {
@@ -100,7 +100,7 @@
     "title": "Jingi | J-Trap",
     "genre": "J-Trap",
     "views": 158,
-    "likes": 0,
+    "likes": 6,
     "order": 12
   },
   {
@@ -108,7 +108,7 @@
     "title": "Howl Kaiki | GΛRĀN",
     "genre": "GΛRĀN",
     "views": 330,
-    "likes": 0,
+    "likes": 13,
     "order": 13
   },
   {
@@ -116,7 +116,7 @@
     "title": "Ankokumen | J-Trap",
     "genre": "J-Trap",
     "views": 437,
-    "likes": 0,
+    "likes": 15,
     "order": 14
   },
   {
@@ -163,7 +163,7 @@
     "id": "b9DCLJacPvU",
     "title": "Tataku | J-Trap",
     "genre": "J-Trap",
-    "views": 218,
+    "views": 219,
     "likes": 0,
     "order": 20
   },
@@ -219,7 +219,7 @@
     "id": "JHrq8f8RxjA",
     "title": "Akai Seishin | J-Trap",
     "genre": "J-Trap",
-    "views": 329,
+    "views": 330,
     "likes": 0,
     "order": 27
   },
@@ -371,7 +371,7 @@
     "id": "FNDxId6bvkU",
     "title": "Dennō Bushi | J-Trap",
     "genre": "J-Trap",
-    "views": 331,
+    "views": 332,
     "likes": 0,
     "order": 46
   },
@@ -475,7 +475,7 @@
     "id": "HoXiAP0mSkE",
     "title": "Onshirazu | J-Trap",
     "genre": "J-Trap",
-    "views": 553,
+    "views": 554,
     "likes": 0,
     "order": 59
   },
@@ -579,7 +579,7 @@
     "id": "Pydb9IK_keE",
     "title": "Yabai | J-Trap",
     "genre": "J-Trap",
-    "views": 432,
+    "views": 433,
     "likes": 0,
     "order": 72
   },
@@ -691,7 +691,7 @@
     "id": "ys8xFXWwy7k",
     "title": "Kiryū | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 304,
+    "views": 305,
     "likes": 0,
     "order": 86
   },
@@ -811,7 +811,7 @@
     "id": "JEWOFGM-tb0",
     "title": "Chigetsu no Yami | J-Trap",
     "genre": "J-Trap",
-    "views": 185,
+    "views": 186,
     "likes": 0,
     "order": 101
   },
@@ -1115,7 +1115,7 @@
     "id": "0N62AmI-K6w",
     "title": "Break and Tear | Djent",
     "genre": "Djent",
-    "views": 437,
+    "views": 438,
     "likes": 0,
     "order": 139
   },
@@ -2579,7 +2579,7 @@
     "id": "7db-LoI67RY",
     "title": "Revolta | Synthwave",
     "genre": "Synthwave",
-    "views": 149,
+    "views": 150,
     "likes": 0,
     "order": 322
   },
@@ -3331,7 +3331,7 @@
     "id": "h_B9gkCF-1E",
     "title": "Saving Koibito | J-Metal",
     "genre": "J-Metal",
-    "views": 604,
+    "views": 605,
     "likes": 0,
     "order": 416
   },
