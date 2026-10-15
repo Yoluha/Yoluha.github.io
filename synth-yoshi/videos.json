@@ -11,8 +11,8 @@
     "id": "ELQLLnnMzcA",
     "title": "Animosity | Synthwave",
     "genre": null,
-    "views": 12,
-    "likes": 0,
+    "views": 14,
+    "likes": 1,
     "order": 1
   },
   {
@@ -20,7 +20,7 @@
     "title": "Barely Alive | Synthwave",
     "genre": null,
     "views": 7,
-    "likes": 0,
+    "likes": 2,
     "order": 2
   },
   {
@@ -28,7 +28,7 @@
     "title": "Divorce | Synthwave",
     "genre": null,
     "views": 24,
-    "likes": 0,
+    "likes": 2,
     "order": 3
   },
   {
@@ -36,7 +36,7 @@
     "title": "Cyber Geisha | Synthwave",
     "genre": null,
     "views": 25,
-    "likes": 0,
+    "likes": 3,
     "order": 4
   },
   {
@@ -44,7 +44,7 @@
     "title": "Loop | Synthwave",
     "genre": null,
     "views": 104,
-    "likes": 0,
+    "likes": 4,
     "order": 5
   },
   {
@@ -52,7 +52,7 @@
     "title": "Memory Reboot | Synthwave",
     "genre": null,
     "views": 7000,
-    "likes": 0,
+    "likes": 14,
     "order": 6
   },
   {
@@ -60,7 +60,7 @@
     "title": "Interstellar | Synthwave",
     "genre": null,
     "views": 5400,
-    "likes": 0,
+    "likes": 7,
     "order": 7
   }
 ]
