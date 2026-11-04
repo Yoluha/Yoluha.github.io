@@ -39,7 +39,7 @@
     "id": "WRcApc-EvNc",
     "title": "Fractured Kikagaku (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 205
+    "plays": 304
   },
   {
     "id": "HDyhMsiWqdU",
@@ -93,7 +93,7 @@
     "id": "36lcGaGp3rI",
     "title": "Kenson",
     "genre": "J-Trap",
-    "plays": 315
+    "plays": 317
   },
   {
     "id": "K0KMdypdtXQ",
@@ -165,7 +165,7 @@
     "id": "Ye8zjpQrMTQ",
     "title": "Kanō",
     "genre": "J-Trap",
-    "plays": 572
+    "plays": 573
   },
   {
     "id": "KIC4_z7EukE",
@@ -189,7 +189,7 @@
     "id": "SjxPJntRH08",
     "title": "Yurei Onna",
     "genre": "J-Trap",
-    "plays": 47
+    "plays": 38
   },
   {
     "id": "KFYwcLgt5C8",
@@ -345,7 +345,7 @@
     "id": "VwwYGilahBY",
     "title": "Ochita Eikō 堕ちた栄光 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 1800
+    "plays": 1900
   },
   {
     "id": "p_2Jh3E_KL8",
@@ -531,7 +531,7 @@
     "id": "g_Glhb2Pz3U",
     "title": "The Grazer (Djent)",
     "genre": "Djent",
-    "plays": 213
+    "plays": 216
   },
   {
     "id": "h_vTtmGJyTg",
@@ -729,7 +729,7 @@
     "id": "TKqfseUS6pc",
     "title": "Onryō 怨霊 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 892
+    "plays": 895
   },
   {
     "id": "ovCrFbLTFk4",
@@ -747,7 +747,7 @@
     "id": "32DpTTFg9kE",
     "title": "Shikkoku no Samurai 漆黒の侍 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 970
+    "plays": 977
   },
   {
     "id": "8FLJhcu9taI",
@@ -867,7 +867,7 @@
     "id": "PkJsTYTywV4",
     "title": "Jinja 神社 (Japanese Trap)",
     "genre": "J-Trap",
-    "plays": 540
+    "plays": 541
   },
   {
     "id": "7ScEK_NUYEo",
@@ -900,10 +900,16 @@
     "plays": 1600
   },
   {
+    "id": "CsvJN-tognI",
+    "title": "Zan | J-Trap",
+    "genre": "J-Trap",
+    "plays": 14
+  },
+  {
     "id": "zQmK8ClmvHw",
     "title": "Kokyu | J-Trap",
     "genre": "J-Trap",
-    "plays": 101
+    "plays": 103
   },
   {
     "id": "I0YbdpN2m2A",
@@ -957,7 +963,7 @@
     "id": "b9DCLJacPvU",
     "title": "Tataku | J-Trap",
     "genre": "J-Trap",
-    "plays": 251
+    "plays": 253
   },
   {
     "id": "TE7LiEQR94E",
@@ -1149,7 +1155,7 @@
     "id": "vsTj2XARws4",
     "title": "Taihai sekai no Tabi | J-Trap",
     "genre": "J-Trap",
-    "plays": 464
+    "plays": 465
   },
   {
     "id": "t0mwCgM9gdk",
@@ -1269,7 +1275,7 @@
     "id": "Uw4TSa1jb8M",
     "title": "Yoru o Kurau Mono | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 155
+    "plays": 156
   },
   {
     "id": "ys8xFXWwy7k",
@@ -1323,7 +1329,7 @@
     "id": "ADJypUK9N8w",
     "title": "Ryūgai | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 414
+    "plays": 416
   },
   {
     "id": "XYHgVtH6YFg",
@@ -1677,7 +1683,7 @@
     "id": "GxX7IOSiitc",
     "title": "Dora | J-Trap",
     "genre": "J-Trap",
-    "plays": 223
+    "plays": 224
   },
   {
     "id": "NYWrJAJ9XD4",
@@ -1929,7 +1935,7 @@
     "id": "qGjnQRzT4Nw",
     "title": "Shinsetsu | J-Trap",
     "genre": "J-Trap",
-    "plays": 584
+    "plays": 585
   },
   {
     "id": "LHsPowsnMlo",
@@ -2133,7 +2139,7 @@
     "id": "nqEkwtMcB4A",
     "title": "Tsutchimikaze | J-Trap",
     "genre": "J-Trap",
-    "plays": 859
+    "plays": 860
   },
   {
     "id": "lc0Q3JVz7Js",
@@ -2799,7 +2805,7 @@
     "id": "q7wpgmLRqQM",
     "title": "Iemanjá, Nos Braços da Mãe d'água | Synthwave",
     "genre": "Synthwave",
-    "plays": 255
+    "plays": 258
   },
   {
     "id": "blQoua1IJq8",
@@ -2895,7 +2901,7 @@
     "id": "C4Km0ffO1MA",
     "title": "Tōha | J-Trap",
     "genre": "J-Trap",
-    "plays": 954
+    "plays": 955
   },
   {
     "id": "wmIlC4zzgEA",
@@ -3183,7 +3189,7 @@
     "id": "HzZSZ0vrxxs",
     "title": "Blue Cerberus | Djent",
     "genre": "Djent",
-    "plays": 944
+    "plays": 945
   },
   {
     "id": "iU2y-vB-p-8",
