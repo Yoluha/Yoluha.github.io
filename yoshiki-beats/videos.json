@@ -3,24 +3,24 @@
     "id": "CsvJN-tognI",
     "title": "Zan | J-Trap",
     "genre": "J-Trap",
-    "views": 38,
-    "likes": 3,
+    "views": 43,
+    "likes": 0,
     "order": 0
   },
   {
     "id": "FhF4OaXYnqY",
     "title": "Fractured Kikagaku | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 198,
-    "likes": 3,
+    "views": 202,
+    "likes": 0,
     "order": 1
   },
   {
     "id": "zQmK8ClmvHw",
     "title": "Kokyu | J-Trap",
     "genre": "J-Trap",
-    "views": 104,
-    "likes": 3,
+    "views": 106,
+    "likes": 0,
     "order": 2
   },
   {
@@ -28,7 +28,7 @@
     "title": "Carbon Rokujuichi | GΛRĀN",
     "genre": "GΛRĀN",
     "views": 99,
-    "likes": 4,
+    "likes": 0,
     "order": 3
   },
   {
@@ -36,7 +36,7 @@
     "title": "Muan | J-Trap",
     "genre": "J-Trap",
     "views": 196,
-    "likes": 8,
+    "likes": 0,
     "order": 4
   },
   {
@@ -44,7 +44,7 @@
     "title": "Between Sekai | GΛRĀN",
     "genre": "GΛRĀN",
     "views": 80,
-    "likes": 5,
+    "likes": 0,
     "order": 5
   },
   {
@@ -52,15 +52,15 @@
     "title": "Shizuka | J-Trap",
     "genre": "J-Trap",
     "views": 376,
-    "likes": 7,
+    "likes": 0,
     "order": 6
   },
   {
     "id": "Ku-jsjMkDIo",
     "title": "Disencourage Oni | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 166,
-    "likes": 6,
+    "views": 168,
+    "likes": 0,
     "order": 7
   },
   {
@@ -68,7 +68,7 @@
     "title": "Fukufu | J-Trap",
     "genre": "J-Trap",
     "views": 77,
-    "likes": 4,
+    "likes": 0,
     "order": 8
   },
   {
@@ -76,7 +76,7 @@
     "title": "Daijoubu Disgrace | GΛRĀN",
     "genre": "GΛRĀN",
     "views": 222,
-    "likes": 6,
+    "likes": 0,
     "order": 9
   },
   {
@@ -84,7 +84,7 @@
     "title": "Fuhai-dō | J-Trap",
     "genre": "J-Trap",
     "views": 90,
-    "likes": 4,
+    "likes": 0,
     "order": 10
   },
   {
@@ -92,23 +92,23 @@
     "title": "Distressed Hōfuku | GΛRĀN",
     "genre": "GΛRĀN",
     "views": 158,
-    "likes": 5,
+    "likes": 0,
     "order": 11
   },
   {
     "id": "6y3L8b7wkSc",
     "title": "Bakemono | J-Trap",
     "genre": "J-Trap",
-    "views": 119,
-    "likes": 4,
+    "views": 120,
+    "likes": 0,
     "order": 12
   },
   {
     "id": "b-uZnohwea4",
     "title": "Ganko | J-Trap",
     "genre": "J-Trap",
-    "views": 210,
-    "likes": 5,
+    "views": 212,
+    "likes": 0,
     "order": 13
   },
   {
@@ -116,14 +116,14 @@
     "title": "Tachiagaru | J-Trap",
     "genre": "J-Trap",
     "views": 211,
-    "likes": 6,
+    "likes": 0,
     "order": 14
   },
   {
     "id": "kcHA4dXZdNg",
     "title": "Shinryaku | J-Trap",
     "genre": "J-Trap",
-    "views": 342,
+    "views": 343,
     "likes": 0,
     "order": 15
   },
@@ -163,7 +163,7 @@
     "id": "F2Yjr2xPMh8",
     "title": "Howl Kaiki | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 350,
+    "views": 351,
     "likes": 0,
     "order": 20
   },
@@ -187,7 +187,7 @@
     "id": "U2soPcfyTdY",
     "title": "Horo-sha | J-Trap",
     "genre": "J-Trap",
-    "views": 332,
+    "views": 333,
     "likes": 0,
     "order": 23
   },
@@ -203,7 +203,7 @@
     "id": "DBCqsOo1yz4",
     "title": "Odaiko | J-Trap",
     "genre": "J-Trap",
-    "views": 401,
+    "views": 402,
     "likes": 0,
     "order": 25
   },
@@ -299,7 +299,7 @@
     "id": "4JTnBmHtaKE",
     "title": "Unmei Shūrai | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 178,
+    "views": 179,
     "likes": 0,
     "order": 37
   },
@@ -331,7 +331,7 @@
     "id": "eLHy8AzbQ3Y",
     "title": "Ichiban | J-Trap",
     "genre": "J-Trap",
-    "views": 397,
+    "views": 398,
     "likes": 0,
     "order": 41
   },
@@ -539,7 +539,7 @@
     "id": "dYFJBxrYtpo",
     "title": "Loneliness Jitsugen | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 275,
+    "views": 276,
     "likes": 0,
     "order": 67
   },
@@ -643,7 +643,7 @@
     "id": "FroKDt6t8no",
     "title": "Gōka | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 329,
+    "views": 330,
     "likes": 0,
     "order": 80
   },
@@ -659,7 +659,7 @@
     "id": "7g10wdQQKl8",
     "title": "Gaikai | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 281,
+    "views": 282,
     "likes": 0,
     "order": 82
   },
@@ -667,7 +667,7 @@
     "id": "d-G_1pfTHxM",
     "title": "Shikkoku no Samurai | J-Trap",
     "genre": "J-Trap",
-    "views": 461,
+    "views": 462,
     "likes": 0,
     "order": 83
   },
@@ -675,7 +675,7 @@
     "id": "PPTrEDzwWcQ",
     "title": "Meido no Ō | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 350,
+    "views": 351,
     "likes": 0,
     "order": 84
   },
@@ -739,7 +739,7 @@
     "id": "Uw4TSa1jb8M",
     "title": "Yoru o Kurau Mono | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 158,
+    "views": 159,
     "likes": 0,
     "order": 92
   },
@@ -843,7 +843,7 @@
     "id": "2i4nJCCG7Gc",
     "title": "Shinigami Matsuri | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 224,
+    "views": 225,
     "likes": 0,
     "order": 105
   },
@@ -875,7 +875,7 @@
     "id": "swIzYpZd-mI",
     "title": "You Flow into me Boku wa Umi | GΛRĀN",
     "genre": "GΛRĀN",
-    "views": 131,
+    "views": 130,
     "likes": 0,
     "order": 109
   },
@@ -1243,7 +1243,7 @@
     "id": "rVTLVgQPQ_M",
     "title": "Bite your Tongue | Djent",
     "genre": "Djent",
-    "views": 629,
+    "views": 630,
     "likes": 0,
     "order": 155
   },
@@ -1347,7 +1347,7 @@
     "id": "gvI1KmrMi_0",
     "title": "Maito Gai | J-Trap",
     "genre": "J-Trap",
-    "views": 244,
+    "views": 245,
     "likes": 0,
     "order": 168
   },
@@ -1403,7 +1403,7 @@
     "id": "NYWrJAJ9XD4",
     "title": "Saiyaku no Ryū | J-Trap",
     "genre": "J-Trap",
-    "views": 137,
+    "views": 138,
     "likes": 0,
     "order": 175
   },
@@ -1419,7 +1419,7 @@
     "id": "3ybKHW8hj5w",
     "title": "Ikanaide | J-Trap",
     "genre": "J-Trap",
-    "views": 78,
+    "views": 79,
     "likes": 0,
     "order": 177
   },
@@ -1835,7 +1835,7 @@
     "id": "9xzjTIfowu0",
     "title": "FitGirl Repacks Theme Tribute | J-Trap",
     "genre": "J-Trap",
-    "views": 3400,
+    "views": 3500,
     "likes": 0,
     "order": 229
   },
@@ -1875,7 +1875,7 @@
     "id": "y7L4_U78QbE",
     "title": "Ikigai | J-Trap",
     "genre": "J-Trap",
-    "views": 744,
+    "views": 745,
     "likes": 0,
     "order": 234
   },
@@ -2027,7 +2027,7 @@
     "id": "nqEkwtMcB4A",
     "title": "Tsutchimikaze | J-Trap",
     "genre": "J-Trap",
-    "views": 861,
+    "views": 860,
     "likes": 0,
     "order": 253
   },
@@ -2059,7 +2059,7 @@
     "id": "PV-y9SVK204",
     "title": "Tsurugi Ryū | J-Trap",
     "genre": "J-Trap",
-    "views": 494,
+    "views": 495,
     "likes": 0,
     "order": 257
   },
@@ -2403,7 +2403,7 @@
     "id": "78_74Bo0FqI",
     "title": "Shiryō Ryū | J-Trap",
     "genre": "J-Trap",
-    "views": 690,
+    "views": 691,
     "likes": 0,
     "order": 300
   },
@@ -3427,7 +3427,7 @@
     "id": "ft18SfKf8Dw",
     "title": "Mente Quebrada | Synthwave",
     "genre": "Synthwave",
-    "views": 916,
+    "views": 917,
     "likes": 0,
     "order": 428
   },
