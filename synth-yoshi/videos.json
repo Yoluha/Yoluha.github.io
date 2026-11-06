@@ -4,7 +4,7 @@
     "title": "Black Hole Sun | Synthwave",
     "genre": null,
     "views": 1,
-    "likes": 0,
+    "likes": 1,
     "order": 0
   },
   {
@@ -20,23 +20,23 @@
     "title": "Defeated | Synthwave",
     "genre": null,
     "views": 24,
-    "likes": 0,
+    "likes": 1,
     "order": 2
   },
   {
     "id": "gTi-jVra6jE",
     "title": "New Hope | Synthwave",
     "genre": null,
-    "views": 117,
-    "likes": 0,
+    "views": 121,
+    "likes": 2,
     "order": 3
   },
   {
     "id": "luTrspRz6Ss",
     "title": "Dumb idea | Synthwave",
     "genre": null,
-    "views": 34,
-    "likes": 0,
+    "views": 35,
+    "likes": 2,
     "order": 4
   },
   {
@@ -52,15 +52,15 @@
     "title": "Remorseful | Synthwave",
     "genre": null,
     "views": 20,
-    "likes": 0,
+    "likes": 2,
     "order": 6
   },
   {
     "id": "ELQLLnnMzcA",
     "title": "Animosity | Synthwave",
     "genre": null,
-    "views": 62,
-    "likes": 0,
+    "views": 63,
+    "likes": 2,
     "order": 7
   },
   {
@@ -68,7 +68,7 @@
     "title": "Barely Alive | Synthwave",
     "genre": null,
     "views": 13,
-    "likes": 0,
+    "likes": 2,
     "order": 8
   },
   {
@@ -76,7 +76,7 @@
     "title": "Divorce | Synthwave",
     "genre": null,
     "views": 26,
-    "likes": 0,
+    "likes": 2,
     "order": 9
   },
   {
@@ -84,7 +84,7 @@
     "title": "Cyber Geisha | Synthwave",
     "genre": null,
     "views": 59,
-    "likes": 0,
+    "likes": 3,
     "order": 10
   },
   {
@@ -92,7 +92,7 @@
     "title": "Loop | Synthwave",
     "genre": null,
     "views": 106,
-    "likes": 0,
+    "likes": 4,
     "order": 11
   },
   {
@@ -100,7 +100,7 @@
     "title": "Memory Reboot | Synthwave",
     "genre": null,
     "views": 7000,
-    "likes": 0,
+    "likes": 14,
     "order": 12
   },
   {
@@ -108,7 +108,7 @@
     "title": "Interstellar | Synthwave",
     "genre": null,
     "views": 5400,
-    "likes": 0,
+    "likes": 7,
     "order": 13
   }
 ]
