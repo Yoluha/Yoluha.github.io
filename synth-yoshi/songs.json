@@ -6,10 +6,10 @@
     "plays": 2900
   },
   {
-    "id": "PBhuUUsph1Y",
-    "title": "Madness",
+    "id": "tw4TsSGFJIk",
+    "title": "MYSTICA",
     "genre": null,
-    "plays": 1
+    "plays": 2
   },
   {
     "id": "k83gM6zpnlM",
@@ -66,6 +66,12 @@
     "plays": 11
   },
   {
+    "id": "PBhuUUsph1Y",
+    "title": "Madness",
+    "genre": null,
+    "plays": 1
+  },
+  {
     "id": "JhnmwFDVzIY",
     "title": "Overcoming",
     "genre": null,
@@ -82,12 +88,6 @@
     "title": "Animosity",
     "genre": null,
     "plays": 23
-  },
-  {
-    "id": "tw4TsSGFJIk",
-    "title": "MYSTICA",
-    "genre": null,
-    "plays": 2
   },
   {
     "id": "UZoC1I9iy7s",
