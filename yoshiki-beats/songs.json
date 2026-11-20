@@ -24,12 +24,6 @@
     "plays": 301
   },
   {
-    "id": "mVVgbRiF_D8",
-    "title": "Heavy Kanpeki (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 305
-  },
-  {
     "id": "-hWRA74anXw",
     "title": "Reckoning (Djent)",
     "genre": "Djent",
@@ -42,22 +36,16 @@
     "plays": 37000
   },
   {
+    "id": "mVVgbRiF_D8",
+    "title": "Heavy Kanpeki (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 305
+  },
+  {
     "id": "Y7YrQ2dcSMQ",
     "title": "Kimyō",
     "genre": "J-Trap",
-    "plays": 194
-  },
-  {
-    "id": "kO1pRW0_oug",
-    "title": "Matsunaga Yoshiyo 松永圭代 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 11000
-  },
-  {
-    "id": "80zM1oibdvA",
-    "title": "Shiwa Matsu 死は待つ (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 11000
+    "plays": 195
   },
   {
     "id": "g2wkt9TDojc",
@@ -66,10 +54,22 @@
     "plays": 1000
   },
   {
-    "id": "HDyhMsiWqdU",
-    "title": "Muan 無安 (J-Trap)",
+    "id": "80zM1oibdvA",
+    "title": "Shiwa Matsu 死は待つ (J-Trap)",
     "genre": "J-Trap",
-    "plays": 1300
+    "plays": 11000
+  },
+  {
+    "id": "kO1pRW0_oug",
+    "title": "Matsunaga Yoshiyo 松永圭代 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 11000
+  },
+  {
+    "id": "gkCw6NRUAtU",
+    "title": "Shihai",
+    "genre": "J-Trap",
+    "plays": 93
   },
   {
     "id": "93WCfBwh73o",
@@ -78,14 +78,26 @@
     "plays": 29000
   },
   {
-    "id": "IwCgEYUEBCM",
-    "title": "Yowai mo 弱いも (J-Trap)",
+    "id": "HDyhMsiWqdU",
+    "title": "Muan 無安 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 3800
+    "plays": 1300
   },
   {
     "id": "0XzRSIgB9wU",
     "title": "Rekka no Kokoro 烈火の心 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 3800
+  },
+  {
+    "id": "iKktxviQl_c",
+    "title": "Ganko",
+    "genre": "J-Trap",
+    "plays": 1600
+  },
+  {
+    "id": "IwCgEYUEBCM",
+    "title": "Yowai mo 弱いも (J-Trap)",
     "genre": "J-Trap",
     "plays": 3800
   },
@@ -96,16 +108,10 @@
     "plays": 17000
   },
   {
-    "id": "iKktxviQl_c",
-    "title": "Ganko",
+    "id": "eJU41bqccRM",
+    "title": "Kokyu 呼吸 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 1600
-  },
-  {
-    "id": "VfNyGQ8Zwbs",
-    "title": "Zan 斬 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1000
+    "plays": 816
   },
   {
     "id": "Oo2zo-_qxqU",
@@ -114,28 +120,22 @@
     "plays": 6000
   },
   {
+    "id": "VfNyGQ8Zwbs",
+    "title": "Zan 斬 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1000
+  },
+  {
     "id": "KhZp1hoOSlg",
     "title": "Shiryō Ryū 死霊竜 (J-Trap)",
     "genre": "J-Trap",
     "plays": 19000
   },
   {
-    "id": "eJU41bqccRM",
-    "title": "Kokyu 呼吸 (J-Trap)",
+    "id": "0R-UWvQ975w",
+    "title": "Kyōjin 狂刃 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 816
-  },
-  {
-    "id": "jtV3Nus4Ras",
-    "title": "Yurei Despise (J-Metal)",
-    "genre": "J-Metal",
-    "plays": 1700
-  },
-  {
-    "id": "0R9rzNnoe9s",
-    "title": "Fuman 不満 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 10000
+    "plays": 3900
   },
   {
     "id": "ehb_eu1_gEA",
@@ -144,8 +144,20 @@
     "plays": 2900
   },
   {
-    "id": "S7vawlQ4LuQ",
-    "title": "Gungi",
+    "id": "jtV3Nus4Ras",
+    "title": "Yurei Despise (J-Metal)",
+    "genre": "J-Metal",
+    "plays": 1700
+  },
+  {
+    "id": "FRAEFoRDUhA",
+    "title": "Distressed Hōfuku (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 697
+  },
+  {
+    "id": "6EcBm-T9Dos",
+    "title": "Shizuka 静か (J-Trap)",
     "genre": "J-Trap",
     "plays": 1200
   },
@@ -156,70 +168,16 @@
     "plays": 53
   },
   {
-    "id": "0R-UWvQ975w",
-    "title": "Kyōjin 狂刃 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 3900
-  },
-  {
-    "id": "6EcBm-T9Dos",
-    "title": "Shizuka 静か (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1200
-  },
-  {
-    "id": "q4OJUd2HOQ8",
-    "title": "Saikyō Start (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1900
-  },
-  {
     "id": "KFYwcLgt5C8",
     "title": "Kyomu no Sekai 虚無の世界 (J-Trap)",
     "genre": "J-Trap",
     "plays": 1700
   },
   {
-    "id": "nKxOWUTYVi0",
-    "title": "Onshirazu 恩知らず (J-Trap)",
+    "id": "S7vawlQ4LuQ",
+    "title": "Gungi",
     "genre": "J-Trap",
-    "plays": 977
-  },
-  {
-    "id": "FRAEFoRDUhA",
-    "title": "Distressed Hōfuku (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 697
-  },
-  {
-    "id": "32DpTTFg9kE",
-    "title": "Shikkoku no Samurai 漆黒の侍 (Japanese Trap)",
-    "genre": "J-Trap",
-    "plays": 1000
-  },
-  {
-    "id": "IyJWhKDwvXs",
-    "title": "Hatamoto 旗本 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 8700
-  },
-  {
-    "id": "XuXY3IAIQ34",
-    "title": "Bite your Tongue (Djent)",
-    "genre": "Djent",
-    "plays": 7300
-  },
-  {
-    "id": "_Vu3bP897nA",
-    "title": "Maou Wrath (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 2100
-  },
-  {
-    "id": "uw69nEP89Vg",
-    "title": "Fushi no Ōkami 不死の狼 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1100
+    "plays": 1200
   },
   {
     "id": "SpqqsrXOvPk",
@@ -228,124 +186,16 @@
     "plays": 872
   },
   {
-    "id": "E1ACsInG-PE",
-    "title": "Norite Ghost (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 2100
-  },
-  {
     "id": "2ipn513Zemw",
     "title": "Eternal Bushi (GΛRĀN)",
     "genre": "GΛRĀN",
     "plays": 1200
   },
   {
-    "id": "NaCAwNvBjYw",
-    "title": "Tachiagaru",
-    "genre": "J-Trap",
-    "plays": 656
-  },
-  {
-    "id": "1Pw3LN6861g",
-    "title": "Obake Rider (Japanese Metal)",
-    "genre": "J-Metal",
-    "plays": 3900
-  },
-  {
-    "id": "rsNIcHiJYsE",
-    "title": "Mendokusai 面倒 (Japananese Trap)",
+    "id": "0R9rzNnoe9s",
+    "title": "Fuman 不満 (J-Trap)",
     "genre": "J-Trap",
     "plays": 10000
-  },
-  {
-    "id": "arD2EsdLCrA",
-    "title": "Atsuryoku 圧力 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1000
-  },
-  {
-    "id": "aowafKQzCMc",
-    "title": "Akaki Katana 赤き刀 (Japanese Trap)",
-    "genre": "J-Trap",
-    "plays": 1600
-  },
-  {
-    "id": "IrwY3aI40zo",
-    "title": "Torou",
-    "genre": "J-Trap",
-    "plays": 2100
-  },
-  {
-    "id": "gvR0gJuCCDc",
-    "title": "Kakatte Koi かかってこい (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 2100
-  },
-  {
-    "id": "ePjyZ3mVDMw",
-    "title": "Perdida (Synthwave)",
-    "genre": "Synthwave",
-    "plays": 1300
-  },
-  {
-    "id": "nCULmsza7bM",
-    "title": "Yoru o Kurau Mono 夜を喰らう者 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1100
-  },
-  {
-    "id": "36lcGaGp3rI",
-    "title": "Kenson",
-    "genre": "J-Trap",
-    "plays": 365
-  },
-  {
-    "id": "0ThvdNSedl4",
-    "title": "Unmei Shūrai 運命襲来 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1200
-  },
-  {
-    "id": "1n4gj1NIbpo",
-    "title": "Dora 鑼 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1300
-  },
-  {
-    "id": "boJVNszIPDY",
-    "title": "Yami Legion (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1200
-  },
-  {
-    "id": "ovCrFbLTFk4",
-    "title": "Medaka 目高",
-    "genre": "J-Trap",
-    "plays": 980
-  },
-  {
-    "id": "vrpbNZhyMvw",
-    "title": "Daijoubu Disgrace (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 519
-  },
-  {
-    "id": "uXqI0d1CsYI",
-    "title": "Mirai 未来 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 3000
-  },
-  {
-    "id": "WRcApc-EvNc",
-    "title": "Fractured Kikagaku (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 362
-  },
-  {
-    "id": "oWkClXgy04s",
-    "title": "Tataku 叩く (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 836
   },
   {
     "id": "KN1YGvfHsZo",
@@ -354,10 +204,178 @@
     "plays": 4500
   },
   {
+    "id": "aowafKQzCMc",
+    "title": "Akaki Katana 赤き刀 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 1600
+  },
+  {
+    "id": "1Pw3LN6861g",
+    "title": "Obake Rider (Japanese Metal)",
+    "genre": "J-Metal",
+    "plays": 3900
+  },
+  {
+    "id": "nKxOWUTYVi0",
+    "title": "Onshirazu 恩知らず (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 977
+  },
+  {
+    "id": "IyJWhKDwvXs",
+    "title": "Hatamoto 旗本 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 8700
+  },
+  {
+    "id": "q4OJUd2HOQ8",
+    "title": "Saikyō Start (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1900
+  },
+  {
+    "id": "uw69nEP89Vg",
+    "title": "Fushi no Ōkami 不死の狼 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1100
+  },
+  {
+    "id": "gvR0gJuCCDc",
+    "title": "Kakatte Koi かかってこい (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 2100
+  },
+  {
+    "id": "uXqI0d1CsYI",
+    "title": "Mirai 未来 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 3000
+  },
+  {
+    "id": "NaCAwNvBjYw",
+    "title": "Tachiagaru",
+    "genre": "J-Trap",
+    "plays": 656
+  },
+  {
+    "id": "arD2EsdLCrA",
+    "title": "Atsuryoku 圧力 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1000
+  },
+  {
+    "id": "_Vu3bP897nA",
+    "title": "Maou Wrath (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 2100
+  },
+  {
+    "id": "nCULmsza7bM",
+    "title": "Yoru o Kurau Mono 夜を喰らう者 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1100
+  },
+  {
+    "id": "E1ACsInG-PE",
+    "title": "Norite Ghost (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 2100
+  },
+  {
+    "id": "1n4gj1NIbpo",
+    "title": "Dora 鑼 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1300
+  },
+  {
+    "id": "0ThvdNSedl4",
+    "title": "Unmei Shūrai 運命襲来 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1200
+  },
+  {
+    "id": "ePjyZ3mVDMw",
+    "title": "Perdida (Synthwave)",
+    "genre": "Synthwave",
+    "plays": 1300
+  },
+  {
+    "id": "XuXY3IAIQ34",
+    "title": "Bite your Tongue (Djent)",
+    "genre": "Djent",
+    "plays": 7300
+  },
+  {
+    "id": "vrpbNZhyMvw",
+    "title": "Daijoubu Disgrace (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 519
+  },
+  {
+    "id": "8pYvG_73ROs",
+    "title": "Fukufu",
+    "genre": "J-Trap",
+    "plays": 466
+  },
+  {
+    "id": "WRcApc-EvNc",
+    "title": "Fractured Kikagaku (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 362
+  },
+  {
+    "id": "VwwYGilahBY",
+    "title": "Ochita Eikō 堕ちた栄光 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 1900
+  },
+  {
+    "id": "boJVNszIPDY",
+    "title": "Yami Legion (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1200
+  },
+  {
     "id": "UXFeyY3HeEE",
     "title": "Hollow Gabimaru (GΛRĀN)",
     "genre": "GΛRĀN",
     "plays": 1700
+  },
+  {
+    "id": "6frvPqvXMlg",
+    "title": "Reikoku Mind (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1000
+  },
+  {
+    "id": "oWkClXgy04s",
+    "title": "Tataku 叩く (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 836
+  },
+  {
+    "id": "-idI30NsayA",
+    "title": "Gōka 業火 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1400
+  },
+  {
+    "id": "ovCrFbLTFk4",
+    "title": "Medaka 目高",
+    "genre": "J-Trap",
+    "plays": 984
+  },
+  {
+    "id": "32DpTTFg9kE",
+    "title": "Shikkoku no Samurai 漆黒の侍 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 1000
+  },
+  {
+    "id": "wgx0Q8Gsh5Q",
+    "title": "TSUKUYOMI 月読 (KΛMI PHONK)",
+    "genre": "Kami Phonk",
+    "plays": 2700
   },
   {
     "id": "l2xpNyYP6LI",
@@ -369,85 +387,13 @@
     "id": "IAJHKMdmTYY",
     "title": "Ankokumen",
     "genre": "J-Trap",
-    "plays": 872
+    "plays": 874
   },
   {
-    "id": "FSR9ugl-K8g",
-    "title": "Kami Retribution (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 767
-  },
-  {
-    "id": "o_R-6lBCrck",
-    "title": "Onnen no Yaiba 怨念の刃 (Japanese Trap)",
+    "id": "rsNIcHiJYsE",
+    "title": "Mendokusai 面倒 (Japananese Trap)",
     "genre": "J-Trap",
-    "plays": 357
-  },
-  {
-    "id": "rfzzdCe-fzo",
-    "title": "Shitsubou",
-    "genre": "J-Trap",
-    "plays": 1900
-  },
-  {
-    "id": "-idI30NsayA",
-    "title": "Gōka 業火 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1400
-  },
-  {
-    "id": "7ScEK_NUYEo",
-    "title": "Mada Mada まだまだ (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1600
-  },
-  {
-    "id": "m4BAUT5he_c",
-    "title": "Silent Sakebi (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1900
-  },
-  {
-    "id": "VwwYGilahBY",
-    "title": "Ochita Eikō 堕ちた栄光 (Japanese Trap)",
-    "genre": "J-Trap",
-    "plays": 1900
-  },
-  {
-    "id": "VWaPrlLcJeY",
-    "title": "Gaikotsu Shōgun 骸骨将軍 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 822
-  },
-  {
-    "id": "wgx0Q8Gsh5Q",
-    "title": "TSUKUYOMI 月読 (KΛMI PHONK)",
-    "genre": "Kami Phonk",
-    "plays": 2700
-  },
-  {
-    "id": "6frvPqvXMlg",
-    "title": "Reikoku Mind (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1000
-  },
-  {
-    "id": "1quo3U_bALo",
-    "title": "Samurai Gaijin",
-    "genre": "J-Trap",
-    "plays": 1000
-  },
-  {
-    "id": "q7kEG6X-WZU",
-    "title": "Disencourage Oni",
-    "genre": "J-Trap",
-    "plays": 381
-  },
-  {
-    "id": "8pYvG_73ROs",
-    "title": "Fukufu",
-    "genre": "J-Trap",
-    "plays": 466
+    "plays": 10000
   },
   {
     "id": "GqSvvg42q7w",
@@ -456,10 +402,82 @@
     "plays": 3400
   },
   {
+    "id": "rfzzdCe-fzo",
+    "title": "Shitsubou",
+    "genre": "J-Trap",
+    "plays": 1900
+  },
+  {
+    "id": "IrwY3aI40zo",
+    "title": "Torou",
+    "genre": "J-Trap",
+    "plays": 2100
+  },
+  {
+    "id": "7ScEK_NUYEo",
+    "title": "Mada Mada まだまだ (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1600
+  },
+  {
+    "id": "Gxng6GmgInc",
+    "title": "Kiryū 鬼龍 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1200
+  },
+  {
+    "id": "36lcGaGp3rI",
+    "title": "Kenson",
+    "genre": "J-Trap",
+    "plays": 367
+  },
+  {
+    "id": "m4BAUT5he_c",
+    "title": "Silent Sakebi (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1900
+  },
+  {
+    "id": "FSR9ugl-K8g",
+    "title": "Kami Retribution (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 767
+  },
+  {
     "id": "lS3lDpwArno",
     "title": "Mujihi 無慈悲 (J-Trap)",
     "genre": "J-Trap",
     "plays": 1400
+  },
+  {
+    "id": "VWaPrlLcJeY",
+    "title": "Gaikotsu Shōgun 骸骨将軍 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 823
+  },
+  {
+    "id": "d8v8h58I2WE",
+    "title": "AMATERASU 天照 (KΛMI PHONK)",
+    "genre": "Kami Phonk",
+    "plays": 4600
+  },
+  {
+    "id": "kXO6nWcQ2ok",
+    "title": "Shinsetsu 親切 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1600
+  },
+  {
+    "id": "o_R-6lBCrck",
+    "title": "Onnen no Yaiba 怨念の刃 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 357
+  },
+  {
+    "id": "Xi0KrV2Yhg4",
+    "title": "Hangeki 反撃 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1300
   },
   {
     "id": "s9ENhKXW7is",
@@ -468,16 +486,22 @@
     "plays": 2400
   },
   {
-    "id": "vkw992K3SyU",
-    "title": "Hitogoroshi 人殺し (J-Trap)",
-    "genre": "J-Trap",
+    "id": "rwc_M0fCbUI",
+    "title": "Wide Open (Djent)",
+    "genre": "Djent",
     "plays": 1400
   },
   {
-    "id": "d8v8h58I2WE",
-    "title": "AMATERASU 天照 (KΛMI PHONK)",
-    "genre": "Kami Phonk",
-    "plays": 4600
+    "id": "QxvXtclFGME",
+    "title": "Jingi",
+    "genre": "J-Trap",
+    "plays": 1000
+  },
+  {
+    "id": "1quo3U_bALo",
+    "title": "Samurai Gaijin",
+    "genre": "J-Trap",
+    "plays": 1000
   },
   {
     "id": "YrYowBoc7oE",
@@ -492,34 +516,46 @@
     "plays": 1700
   },
   {
+    "id": "KMHMLsvaIT4",
+    "title": "Shura 修羅 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 5500
+  },
+  {
+    "id": "h_vTtmGJyTg",
+    "title": "Honō Michibiki - 炎導き",
+    "genre": "J-Trap",
+    "plays": 1100
+  },
+  {
     "id": "RAalW1hMQDU",
     "title": "Shinri-sen 心理戦 (J-Trap)",
     "genre": "J-Trap",
     "plays": 2000
   },
   {
-    "id": "Xi0KrV2Yhg4",
-    "title": "Hangeki 反撃 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1300
-  },
-  {
-    "id": "UVeavvA3qt4",
-    "title": "Hantai 反対 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1500
-  },
-  {
-    "id": "w8wqACPVfc4",
-    "title": "Battle Cry (Djent)",
-    "genre": "Djent",
-    "plays": 2700
-  },
-  {
-    "id": "Gxng6GmgInc",
-    "title": "Kiryū 鬼龍 (GΛRĀN)",
+    "id": "VEtibi3B8uE",
+    "title": "Ryūgai 龍骸 (GΛRĀN)",
     "genre": "GΛRĀN",
-    "plays": 1200
+    "plays": 1800
+  },
+  {
+    "id": "EUjQLdyA_z4",
+    "title": "Kattō 葛藤 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 2300
+  },
+  {
+    "id": "BfS3c2d_Tac",
+    "title": "Fuhai-dō 腐敗道 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 397
+  },
+  {
+    "id": "VSKbNOb1BoY",
+    "title": "Kyōran 狂乱 (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 1000
   },
   {
     "id": "sq1lZqgo38k",
@@ -534,14 +570,20 @@
     "plays": 1900
   },
   {
-    "id": "KMHMLsvaIT4",
-    "title": "Shura 修羅 (Japanese Trap)",
+    "id": "TaSsGXh7nHM",
+    "title": "Ōzaru 大猿 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 5500
+    "plays": 1600
   },
   {
-    "id": "9l55SMxiytg",
-    "title": "Shūchū 集中 (J-Trap)",
+    "id": "FQew5LUFv5Q",
+    "title": "Iyatsukan",
+    "genre": "J-Trap",
+    "plays": 954
+  },
+  {
+    "id": "UVeavvA3qt4",
+    "title": "Hantai 反対 (J-Trap)",
     "genre": "J-Trap",
     "plays": 1500
   },
@@ -552,52 +594,10 @@
     "plays": 1100
   },
   {
-    "id": "EUjQLdyA_z4",
-    "title": "Kattō 葛藤 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 2300
-  },
-  {
-    "id": "QxvXtclFGME",
-    "title": "Jingi",
-    "genre": "J-Trap",
-    "plays": 1000
-  },
-  {
-    "id": "h_vTtmGJyTg",
-    "title": "Honō Michibiki - 炎導き",
-    "genre": "J-Trap",
-    "plays": 1100
-  },
-  {
-    "id": "kXO6nWcQ2ok",
-    "title": "Shinsetsu 親切 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1600
-  },
-  {
-    "id": "VEtibi3B8uE",
-    "title": "Ryūgai 龍骸 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1800
-  },
-  {
-    "id": "DcV6Y6zzC-8",
-    "title": "Kakusei 覚醒 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1500
-  },
-  {
-    "id": "rwc_M0fCbUI",
-    "title": "Wide Open (Djent)",
+    "id": "w8wqACPVfc4",
+    "title": "Battle Cry (Djent)",
     "genre": "Djent",
-    "plays": 1400
-  },
-  {
-    "id": "VSKbNOb1BoY",
-    "title": "Kyōran 狂乱 (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 1000
+    "plays": 2700
   },
   {
     "id": "IV5SvKavw3o",
@@ -606,22 +606,16 @@
     "plays": 970
   },
   {
-    "id": "TaSsGXh7nHM",
-    "title": "Ōzaru 大猿 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1600
+    "id": "JvERQzkAfzU",
+    "title": "Bereavement (Djent)",
+    "genre": "Djent",
+    "plays": 673
   },
   {
-    "id": "QcBmhYZAutg",
-    "title": "Tired of Being Tired (Japanese Trap)",
+    "id": "9l55SMxiytg",
+    "title": "Shūchū 集中 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 879
-  },
-  {
-    "id": "RCySbCKWIb4",
-    "title": "Tetorisu テトリス (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 549
+    "plays": 1500
   },
   {
     "id": "ThC3O_KBvHY",
@@ -630,16 +624,28 @@
     "plays": 737
   },
   {
+    "id": "yPUjVGKKg10",
+    "title": "Revolta (Synthwave)",
+    "genre": "Synthwave",
+    "plays": 788
+  },
+  {
     "id": "p_2Jh3E_KL8",
     "title": "Gaikai 骸界 # (GΛRĀN)",
     "genre": "GΛRĀN",
     "plays": 1900
   },
   {
-    "id": "BfS3c2d_Tac",
-    "title": "Fuhai-dō 腐敗道 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 397
+    "id": "ZK1faNvgo5w",
+    "title": "Jinsei no Merīgōrando 人生のメリーゴーランド (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 877
+  },
+  {
+    "id": "jShERqSCgAE",
+    "title": "Zeni Oni (KΛMI PHONK)",
+    "genre": "Kami Phonk",
+    "plays": 661
   },
   {
     "id": "jKE_IKCz0-Q",
@@ -648,10 +654,16 @@
     "plays": 2100
   },
   {
-    "id": "Q1GvnLvrVeA",
-    "title": "No time to Rest (Djent)",
+    "id": "hQJ3XmUBqL8",
+    "title": "Hide and Seek (Djent)",
     "genre": "Djent",
-    "plays": 641
+    "plays": 597
+  },
+  {
+    "id": "vkw992K3SyU",
+    "title": "Hitogoroshi 人殺し (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1400
   },
   {
     "id": "WV3jcrvpWac",
@@ -672,16 +684,10 @@
     "plays": 1100
   },
   {
-    "id": "JvERQzkAfzU",
-    "title": "Bereavement (Djent)",
-    "genre": "Djent",
-    "plays": 673
-  },
-  {
-    "id": "FQew5LUFv5Q",
-    "title": "Iyatsukan",
+    "id": "3rRkyau3OhI",
+    "title": "Honki 本気 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 951
+    "plays": 477
   },
   {
     "id": "rOU0NHy30Ec",
@@ -690,118 +696,28 @@
     "plays": 2500
   },
   {
-    "id": "_YDMeWIan3I",
-    "title": "Enter (Djent)",
-    "genre": "Djent",
-    "plays": 480
-  },
-  {
     "id": "ghHRUL585ys",
     "title": "Itsumade 以津真天 (Japanese Trap)",
     "genre": "J-Trap",
     "plays": 1800
   },
   {
-    "id": "ospW_PVyrWM",
-    "title": "Shindemo Yurusanai 死んでも許さない (J-Trap)",
+    "id": "q7kEG6X-WZU",
+    "title": "Disencourage Oni",
     "genre": "J-Trap",
-    "plays": 1700
+    "plays": 381
   },
   {
-    "id": "bzJGuo3Fc6o",
-    "title": "Kurogane 黒鉄 (J-Trap)",
+    "id": "Jhca1dNkUOQ",
+    "title": "Batoru バトル (J-Trap)",
     "genre": "J-Trap",
-    "plays": 310
+    "plays": 489
   },
   {
-    "id": "yPUjVGKKg10",
-    "title": "Revolta (Synthwave)",
-    "genre": "Synthwave",
-    "plays": 788
-  },
-  {
-    "id": "WfndlSKoRKc",
-    "title": "Ninjutsu 忍術 (J-Trap)",
+    "id": "RCySbCKWIb4",
+    "title": "Tetorisu テトリス (J-Trap)",
     "genre": "J-Trap",
-    "plays": 1500
-  },
-  {
-    "id": "Cx6-0LpEfIM",
-    "title": "Kōgun 行軍 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 2400
-  },
-  {
-    "id": "ZK1faNvgo5w",
-    "title": "Jinsei no Merīgōrando 人生のメリーゴーランド (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 876
-  },
-  {
-    "id": "-WxagChsbAs",
-    "title": "Howl Kaiki (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 643
-  },
-  {
-    "id": "jShERqSCgAE",
-    "title": "Zeni Oni (KΛMI PHONK)",
-    "genre": "Kami Phonk",
-    "plays": 661
-  },
-  {
-    "id": "3P5TAquY9u0",
-    "title": "Dennō Bushi 電脳武士 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1200
-  },
-  {
-    "id": "-WpOhWpRfZE",
-    "title": "Umi ga Kusaru 海が腐る (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1800
-  },
-  {
-    "id": "ly0oy4SpwPE",
-    "title": "Imakoso more than Ever (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 551
-  },
-  {
-    "id": "KVLycGg4skA",
-    "title": "Kibō 希望 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 3400
-  },
-  {
-    "id": "GXQtlfox3Qc",
-    "title": "Unstoppable Chikara (GΛRĀN)",
-    "genre": "GΛRĀN",
-    "plays": 572
-  },
-  {
-    "id": "xmAJCyA6D2Q",
-    "title": "Cleasing Fire (Djent)",
-    "genre": "Djent",
-    "plays": 873
-  },
-  {
-    "id": "kwpylrvIx7g",
-    "title": "Shinryaku",
-    "genre": "J-Trap",
-    "plays": 1000
-  },
-  {
-    "id": "eh8fSYH0iUo",
-    "title": "Musuko yo 息子よ (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 1200
-  },
-  {
-    "id": "hkglaoYLnwY",
-    "title": "Shippatsu suru 出発する (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 582
+    "plays": 549
   },
   {
     "id": "RNZHHdjnWjM",
@@ -810,16 +726,10 @@
     "plays": 2200
   },
   {
-    "id": "fJsCEoQ-8R8",
-    "title": "Foward (Djent)",
-    "genre": "Djent",
-    "plays": 4700
-  },
-  {
-    "id": "ZNgAa13yJXE",
-    "title": "Just Do It (feat. Satsuki)",
+    "id": "WfndlSKoRKc",
+    "title": "Ninjutsu 忍術 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 638
+    "plays": 1500
   },
   {
     "id": "hvLANoUHggM",
@@ -828,16 +738,22 @@
     "plays": 2300
   },
   {
+    "id": "3P5TAquY9u0",
+    "title": "Dennō Bushi 電脳武士 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1200
+  },
+  {
+    "id": "DcV6Y6zzC-8",
+    "title": "Kakusei 覚醒 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1500
+  },
+  {
     "id": "EflIJTQuWQk",
     "title": "Akuma 悪魔 (J-Trap)",
     "genre": "J-Trap",
     "plays": 261
-  },
-  {
-    "id": "Eoh0N-zaKEY",
-    "title": "Dokuro 髑髏 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 851
   },
   {
     "id": "_7dqqLLr7Nc",
@@ -852,10 +768,112 @@
     "plays": 1800
   },
   {
+    "id": "CFF6zgglbhY",
+    "title": "Ikanaide いかないで (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 2000
+  },
+  {
+    "id": "KVLycGg4skA",
+    "title": "Kibō 希望 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 3400
+  },
+  {
+    "id": "xmAJCyA6D2Q",
+    "title": "Cleasing Fire (Djent)",
+    "genre": "Djent",
+    "plays": 873
+  },
+  {
+    "id": "ospW_PVyrWM",
+    "title": "Shindemo Yurusanai 死んでも許さない (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1700
+  },
+  {
+    "id": "eh8fSYH0iUo",
+    "title": "Musuko yo 息子よ (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1200
+  },
+  {
+    "id": "QftcjTSOH6w",
+    "title": "Ushio to Tora 潮と虎 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 1200
+  },
+  {
+    "id": "Cx6-0LpEfIM",
+    "title": "Kōgun 行軍 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 2400
+  },
+  {
+    "id": "ZNgAa13yJXE",
+    "title": "Just Do It (feat. Satsuki)",
+    "genre": "J-Trap",
+    "plays": 638
+  },
+  {
+    "id": "-WxagChsbAs",
+    "title": "Howl Kaiki (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 643
+  },
+  {
+    "id": "zuefEdz7aIQ",
+    "title": "Inferiority Complex (Djent)",
+    "genre": "Djent",
+    "plays": 2600
+  },
+  {
+    "id": "PkJsTYTywV4",
+    "title": "Jinja 神社 (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 551
+  },
+  {
     "id": "5Xw_N9pEmRA",
     "title": "Shishigami Menace (GΛRĀN)",
     "genre": "GΛRĀN",
     "plays": 904
+  },
+  {
+    "id": "QgHNluEjp_c",
+    "title": "Gaijin 外人 (J-Trap)",
+    "genre": "J-Trap",
+    "plays": 1000
+  },
+  {
+    "id": "-aefblcZu2Y",
+    "title": "Kōryū no Chikai 紅龍の誓い (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 2600
+  },
+  {
+    "id": "KR6mbzNfIPc",
+    "title": "Yabai やばい (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 1100
+  },
+  {
+    "id": "cIHAAwkQfNY",
+    "title": "Chiru",
+    "genre": "J-Trap",
+    "plays": 464
+  },
+  {
+    "id": "GXQtlfox3Qc",
+    "title": "Unstoppable Chikara (GΛRĀN)",
+    "genre": "GΛRĀN",
+    "plays": 572
+  },
+  {
+    "id": "QcBmhYZAutg",
+    "title": "Tired of Being Tired (Japanese Trap)",
+    "genre": "J-Trap",
+    "plays": 879
   },
   {
     "id": "fJJqkHbuHss",
@@ -870,46 +888,28 @@
     "plays": 1000
   },
   {
-    "id": "QIuP01WxYcs",
-    "title": "Oose no Mama ni 仰せのままに (J-Trap)",
+    "id": "hkglaoYLnwY",
+    "title": "Shippatsu suru 出発する (J-Trap)",
     "genre": "J-Trap",
-    "plays": 1500
+    "plays": 582
   },
   {
-    "id": "TwTjWoAYGC4",
-    "title": "Zen 禅 (Japanese Trap)",
+    "id": "bzJGuo3Fc6o",
+    "title": "Kurogane 黒鉄 (J-Trap)",
     "genre": "J-Trap",
-    "plays": 519
-  },
-  {
-    "id": "QftcjTSOH6w",
-    "title": "Ushio to Tora 潮と虎 (Japanese Trap)",
-    "genre": "J-Trap",
-    "plays": 1200
-  },
-  {
-    "id": "dgPw-nyODSc",
-    "title": "Akai Seishin 赤い精神 (J-Trap)",
-    "genre": "J-Trap",
-    "plays": 715
-  },
-  {
-    "id": "k1tnaK28eLc",
-    "title": "Nami 波",
-    "genre": "J-Trap",
-    "plays": 558
+    "plays": 310
   },
   {
     "id": "wwu0mVr5l74",
     "title": "Kanō | J-Trap",
     "genre": "J-Trap",
-    "plays": 78
+    "plays": 101
   },
   {
     "id": "oZ0xuH-_O8Y",
     "title": "Genin | J-Trap",
     "genre": "J-Trap",
-    "plays": 430
+    "plays": 431
   },
   {
     "id": "CsvJN-tognI",
@@ -921,7 +921,7 @@
     "id": "zQmK8ClmvHw",
     "title": "Kokyu | J-Trap",
     "genre": "J-Trap",
-    "plays": 168
+    "plays": 169
   },
   {
     "id": "JTw5aQEcf_Y",
@@ -960,10 +960,10 @@
     "plays": 131
   },
   {
-    "id": "7fIKwAeETYY",
-    "title": "Chiru | J-Trap",
+    "id": "kcHA4dXZdNg",
+    "title": "Shinryaku | J-Trap",
     "genre": "J-Trap",
-    "plays": 217
+    "plays": 349
   },
   {
     "id": "U2soPcfyTdY",
@@ -1011,7 +1011,7 @@
     "id": "TlnzySrUbAw",
     "title": "Izanami | KΛMI PHONK",
     "genre": "Kami Phonk",
-    "plays": 669
+    "plays": 670
   },
   {
     "id": "yN42ycTcbxM",
@@ -1023,7 +1023,7 @@
     "id": "sv0mk1-Rz3Y",
     "title": "Zankyō | J-Trap",
     "genre": "J-Trap",
-    "plays": 275
+    "plays": 276
   },
   {
     "id": "HILCiL5f_y8",
@@ -1071,7 +1071,7 @@
     "id": "eLHy8AzbQ3Y",
     "title": "Ichiban | J-Trap",
     "genre": "J-Trap",
-    "plays": 406
+    "plays": 407
   },
   {
     "id": "1MWgZ2wVhyI",
@@ -1083,7 +1083,7 @@
     "id": "8rFo497oBQc",
     "title": "Jigoku no Hone | GΛRĀN",
     "genre": "GΛRĀN",
-    "plays": 298
+    "plays": 300
   },
   {
     "id": "7-NFGS6BlzE",
@@ -1095,7 +1095,7 @@
     "id": "zoU7WSZz2Dk",
     "title": "Chikurin | J-Trap",
     "genre": "J-Trap",
-    "plays": 373
+    "plays": 374
   },
   {
     "id": "qa2udA8DkPs",
@@ -1173,7 +1173,7 @@
     "id": "EKqFgbDHoE0",
     "title": "Kessen | J-Trap",
     "genre": "J-Trap",
-    "plays": 798
+    "plays": 799
   },
   {
     "id": "VuOeM7oi4yg",
@@ -1257,7 +1257,7 @@
     "id": "d-G_1pfTHxM",
     "title": "Shikkoku no Samurai | J-Trap",
     "genre": "J-Trap",
-    "plays": 475
+    "plays": 476
   },
   {
     "id": "PPTrEDzwWcQ",
@@ -1347,7 +1347,7 @@
     "id": "cx7cp77CxeQ",
     "title": "Hottoite | J-Trap",
     "genre": "J-Trap",
-    "plays": 985
+    "plays": 986
   },
   {
     "id": "Z68U4LOLFmg",
@@ -1596,10 +1596,22 @@
     "plays": 200
   },
   {
+    "id": "4v08HY7E6zc",
+    "title": "Imakoso more than Ever | GΛRĀN",
+    "genre": "GΛRĀN",
+    "plays": 213
+  },
+  {
     "id": "w50oM9ut0zc",
     "title": "Kako no Mirai | J-Trap",
     "genre": "J-Trap",
     "plays": 257
+  },
+  {
+    "id": "mgmMAUnT4dY",
+    "title": "No time to Rest | Djent",
+    "genre": "Djent",
+    "plays": 207
   },
   {
     "id": "_uHoFPDuMdU",
@@ -1683,7 +1695,7 @@
     "id": "RcZSn44psyk",
     "title": "Shinobi | J-Trap",
     "genre": "J-Trap",
-    "plays": 199
+    "plays": 200
   },
   {
     "id": "pu93XlnWrHY",
@@ -1695,7 +1707,7 @@
     "id": "T0rDyrg8zso",
     "title": "Kyōchō | J-Trap",
     "genre": "J-Trap",
-    "plays": 391
+    "plays": 392
   },
   {
     "id": "GxX7IOSiitc",
@@ -1785,13 +1797,13 @@
     "id": "kWWgTiLK_Tg",
     "title": "Sōryū | J-Trap",
     "genre": "J-Trap",
-    "plays": 69
+    "plays": 70
   },
   {
     "id": "u1HmCBs60B4",
     "title": "Gen'ei Bushi | J-Trap",
     "genre": "J-Trap",
-    "plays": 455
+    "plays": 456
   },
   {
     "id": "CrP_k0PDfN4",
@@ -2055,7 +2067,7 @@
     "id": "UJNpIM6R12c",
     "title": "Mottainai | J-Trap",
     "genre": "J-Trap",
-    "plays": 132
+    "plays": 133
   },
   {
     "id": "aihpW6lVShw",
@@ -2085,7 +2097,7 @@
     "id": "o_mRlZINVxU",
     "title": "Unmei | J-Trap",
     "genre": "J-Trap",
-    "plays": 405
+    "plays": 406
   },
   {
     "id": "ROEMiOkc0KE",
@@ -2169,7 +2181,7 @@
     "id": "YkQA-ClrheU",
     "title": "Kabuto | J-Trap",
     "genre": "J-Trap",
-    "plays": 251
+    "plays": 253
   },
   {
     "id": "AWwFX3kKhoQ",
@@ -2193,13 +2205,13 @@
     "id": "tIYLfrZU6VE",
     "title": "Hatamoto | J-Trap",
     "genre": "J-Trap",
-    "plays": 890
+    "plays": 891
   },
   {
     "id": "PKoKbdwbJRU",
     "title": "Kaibutsu | J-Trap",
     "genre": "J-Trap",
-    "plays": 292
+    "plays": 293
   },
   {
     "id": "N16gU4ARNqA",
@@ -2289,7 +2301,7 @@
     "id": "BT8TOWutgJE",
     "title": "Kaizen | J-Trap",
     "genre": "J-Trap",
-    "plays": 837
+    "plays": 838
   },
   {
     "id": "5dGJ1xJkB8Q",
@@ -2427,7 +2439,7 @@
     "id": "78_74Bo0FqI",
     "title": "Shiryō Ryū | J-Trap",
     "genre": "J-Trap",
-    "plays": 697
+    "plays": 698
   },
   {
     "id": "OdiFJd5SxHE",
@@ -2505,7 +2517,7 @@
     "id": "G6WPomsHCbA",
     "title": "Soudou | J-Trap",
     "genre": "J-Trap",
-    "plays": 102
+    "plays": 103
   },
   {
     "id": "9cT1eJhAzxU",
@@ -2598,6 +2610,12 @@
     "plays": 178
   },
   {
+    "id": "UC9pF0QqGig",
+    "title": "Enter | Djent",
+    "genre": "Djent",
+    "plays": 155
+  },
+  {
     "id": "PyzG7F558O0",
     "title": "Sugoku | J-Trap",
     "genre": "J-Trap",
@@ -2661,7 +2679,7 @@
     "id": "7WGIhgA4Mvw",
     "title": "During Nights When I Can’t Sleep feat. Satsuki | J-Metal",
     "genre": "J-Metal",
-    "plays": 186
+    "plays": 187
   },
   {
     "id": "3PRSb2piTR4",
@@ -3225,7 +3243,7 @@
     "id": "Gi6k5nsM3J4",
     "title": "Okure | J-Trap",
     "genre": "J-Trap",
-    "plays": 939
+    "plays": 940
   },
   {
     "id": "LEOoBek4ywA",
@@ -3237,7 +3255,7 @@
     "id": "24vxRS9G7Xw",
     "title": "Isoide | J-Trap",
     "genre": "J-Trap",
-    "plays": 659
+    "plays": 661
   },
   {
     "id": "LHn25DUvMmI",
@@ -3300,12 +3318,6 @@
     "plays": 1700
   },
   {
-    "id": "bd0CQY0er1A",
-    "title": "Hide and Seek | Djent",
-    "genre": "Djent",
-    "plays": 1000
-  },
-  {
     "id": "-yppQJNbUew",
     "title": "I Already Told You | Synthwave",
     "genre": "Synthwave",
@@ -3352,6 +3364,12 @@
     "title": "Nintai | J-Trap",
     "genre": "J-Trap",
     "plays": 1700
+  },
+  {
+    "id": "-dCtfO8GSIc",
+    "title": "Foward | Djent",
+    "genre": "Djent",
+    "plays": 3600
   },
   {
     "id": "DRwWOxy2h9o",
